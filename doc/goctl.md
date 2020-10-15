@@ -24,13 +24,13 @@
   >
   > -dir 自定义生成目录
 
-#### 保持goctl总是最新版
+如需自定义模板，运行如下命令生成`api gateway`模板：
 
-  第一次运行会在~/.goctl里增加下面两行：
+```shell
+goctl api go template
+```
 
-  ```Plain Text
-  url = http://47.97.184.41:7777/
-  ```
+生成的模板放在`$HOME/.goctl`目录下，根据需要自行修改模板，下次运行`goctl`生成代码时会优先采用模板文件的内容
 
 #### API 语法说明
 
