@@ -139,6 +139,14 @@ service user-api {
    service里面包含api路由，比如上面第一组service的第一个路由，doc用来描述此路由的用途，GetProfileHandler表示处理这个路由的handler，
    `get /api/profile/:name(getRequest) returns(getResponse)` 中get代表api的请求方式（get/post/put/delete）, `/api/profile/:name` 描述了路由path，`:name`通过
    请求getRequest里面的属性赋值，getResponse为返回的结构体，这两个类型都定义在2描述的类型中。
+4. 支持在info下面和type顶部import外部api文件，被import的文件只支持类型定义，import语法：` import xxxx.api `
+5. handler 支持缩写，实例如下：
+```go
+
+@handler CreateProfileHandler
+post /api/profile/create(createRequest)
+
+```
 
 #### api vscode插件
 
