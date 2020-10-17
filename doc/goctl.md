@@ -112,22 +112,16 @@ service user-api {
 )
 service user-api {
     @doc(summary: user title)
-    @server(
-        handler: GetProfileHandler
-    )
+    @handler GetProfileHandler
     get /api/profile/:name(getRequest) returns(getResponse)
 
-    @server(
-        handler: CreateProfileHandler
-    )
+    @handler CreateProfileHandler
     post /api/profile/create(createRequest)
 }
 
 service user-api {
     @doc(summary: desc in one line)
-    @server(
-        handler: PingHandler
-    )
+    @handler PingHandler
     head /api/ping()
 }
 
@@ -154,7 +148,6 @@ service user-api {
   `goctl api go -api user/user.api -dir user`
 
   ```Plain Text
-
 	.
     ├── internal
     │   ├── config
@@ -181,7 +174,6 @@ service user-api {
     │   └── types
     │       └── types.go
     └── user.go
-
   ```
 
   生成的代码可以直接跑，有几个地方需要改：
@@ -229,13 +221,13 @@ goctl model mongo -src {{yourDir}}/xiao/service/xhb/user/model/usermodel.go -cac
 src 示例代码如下
 
   ```go
-    package model
+package model
 
-    type User struct {
-      Name string `o:"find,get,set" c:"姓名"`
-      Age int `o:"find,get,set" c:"年纪"`
-      School string `c:"学校"`
-    }
+type User struct {
+  Name string `o:"find,get,set" c:"姓名"`
+  Age int `o:"find,get,set" c:"年纪"`
+  School string `c:"学校"`
+}
   ```
 
 结构体中不需要提供Id,CreateTime,UpdateTime三个字段，会自动生成
