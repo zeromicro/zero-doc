@@ -52,25 +52,19 @@ service order {
     @doc(
         summary: 创建订单
     )
-    @server(
-        handler: CreateOrderHandler
-    )
+    @handler CreateOrderHandler
     post /order/add/:token(createOrderReq) returns(createOrderRes)
 
     @doc(
         summary: 获取订单
     )
-    @server(
-        handler: FindOrderHandler
-    )
+    @handler FindOrderHandler
     get /order/find/:token(findOrderReq) returns(findOrderRes)
 
     @doc(
         summary: 删除订单
     )
-    @server(
-        handler: DeleteOrderHandler
-    )
+    @handler: DeleteOrderHandler
     delete /order/:id(deleteOrderReq) returns(deleteOrderRes)
 }
 ```
@@ -105,9 +99,7 @@ service user {
     @doc(
         summary: 创建订单
     )
-    @server(
-        handler: CreateUserHandler
-    )
+    @handler CreateUserHandler
     post /user/add(createUserReq) returns(createUserRes)
 }
 ```
