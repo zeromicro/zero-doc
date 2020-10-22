@@ -128,19 +128,37 @@ service user-api {
 ```
 
 1. info部分：描述了api基本信息，比如Auth，api是哪个用途。
+
 2. type部分：type类型声明和golang语法兼容。
-3. service部分：service代表一组服务，一个服务可以由多组名称相同的service组成，可以针对每一组service配置jwt和auth认证，另外通过group属性可以指定service生成所在子目录。
-   service里面包含api路由，比如上面第一组service的第一个路由，doc用来描述此路由的用途，GetProfileHandler表示处理这个路由的handler，
-   `get /api/profile/:name(getRequest) returns(getResponse)` 中get代表api的请求方式（get/post/put/delete）, `/api/profile/:name` 描述了路由path，`:name`通过
-   请求getRequest里面的属性赋值，getResponse为返回的结构体，这两个类型都定义在2描述的类型中。
+
+3. service部分：
+   
+   * service代表一组服务，一个服务可以由多组名称相同的service组成，可以针对每一组service配置jwt和auth认证。
+   
+   * 通过group属性可以指定service生成所在子目录。
+   
+   * service里面包含api路由，比如上面第一组service的第一个路由，doc用来描述此路由的用途，GetProfileHandler表示处理这个路由的handler，
+     `get /api/profile/:name(getRequest) returns(getResponse)` 中get代表api的请求方式（get/post/put/delete）, `/api/profile/:name` 描述了路由path，`:name`通过
+     请求getRequest里面的属性赋值，getResponse为返回的结构体，这两个类型都定义在2描述的类型中。
+   
+   * server 标签支持配置middleware，示例如下：
+   
+     ```go
+     @server(
+         middleware: AuthUser
+     )
+     ```
+   
+   添加完middleware后需要设置ServiceContext 中middleware变量的值，middleware实现可以参考测试用例 `TestWithMiddleware` 或者 `TestMultiMiddlewares`。
+   
+   * handler 支持缩写，实例如下：
+   
+     ```golang
+     @handler CreateProfileHandler
+     post /api/profile/create(createRequest)
+     ```
+
 4. 支持在info下面和type顶部import外部api文件，被import的文件只支持类型定义，import语法：` import xxxx.api `
-5. handler 支持缩写，实例如下：
-```go
-
-@handler CreateProfileHandler
-post /api/profile/create(createRequest)
-
-```
 
 #### api vscode插件
 
