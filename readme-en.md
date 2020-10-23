@@ -1,3 +1,5 @@
+<img align="right" width="150px" src="doc/images/go-zero.png">
+
 # go-zero
 
 English | [简体中文](readme.md)
