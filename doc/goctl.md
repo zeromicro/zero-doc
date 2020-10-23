@@ -160,13 +160,16 @@ service user-api {
 
 4. 支持在info下面和type顶部import外部api文件，被import的文件只支持类型定义，import语法：` import xxxx.api `
 
-#### api vscode插件
+#### goland/vscode插件
 
-开发者可以在vscode中搜索goctl的api插件，它提供了api语法高亮，语法检测和格式化相关功能。
+开发者可以在 goland 或 vscode 中搜索 goctl 的 api 插件，它们提供了 api 语法高亮，语法检测和格式化相关功能，插件安装及使用相关资料请点击[这里](https://github.com/tal-tech/goctl-plugins)。
 
- 1. 支持语法高亮和类型导航。
- 2. 语法检测，格式化api会自动检测api编写错误地方，用vscode默认的格式化快捷键(option+command+F)或者自定义的也可以。
- 3. 格式化(option+command+F)，类似代码格式化，统一样式支持。
+插件支持:
+
+ 1. 语法高亮和类型导航。
+ 2. 语法检测，格式化 api 会自动检测 api 编写错误地方。
+ 3. api 文档格式化( vscode 默认快捷键 `option+command+f`, goland 默认快捷键 `option+command+l`)。
+ 4. 上下文菜单，goland 插件提供了生成代码的快捷菜单。
 
 #### 根据定义好的api文件生成golang代码
 
