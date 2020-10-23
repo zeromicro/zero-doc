@@ -30,6 +30,6 @@
   * [文本序列化和反序列化](doc/mapping.md)
   * [快速构建jwt鉴权认证](doc/jwt.md)
 
-## 9. 微信交流群
+## 3. 微信交流群
 
 <img src="doc/images/wechat.jpg" alt="wechat" width="300" />
