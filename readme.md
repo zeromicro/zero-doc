@@ -2,9 +2,7 @@
 
 [English](readme-en.md) | 简体中文
 
-```
 <img align="right" width="120px" src="doc/images/go-zero.png">
-```
 
 [![Go](https://github.com/tal-tech/go-zero/workflows/Go/badge.svg?branch=master)](https://github.com/tal-tech/go-zero/actions)
 [![codecov](https://codecov.io/gh/tal-tech/go-zero/branch/master/graph/badge.svg)](https://codecov.io/gh/tal-tech/go-zero)
