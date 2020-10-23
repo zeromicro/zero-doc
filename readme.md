@@ -1,6 +1,6 @@
-# go-zero
-
 <img align="right" width="150px" src="doc/images/go-zero.png">
+
+# go-zero
 
 [English](readme-en.md) | 简体中文
 
