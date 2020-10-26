@@ -38,7 +38,7 @@ service jwt-api {
   jwt: JwtAuth
 )
 service jwt-api {
-  @handler GetUser
+  @handler GetUserHandler
   post /user/info(GetUserRequest) returns (GetUserResponse)
 }
 ````
