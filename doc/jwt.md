@@ -30,9 +30,7 @@ type GetUserResponse struct {
 }
 
 service jwt-api {
-  @server(
-    handler: JwtHandler
-  )
+  @handler JwtHandler
   post /user/token(JwtTokenRequest) returns (JwtTokenResponse)
 }
 
@@ -40,9 +38,7 @@ service jwt-api {
   jwt: JwtAuth
 )
 service jwt-api {
-  @server(
-    handler: GetUserHandler
-  )
+  @handler JwtHandler
   post /user/info(GetUserRequest) returns (GetUserResponse)
 }
 ````
