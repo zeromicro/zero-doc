@@ -112,41 +112,64 @@ service user-api {
 )
 service user-api {
     @doc(summary: user title)
-    @server(
-        handler: GetProfileHandler
-    )
+    @handler GetProfileHandler
     get /api/profile/:name(getRequest) returns(getResponse)
 
-    @server(
-        handler: CreateProfileHandler
-    )
+    @handler CreateProfileHandler
     post /api/profile/create(createRequest)
 }
 
 service user-api {
     @doc(summary: desc in one line)
-    @server(
-        handler: PingHandler
-    )
+    @handler PingHandler
     head /api/ping()
 }
 
 ```
 
 1. info部分：描述了api基本信息，比如Auth，api是哪个用途。
+
 2. type部分：type类型声明和golang语法兼容。
-3. service部分：service代表一组服务，一个服务可以由多组名称相同的service组成，可以针对每一组service配置jwt和auth认证，另外通过group属性可以指定service生成所在子目录。
-   service里面包含api路由，比如上面第一组service的第一个路由，doc用来描述此路由的用途，GetProfileHandler表示处理这个路由的handler，
-   `get /api/profile/:name(getRequest) returns(getResponse)` 中get代表api的请求方式（get/post/put/delete）, `/api/profile/:name` 描述了路由path，`:name`通过
-   请求getRequest里面的属性赋值，getResponse为返回的结构体，这两个类型都定义在2描述的类型中。
 
-#### api vscode插件
+3. service部分：
+   
+   * service代表一组服务，一个服务可以由多组名称相同的service组成，可以针对每一组service配置jwt和auth认证。
+   
+   * 通过group属性可以指定service生成所在子目录。
+   
+   * service里面包含api路由，比如上面第一组service的第一个路由，doc用来描述此路由的用途，GetProfileHandler表示处理这个路由的handler，
+     `get /api/profile/:name(getRequest) returns(getResponse)` 中get代表api的请求方式（get/post/put/delete）, `/api/profile/:name` 描述了路由path，`:name`通过
+     请求getRequest里面的属性赋值，getResponse为返回的结构体，这两个类型都定义在2描述的类型中。
+   
+   * server 标签支持配置middleware，示例如下：
+   
+     ```go
+     @server(
+         middleware: AuthUser
+     )
+     ```
+   
+   添加完middleware后需要设置ServiceContext 中middleware变量的值，middleware实现可以参考测试用例 `TestWithMiddleware` 或者 `TestMultiMiddlewares`。
+   
+   * handler 支持缩写，实例如下：
+   
+     ```golang
+     @handler CreateProfileHandler
+     post /api/profile/create(createRequest)
+     ```
 
-开发者可以在vscode中搜索goctl的api插件，它提供了api语法高亮，语法检测和格式化相关功能。
+4. 支持在info下面和type顶部import外部api文件，被import的文件只支持类型定义，import语法：` import xxxx.api `
 
- 1. 支持语法高亮和类型导航。
- 2. 语法检测，格式化api会自动检测api编写错误地方，用vscode默认的格式化快捷键(option+command+F)或者自定义的也可以。
- 3. 格式化(option+command+F)，类似代码格式化，统一样式支持。
+#### goland/vscode插件
+
+开发者可以在 goland 或 vscode 中搜索 goctl 的 api 插件，它们提供了 api 语法高亮，语法检测和格式化相关功能，插件安装及使用相关资料请点击[这里](https://github.com/tal-tech/goctl-plugins)。
+
+插件支持:
+
+ 1. 语法高亮和类型导航。
+ 2. 语法检测，格式化 api 会自动检测 api 编写错误地方。
+ 3. api 文档格式化( vscode 默认快捷键 `option+command+f`, goland 默认快捷键 `option+command+l`)。
+ 4. 上下文菜单，goland 插件提供了生成代码的快捷菜单。
 
 #### 根据定义好的api文件生成golang代码
 
@@ -154,7 +177,6 @@ service user-api {
   `goctl api go -api user/user.api -dir user`
 
   ```Plain Text
-
 	.
     ├── internal
     │   ├── config
@@ -181,7 +203,6 @@ service user-api {
     │   └── types
     │       └── types.go
     └── user.go
-
   ```
 
   生成的代码可以直接跑，有几个地方需要改：
@@ -229,13 +250,13 @@ goctl model mongo -src {{yourDir}}/xiao/service/xhb/user/model/usermodel.go -cac
 src 示例代码如下
 
   ```go
-    package model
+package model
 
-    type User struct {
-      Name string `o:"find,get,set" c:"姓名"`
-      Age int `o:"find,get,set" c:"年纪"`
-      School string `c:"学校"`
-    }
+type User struct {
+  Name string `o:"find,get,set" c:"姓名"`
+  Age int `o:"find,get,set" c:"年纪"`
+  School string `c:"学校"`
+}
   ```
 
 结构体中不需要提供Id,CreateTime,UpdateTime三个字段，会自动生成
