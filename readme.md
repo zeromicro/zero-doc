@@ -10,9 +10,10 @@
 [![Release](https://img.shields.io/github/v/release/tal-tech/go-zero.svg?style=flat-square)](https://github.com/tal-tech/go-zero)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 1. 项目地址
+## 1. 项目介绍
 
-[https://github.com/tal-tech/go-zero](https://github.com/tal-tech/go-zero)
+* 项目官网：http://zero.gocn.vip
+* 项目地址：[https://github.com/tal-tech/go-zero](https://github.com/tal-tech/go-zero)
 
 ## 2. 项目文档
 
@@ -22,7 +23,7 @@
 
 * awesome系列
   * [快速构建高并发微服务](doc/shorturl.md)
-  * [快速构建高并发微服务-多RPC版](doc/bookstore.md)
+  * [快速构建高并发微服务-多RPC版](docs/frame/bookstore.md)
   * [goctl使用帮助](doc/goctl.md)
   * [通过MapReduce降低服务响应时间](doc/mapreduce.md)
   * [关键字替换和敏感词过滤工具](doc/keywords.md)

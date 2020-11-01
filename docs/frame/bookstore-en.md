@@ -33,7 +33,7 @@ Writting this bookstore service is to demonstrate the complete flow of creating 
 
 ## 2. Architecture of shorturl microservice
 
-<img src="images/bookstore-arch.png" alt="architecture" width="800" />
+<img src="../../doc/images/bookstore-arch.png" alt="architecture" width="800" />
 
 ## 3. goctl generated code overview
 
@@ -41,15 +41,15 @@ All modules with green background are generated, and will be enabled when necess
 
 * API Gateway
 
-  <img src="images/api-gen.png" alt="api" width="800" />
+  <img src="../../doc/images/api-gen.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="images/rpc-gen.png" alt="rpc" width="800" />
+  <img src="../../doc/images/rpc-gen.png" alt="rpc" width="800" />
 
 * model
 
-  <img src="images/model-gen.png" alt="model" width="800" />
+  <img src="../../doc/images/model-gen.png" alt="model" width="800" />
 
 And now, let’s walk through the complete flow of quickly create a microservice with go-zero.
 
@@ -603,7 +603,7 @@ Log:
 	Level: error
 ```
 
-![Benchmark](images/bookstore-benchmark.png)
+![Benchmark](../../doc/images/bookstore-benchmark.png)
 
 as shown above, in my MacBook Pro, the QPS is like 30K+.
 

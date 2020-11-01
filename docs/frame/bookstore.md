@@ -1,4 +1,4 @@
-# 快速构建微服务-多RPC版
+# 1.1 快速构建微服务-多RPC版
 
 [English](bookstore-en.md) | 简体中文
 
@@ -33,7 +33,7 @@
 
 ## 2. 书店微服务架构图
 
-<img src="images/bookstore-arch.png" alt="架构图" width="800" />
+<img src="../../doc/images/bookstore-arch.png" alt="架构图" width="800" />
 
 ## 3. goctl各层代码生成一览
 
@@ -41,15 +41,15 @@
 
 * API Gateway
 
-  <img src="images/bookstore-api.png" alt="api" width="800" />
+  <img src="../../doc/images/bookstore-api.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="images/bookstore-rpc.png" alt="架构图" width="800" />
+  <img src="../../doc/images/bookstore-rpc.png" alt="架构图" width="800" />
 
 * model
 
-  <img src="images/bookstore-model.png" alt="model" width="800" />
+  <img src="../../doc/images/bookstore-model.png" alt="model" width="800" />
 
 下面我们来一起完整走一遍快速构建微服务的流程，Let’s `Go`!🏃‍♂️
 
@@ -603,7 +603,7 @@ Log:
 	Level: error
 ```
 
-![Benchmark](images/bookstore-benchmark.png)
+![Benchmark](../../doc/images/bookstore-benchmark.png)
 
 可以看出在我的MacBook Pro上能达到3万+的qps。
 
