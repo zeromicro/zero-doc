@@ -156,7 +156,7 @@
           └── types.go               // 定义请求、返回结构体
   ```
 
-* 启动API Gateway服务，默认侦听在8888端口
+* 在 `api` 目录下启动API Gateway服务，默认侦听在8888端口
 
   ```shell
   go run bookstore.go -f etc/bookstore-api.yaml
