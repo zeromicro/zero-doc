@@ -235,7 +235,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 * use goctl to generate the rpc code, execute the following command in `rpc/transofrm`
 
   ```shell
-  goctl rpc proto -src transform.proto
+  goctl rpc proto -src transform.proto -dir .
   ```
 
   the generated file structure looks like:

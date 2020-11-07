@@ -223,7 +223,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 * use goctl to generate the rpc code, execute the following command in `rpc/add`
 
   ```shell
-  goctl rpc proto -src add.proto
+  goctl rpc proto -src add.proto -dir .
   ```
 
   the generated file structure looks like:
@@ -292,7 +292,7 @@ you can change the listening port in file `etc/add.yaml`.
 * use goctl to generate the rpc code, execute the following command in `rpc/check`
 
   ```shell
-  goctl rpc proto -src check.proto
+  goctl rpc proto -src check.proto -dir .
   ```
 
   the generated file structure looks like:

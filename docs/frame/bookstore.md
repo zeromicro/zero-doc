@@ -225,7 +225,7 @@
 * 用`goctl`生成rpc代码，在`rpc/add`目录下执行命令
 
   ```shell
-  goctl rpc proto -src add.proto
+  goctl rpc proto -src add.proto -dir .
   ```
 
   文件结构如下：
@@ -296,7 +296,7 @@
 * 用`goctl`生成rpc代码，在`rpc/check`目录下执行命令
 
   ```shell
-  goctl rpc proto -src check.proto
+  goctl rpc proto -src check.proto -dir .
   ```
 
   文件结构如下：

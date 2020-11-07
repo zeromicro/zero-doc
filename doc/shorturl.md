@@ -255,7 +255,7 @@
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
-  goctl rpc proto -src transform.proto
+  goctl rpc proto -src transform.proto -dir .
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
