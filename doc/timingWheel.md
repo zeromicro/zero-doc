@@ -69,7 +69,7 @@ func newTimingWheelWithClock(interval time.Duration, numSlots int, execute Execu
 }
 ```
 
-![](./images/timewheel-struct.png)
+![](https://gitee.com/kevwan/static/raw/master/doc/images/timewheel-struct.png)
 
 以上比较直观展示 `timingWheel` 的 **“时间轮”**，后面会围绕这张图解释其中推进的细节。
 
@@ -93,7 +93,7 @@ func (tw *TimingWheel) run() {
 
 可以看出，在初始化的时候就开始了 `timer` 执行，并以`internal`时间段转动，然后底层不停的获取来自 `slot` 中的  `list` 的task，交给 `execute` 执行。
 
-![](./images/timewheel-run.png)
+![](https://gitee.com/kevwan/static/raw/master/doc/images/timewheel-run.png)
 
 ### Task Operation
 
@@ -279,7 +279,7 @@ func (tw *TimingWheel) getPositionAndCircle(d time.Duration) (pos int, circle in
 
 同时欢迎大家使用 `go-zero` 并加入我们，[项目地址](https://github.com/tal-tech/go-zero)
 
-<img src="./images/wechat.jpg" alt="wechat" width="300" />
+<img src="https://gitee.com/kevwan/static/raw/master/doc/images/wechat.jpg" alt="wechat" width="300" />
 
 
 ## 参考资料

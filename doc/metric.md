@@ -8,7 +8,7 @@
 
 Prometheus 的整体架构以及生态系统组件如下图所示：
 
-![prometheus](./images/prometheus.png)
+![prometheus](https://gitee.com/kevwan/static/raw/master/doc/images/prometheus.png)
 
 Prometheus Server直接从监控目标中或者间接通过推送网关来拉取监控指标，它在本地存储所有抓取到样本数据，并对此数据执行一系列规则，以汇总和记录现有数据的新时间序列或生成告警。可以通过 [Grafana](https://grafana.com/) 或者其他工具来实现监控数据的可视化
 
@@ -59,7 +59,7 @@ prometheus --config.file=prometheus.yml
 
 - 在浏览器输入http://127.0.0.1:9090/，然后点击Status -> Targets即可看到状态为Up的Job，并且Lables栏可以看到我们配置的默认的标签
 
-![job状态为up](./images/prom_up.png)
+![job状态为up](https://gitee.com/kevwan/static/raw/master/doc/images/prom_up.png)
 
 通过以上几个步骤我们完成了prometheus对shorturl服务的指标监控收集的配置工作，为了演示简单我们进行了手动的配置，在实际的生产环境中一般采用定时更新配置文件或者服务发现的方式来配置监控目标，篇幅有限这里不展开讲解，感兴趣的同学请自行查看相关文档
 
@@ -79,7 +79,7 @@ curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
 
 打开Prometheus切换到Graph界面，在输入框中输入{path="/shorten"}指令，即可查看监控指标，如下图
 
-![查询面板](./images/panel.png)
+![查询面板](https://gitee.com/kevwan/static/raw/master/doc/images/panel.png)
 
 我们通过PromQL语法查询过滤path为/shorten的指标，结果中显示了指标名以及指标数值，其中http_server_requests_code_total指标中code值为http的状态码，200表明请求成功，http_server_requests_duration_ms_bucket中对不同bucket结果分别进行了统计，还可以看到所有的指标中都添加了我们配置的默认指标
 
@@ -93,20 +93,21 @@ Console界面主要展示了查询的指标结果，Graph界面为我们提供�
 
 - 点击左侧边栏Configuration->Data Source->Add data source进行数据源添加，其中HTTP的URL为数据源的地址
 
-![datasource](./images/datasource.png)
+![datasource](https://gitee.com/kevwan/static/raw/master/doc/images/datasource.png)
 
 - 点击左侧边栏添加dashboard，然后添加Variables方便针对不同的标签进行过滤筛选比如添加app变量用来过滤不同的服务
 
-![variables](./images/variables.png)
+![variables](https://gitee.com/kevwan/static/raw/master/doc/images/variables.png)
 
 - 进入dashboard点击右上角Add panel添加面板，以path维度统计接口的qps
 
-![qps](./images/qps.png)
+![qps](https://gitee.com/kevwan/static/raw/master/doc/images/qps.png)
 
 - 最终的效果如下所示，可以通过服务名称过滤不同的服务，面板展示了path为/shorten的qps变化趋势
 
-![qps panel](./images/qps_panel.png)
+![qps panel](https://gitee.com/kevwan/static/raw/master/doc/images/qps_panel.png)
 
 ## 总结
 
 以上演示了go-zero中基于prometheus+grafana服务指标监控的简单流程，生产环境中可以根据实际的场景做不同维度的监控分析。现在go-zero的监控指标主要还是针对http和rpc，这对于服务的整体监控显然还是不足的，比如容器资源的监控，依赖的mysql、redis等资源的监控，以及自定义的指标监控等等，go-zero在这方面后续还会持续优化。希望这篇文章能够给您带来帮助
+
