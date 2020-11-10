@@ -1,4 +1,4 @@
-# 快速构建微服务-多RPC版
+# 1.1 快速构建微服务-多RPC版
 
 [English](bookstore-en.md) | 简体中文
 
@@ -33,7 +33,7 @@
 
 ## 2. 书店微服务架构图
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/architecture.png" alt="架构图" width="800" />
+<img src="../../doc/images/bookstore-arch.png" alt="架构图" width="800" />
 
 ## 3. goctl各层代码生成一览
 
@@ -41,15 +41,15 @@
 
 * API Gateway
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-api.png" alt="api" width="800" />
+  <img src="../../doc/images/bookstore-api.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-rpc.png" alt="架构图" width="800" />
+  <img src="../../doc/images/bookstore-rpc.png" alt="架构图" width="800" />
 
 * model
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-model.png" alt="model" width="800" />
+  <img src="../../doc/images/bookstore-model.png" alt="model" width="800" />
 
 下面我们来一起完整走一遍快速构建微服务的流程，Let’s `Go`!🏃‍♂️
 
@@ -156,7 +156,7 @@
           └── types.go               // 定义请求、返回结构体
   ```
 
-* 启动API Gateway服务，默认侦听在8888端口
+* 在 `api` 目录下启动API Gateway服务，默认侦听在8888端口
 
   ```shell
   go run bookstore.go -f etc/bookstore-api.yaml
@@ -225,7 +225,7 @@
 * 用`goctl`生成rpc代码，在`rpc/add`目录下执行命令
 
   ```shell
-  goctl rpc proto -src add.proto
+  goctl rpc proto -src add.proto -dir .
   ```
 
   文件结构如下：
@@ -296,7 +296,7 @@
 * 用`goctl`生成rpc代码，在`rpc/check`目录下执行命令
 
   ```shell
-  goctl rpc proto -src check.proto
+  goctl rpc proto -src check.proto -dir .
   ```
 
   文件结构如下：
@@ -603,7 +603,7 @@ Log:
 	Level: error
 ```
 
-![Benchmark](images/bookstore-benchmark.png)
+![Benchmark](../../doc/images/bookstore-benchmark.png)
 
 可以看出在我的MacBook Pro上能达到3万+的qps。
 
