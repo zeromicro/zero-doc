@@ -33,7 +33,7 @@
 
 ## 2. 书店微服务架构图
 
-<img src="../../doc/images/bookstore-arch.png" alt="架构图" width="800" />
+<img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-arch.png" alt="架构图" width="800" />
 
 ## 3. goctl各层代码生成一览
 
@@ -41,7 +41,7 @@
 
 * API Gateway
 
-  <img src="../../doc/images/bookstore-api.png" alt="api" width="800" />
+  <img src="https://gitee.com/kevwan/static/raw/master/doc/doc/images/bookstore-api.png" alt="api" width="800" />
 
 * RPC
 
@@ -49,7 +49,7 @@
 
 * model
 
-  <img src="../../doc/images/bookstore-model.png" alt="model" width="800" />
+  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-model.png" alt="model" width="800" />
 
 下面我们来一起完整走一遍快速构建微服务的流程，Let’s `Go`!🏃‍♂️
 
