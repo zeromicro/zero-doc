@@ -4,7 +4,7 @@
 
 流数据处理在我们的日常工作中非常常见，举个例子，我们在业务开发中往往会记录许多业务日志，这些日志一般是先发送到Kafka，然后再由Job消费Kafaka写到elasticsearch，在进行日志流处理的过程中，往往还会对日志做一些处理，比如过滤无效的日志，做一些计算以及重新组合日志等等，示意图如下:
 
-![fx_log](./images/fx_log.png)
+![fx_log](https://gitee.com/kevwan/static/raw/master/doc/images/fx_log.png)
 
 ### 流处理工具fx
 
@@ -71,7 +71,7 @@ inputStream函数模拟了流数据的产生，outputStream函数模拟了流数
 
 一个流的数据处理可能存在许多的中间操作，每个中间操作都可以作用在流上。就像流水线上的工人一样，每个工人操作完零件后都会返回处理完成的新零件，同理流处理中间操作完成后也会返回一个新的流。
 
-![fx_middle](./images/fx_middle.png)
+![fx_middle](https://gitee.com/kevwan/static/raw/master/doc/images/fx_middle.png)
 
 fx的流处理中间操作:
 
@@ -90,7 +90,7 @@ fx的流处理中间操作:
 
 下图展示了每个步骤和每个步骤的结果:
 
-![fx_step_result](./images/fx_step_result.png)
+![fx_step_result](https://gitee.com/kevwan/static/raw/master/doc/images/fx_step_result.png)
 
 
 ### 用法与原理分析
@@ -202,7 +202,7 @@ func (p Stream) Group(fn KeyFunc) Stream {
 
 reverse可以对流中元素进行反转处理:
 
-![](./images/fx_reverse.png)
+![](https://gitee.com/kevwan/static/raw/master/doc/images/fx_reverse.png)
 
 ```go
 // 例子
@@ -317,7 +317,7 @@ func (p Stream) walkLimited(fn WalkFunc, option *rxOptions) Stream {
 
 fx工具除了进行流数据处理以外还提供了函数并发功能，在微服务中实现某个功能往往需要依赖多个服务，并发的处理依赖可以有效的降低依赖耗时，提升服务的性能。
 
-![concurrent_denpendency](./images/concurrent_denpendency.png)
+![concurrent_denpendency](https://gitee.com/kevwan/static/raw/master/doc//images/concurrent_denpendency.png)
 
 ```go
 fx.Parallel(func() {

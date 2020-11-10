@@ -1,4 +1,4 @@
-<img align="right" width="150px" src="doc/images/go-zero.png">
+<img align="right" width="150px" src="https://gitee.com/kevwan/static/raw/master/doc/images/go-zero.png">
 
 # go-zero
 
@@ -35,4 +35,4 @@
 
 ## 3. 微信交流群
 
-<img src="doc/images/wechat.jpg" alt="wechat" width="300" />
+<img src="https://gitee.com/kevwan/static/raw/master/doc/images/wechat.jpg" alt="wechat" width="300" />

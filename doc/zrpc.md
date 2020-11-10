@@ -154,7 +154,7 @@ hello go-zero
 
 下图展示zRPC的架构图和主要组成部分
 
-![zrpc](./images/zrpc.png)
+![zrpc](https://gitee.com/kevwan/static/raw/master/doc/images/zrpc.png)
 
 zRPC主要有以下几个模块组成：
 
@@ -173,7 +173,7 @@ zRPC主要有以下几个模块组成：
 
 gRPC提供了拦截器功能，主要是对请求前后进行额外处理的拦截操作，其中拦截器包含客户端拦截器和服务端拦截器，又分为一元(Unary)拦截器和流(Stream)拦截器，这里我们主要讲解一元拦截器，流拦截器同理。
 
-![interceptor](./images/interceptor.png)
+![interceptor](https://gitee.com/kevwan/static/raw/master/doc/images/interceptor.png)
 
 客户端拦截器定义如下:
 
@@ -325,7 +325,7 @@ func (rs *RpcServer) AddUnaryInterceptors(interceptors ...grpc.UnaryServerInterc
 
 zRPC服务注册架构图：
 
-![resolver](./images/resolver.png)
+![resolver](https://gitee.com/kevwan/static/raw/master/doc/images/resolver.png)
 
 zRPC中自定义了resolver模块，用来实现服务的注册功能。zRPC底层依赖gRPC，在gRPC中要想自定义resolver需要实现resolver.Builder接口：
 
@@ -469,7 +469,7 @@ func (c *cluster) watch(cli EtcdClient, key string) {
 
 负载均衡原理图：
 
-<img src="./images/balancer.png" alt="balancer" style="zoom:45%;" />
+<img src="https://gitee.com/kevwan/static/raw/master/doc/images/balancer.png" alt="balancer" style="zoom:45%;" />
 
 避免过载是负载均衡策略的一个重要指标，好的负载均衡算法能很好的平衡服务端资源。常用的负载均衡算法有轮训、随机、Hash、加权轮训等。但为了应对各种复杂的场景，简单的负载均衡算法往往表现的不够好，比如轮训算法当服务响应时间变长就很容易导致负载不再平衡， 因此zRPC中自定义了默认负载均衡算法P2C(Power of Two Choices)，和resolver类似，要想自定义balancer也需要实现gRPC定义的balancer.Builder接口，由于和resolver类似这里不再带大家一起分析如何自定义balancer，感兴趣的朋友可以查看gRPC相关的文档来进行学习
 
@@ -482,7 +482,7 @@ zRPC框架中默认的负载均衡算法为P2C，该算法的主要思想是：
 
 伪代码如下：
 
-<img src="./images/random_pseudo.png" alt="random_pseudo" style="zoom:80%;" />
+<img src="https://gitee.com/kevwan/static/raw/master/doc/images/random_pseudo.png" alt="random_pseudo" style="zoom:80%;" />
 
 主要算法逻辑在Pick方法中实现：
 
