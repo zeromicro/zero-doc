@@ -215,7 +215,7 @@ goctl api dart -api user/user.api -dir ./src
 goctl model mysql -src={filename} -dir={dir} -c
 ```
 
-详情参考[model文档](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/model/sql/README.MD)
+详情参考[model文档](goctl-model-sql.md)
 
 
 ## goctl rpc生成
