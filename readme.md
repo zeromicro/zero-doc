@@ -1,3 +1,5 @@
+<img align="right" width="150px" src="doc/images/go-zero.png">
+
 # go-zero
 
 [English](readme-en.md) | 简体中文
@@ -8,10 +10,10 @@
 [![Release](https://img.shields.io/github/v/release/tal-tech/go-zero.svg?style=flat-square)](https://github.com/tal-tech/go-zero)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 1. 项目地址
+## 1. 项目介绍
 
-项目官网：http://zero.gocn.vip
-[https://github.com/tal-tech/go-zero](https://github.com/tal-tech/go-zero)
+* 项目官网：http://zero.gocn.vip
+* 项目地址：[https://github.com/tal-tech/go-zero](https://github.com/tal-tech/go-zero)
 
 ## 2. 项目文档
 
@@ -31,6 +33,6 @@
   * [文本序列化和反序列化](doc/mapping.md)
   * [快速构建jwt鉴权认证](doc/jwt.md)
 
-## 9. 微信交流群
+## 3. 微信交流群
 
 <img src="doc/images/wechat.jpg" alt="wechat" width="300" />
