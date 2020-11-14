@@ -254,3 +254,5 @@ type LogConf struct {
 
 
 **StackCooldownMillis** 定义了日志输出间隔，默认为 100 毫秒。// TODO:
+
+<Vssue :title="$title" />

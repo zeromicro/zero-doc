@@ -622,3 +622,5 @@ We not only keep the framework simple, but also encapsulate the complexity into 
 For the generated code by goctl, lots of microservice components are included, like concurrency control, adaptive circuit breaker, adaptive load shedding, auto cache control etc. And it’s easy to deal with the busy sites.
 
 If you have any ideas that can help us to improve the productivity, tell me any time! 👏
+
+<Vssue :title="$title" />

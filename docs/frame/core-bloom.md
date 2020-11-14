@@ -83,3 +83,5 @@ func (f *BloomFilter) Exists(data []byte) (bool, error) {
 
 
 本文主要介绍了go-zero框架中的 core.bloom 工具，在实际的项目中非常实用。用好工具对于提升服务性能和开发效率都有很大的帮助，希望本篇文章能给大家带来一些收获。
+
+<Vssue :title="$title" />

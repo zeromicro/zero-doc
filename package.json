@@ -15,6 +15,9 @@
   "keywords": [],
   "author": "",
   "dependencies": {
+    "@vssue/api-github-v3": "^1.4.4",
+    "@vssue/api-github-v4": "^1.4.0",
+    "@vssue/vuepress-plugin-vssue": "^1.4.6",
     "@vuepress/plugin-active-header-links": "^1.2.0",
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-medium-zoom": "^1.2.0",

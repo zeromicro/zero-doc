@@ -91,6 +91,19 @@ module.exports = {
                 },
             },
         ],
+        [
+            '@vssue/vuepress-plugin-vssue',
+            {
+                platform: 'github', //v3的platform是github，v4的是github-v4
+                locale: 'zh', //语言
+                // 其他的 Vssue 配置
+                owner: 'tal-tech', //github账户名
+                repo: 'zero-doc', //github一个项目的名称
+                clientId: '4f06f99b9607566981ad',//注册的Client ID
+                clientSecret: '61364337ef671c78b36c5285fc09b6a3d1f42e1e',//注册的Client Secret
+                autoCreateIssue:true // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
+            },
+        ],
         "@vuepress/back-to-top",
         "@vuepress/active-header-links",
         "@vuepress/medium-zoom",
