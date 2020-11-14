@@ -378,7 +378,7 @@
 
 通过调用 `transformer` 的 `Shorten` 方法实现 url 到短链的变换
 
-至此，API Gateway 修改完成，虽然贴的代码多，但是期中修改的是很少的一部分，为了方便理解上下文，我贴了完整代码，接下来处理 CRUD+cache
+至此，API Gateway 修改完成，虽然贴的代码多，但是其中修改的是很少的一部分，为了方便理解上下文，我贴了完整代码，接下来处理 CRUD+cache
 
 ## 8. 定义数据库表结构，并生成 CRUD+cache 代码
 
@@ -459,7 +459,7 @@
   func NewServiceContext(c config.Config) *ServiceContext {
     return &ServiceContext{
       c:             c,
-      Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache, c.Table), // 手动代码
+      Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache), // 手动代码
     }
   }
   ```
