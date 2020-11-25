@@ -41,7 +41,7 @@
 
 * API Gateway
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/doc/images/bookstore-api.png" alt="api" width="800" />
+  <img src="../../doc/images/bookstore-api.png" alt="api" width="800" />
 
 * RPC
 
