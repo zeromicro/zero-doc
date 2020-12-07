@@ -463,7 +463,7 @@
 
   ```Plain Text
   rpc/model
-  ├── bookstore.sql
+  ├── book.sql
   ├── bookstoremodel.go     // CRUD+cache代码
   └── vars.go               // 定义常量和变量
   ```
