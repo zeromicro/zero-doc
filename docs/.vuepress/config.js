@@ -23,13 +23,17 @@ module.exports = {
                 link: "/",
             },
             {
-                text: "框架",
-                link: "/frame/",
+                text: "框架文档",
+                link: "/zero/",
             },
-            { text: "GO中国", link: "https://gocn.vip/" },
+            { 
+                text: "Go China", link: "https://gocn.vip/" 
+            },
             {
-                text: "Zero",
-                link: "https://github.com/tal-tech/go-zero",
+                text: "GoZero",link: "https://github.com/tal-tech/go-zero",
+            },
+            {
+                text: "CDS",link: "https://github.com/tal-tech/cds",
             },
         ],
         docsDir: "docs",
@@ -37,34 +41,7 @@ module.exports = {
         editLinks: true,
         editLinkText: "在github.com上编辑此页",
         sidebar: {
-            "/summary/": [""], //这样自动生成对应文章
-            "/frame/": [
-                {
-                    title: "1 简介",
-                    collapsable: false, // 可选的, 默认值是 true,
-                    children: [
-                        "/frame/bookstore",
-                    ],
-                },
-                {
-                    title: "2 核心",
-                    collapsable: false, // 可选的, 默认值是 true,
-                    children: [
-                        "/frame/core-logger",
-                        "/frame/core-bloom",
-                        "/frame/core-executors",
-                        "/frame/core-streamapi",
-                        "/frame/core-redis",
-                    ],
-                },
-            ], //这样自动生成对应文章
-            "/awesome/": [
-                {
-                    title: "扩展阅读", // 必要的
-                    collapsable: false, // 可选的, 默认值是 true,
-                    children: ["/awesome/register"],
-                },
-            ],
+            '/zero/': getGoZeroSidebar('简介', 'core', 'rest', 'zrpc', 'goctl', '源码解读', 'awesome'),
         },
         sidebarDepth: 2,
         lastUpdated: "上次更新",
@@ -94,14 +71,14 @@ module.exports = {
         [
             '@vssue/vuepress-plugin-vssue',
             {
-                platform: 'github', //v3的platform是github，v4的是github-v4
-                locale: 'zh', //语言
+                platform: 'github', // v3的platform是github，v4的是github-v4
+                locale: 'zh', // 语言
                 // 其他的 Vssue 配置
-                owner: 'tal-tech', //github账户名
-                repo: 'zero-doc', //github一个项目的名称
-                clientId: '1252229e5b787945392d',//注册的Client ID
-                clientSecret: '567d4c19eee82ebd0724b880180f164e96a807a1',//注册的Client Secret
-                autoCreateIssue:true // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
+                owner: 'tal-tech', // github账户名
+                repo: 'zero-doc', // github一个项目的名称
+                clientId: '1252229e5b787945392d',   // 注册的Client ID
+                clientSecret: '567d4c19eee82ebd0724b880180f164e96a807a1',   // 注册的Client Secret
+                autoCreateIssue: true   // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
             },
         ],
         "@vuepress/back-to-top",
@@ -110,3 +87,31 @@ module.exports = {
         "@vuepress/nprogress",
     ],
 };
+
+// go-zero main document file
+function getGoZeroSidebar(A, B, C, D, E, F, G) {
+    return [
+        {
+            title: A,
+            collapsable: false,
+            children: [
+                ['', 'go-zero 简介'],
+                'quick-build-microservices'
+            ]
+        },
+        {
+            title: B,
+            collapsable: false,
+            children: [
+                ['logx', 'logx'],
+                'bloom',
+                'executors',
+                'streamapi-fx',
+                ['timingWheel', 'timingWheel'],
+                'periodlimit',
+                'tokenlimit',
+                'redis-lock'
+            ]
+        },
+    ]
+}

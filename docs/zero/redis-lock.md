@@ -1,4 +1,4 @@
-# 2.5 redis lock
+# redis lock
 
 既然是锁，首先想到的一个作用就是：**防重复点击，在一个时间点只有一个请求产生效果**。
 
@@ -138,6 +138,3 @@ func (rl *RedisLock) Release() (bool, error) {
 
 
 所以需要先 `get(key) == value「key」`，为 true 才会去 `delete`
-``
-
-<Vssue :title="$title" />
