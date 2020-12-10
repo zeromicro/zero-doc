@@ -96,7 +96,7 @@ function getGoZeroSidebar(A, B, C, D, E, F, G) {
             collapsable: false,
             children: [
                 ['', 'go-zero 简介'],
-                'quick-build-microservices'
+                'bookstore',
             ]
         },
         {
