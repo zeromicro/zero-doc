@@ -227,20 +227,20 @@ And now, let’s walk through the complete flow of quickly create a microservice
   ```Plain Text
   rpc/add
     ├── add                   // pb.go
-    │   └── add.pb.go
+    │   └── add.pb.go
     ├── add.go                // rpc main entrance
     ├── add.proto             // rpc definition
     ├── adder                 // rpc client call entry
-    │   └── adder.go
+    │   └── adder.go
     ├── etc                   // configuration file
-    │   └── add.yaml
+    │   └── add.yaml
     └── internal              
         ├── config            // configuration definition
-        │   └── config.go
+        │   └── config.go
         ├── logic             // add logic here
-        │   └── addlogic.go
+        │   └── addlogic.go
         ├── server            // rpc handler
-        │   └── adderserver.go
+        │   └── adderserver.go
         └── svc               // defines service context, like dependencies
             └── servicecontext.go
   ```
@@ -294,20 +294,20 @@ you can change the listening port in file `etc/add.yaml`.
   ```Plain Text
    rpc/check
     ├── check                     // pb.go
-    │   └── check.pb.go
+    │   └── check.pb.go
     ├── check.go                  // pc main entrance
     ├── check.proto               // rpc definition
     ├── checker                   // rpc client call entry
-    │   └── checker.go
+    │   └── checker.go
     ├── etc                       // configuration file
-    │   └── check.yaml
+    │   └── check.yaml
     └── internal
         ├── config                // configuration definition
-        │   └── config.go
+        │   └── config.go
         ├── logic                 // add logic here
-        │   └── checklogic.go
+        │   └── checklogic.go
         ├── server                // rpc handler
-        │   └── checkerserver.go
+        │   └── checkerserver.go
         └── svc                   // defines service context, like dependencies
             └── servicecontext.go
   ```

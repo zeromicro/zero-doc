@@ -228,20 +228,20 @@
   ```Plain Text
   rpc/add
   ├── add                   // pb.go
-  │   └── add.pb.go
+  │   └── add.pb.go
   ├── add.go                // main函数入口
   ├── add.proto             // proto源文件
   ├── adder                 // rpc client call entry
-  │   └── adder.go
+  │   └── adder.go
   ├── etc                   // yaml配置文件
-  │   └── add.yaml
+  │   └── add.yaml
   └── internal              
       ├── config            // yaml配置文件对应的结构体定义
-      │   └── config.go
+      │   └── config.go
       ├── logic             // 业务逻辑
-      │   └── addlogic.go
+      │   └── addlogic.go
       ├── server            // rpc server
-      │   └── adderserver.go
+      │   └── adderserver.go
       └── svc               // 资源依赖
           └── servicecontext.go
   ```
@@ -297,20 +297,20 @@
   ```Plain Text
   rpc/check
   ├── check                     // pb.go
-  │   └── check.pb.go
+  │   └── check.pb.go
   ├── check.go                  // main入口
   ├── check.proto               // proto源文件
   ├── checker                   // rpc client call entry
-  │   └── checker.go
+  │   └── checker.go
   ├── etc                       // yaml配置文件
-  │   └── check.yaml
+  │   └── check.yaml
   └── internal
       ├── config                // yaml配置文件对应的结构体定义
-      │   └── config.go
+      │   └── config.go
       ├── logic                 // 业务逻辑
-      │   └── checklogic.go
+      │   └── checklogic.go
       ├── server                // rpc server
-      │   └── checkerserver.go
+      │   └── checkerserver.go
       └── svc                   // 资源依赖
           └── servicecontext.go
   ```

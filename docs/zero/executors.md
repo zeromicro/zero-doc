@@ -1,4 +1,4 @@
-# 2.3 executors
+# executors
 
 在 `go-zero` 中，`executors` 充当任务池，做多任务缓冲，使用做批量处理的任务。如：`clickhouse` 大批量 `insert`，`sql batch insert`。同时也可以在 `go-queue` 也可以看到 `executors` 【在 `queue` 里面使用的是 `ChunkExecutor` ，限定任务提交字节大小】。
 
@@ -368,5 +368,3 @@ func (pe *PeriodicalExecutor) Wait() {
 
 
 在 `go-zero` 中还有很多实用的组件工具，用好工具对于提升服务性能和开发效率都有很大的帮助，希望本篇文章能给大家带来一些收获。
-
-<Vssue :title="$title" />
