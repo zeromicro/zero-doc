@@ -1,6 +1,6 @@
 const moment = require("moment");
 module.exports = {
-    title: "GoZero",
+    title: "go-zero",
     description: "集成各种工程实践的 WEB 和 RPC 框架",
     head: [
         ["link", { rel: "icon", href: "/logo.png" }],
@@ -27,7 +27,7 @@ module.exports = {
                 link: "/zero/",
             },
             {
-                text: "GoZero",link: "https://github.com/tal-tech/go-zero",
+                text: "go-zero",link: "https://github.com/tal-tech/go-zero",
             },
             {
                 text: "CDS",link: "https://github.com/tal-tech/cds",
