@@ -18,7 +18,7 @@ footer: MIT Licensed | Copyright © 2020-present GoZero
 ---
 ```go
 // 安装 go-zero
-go get -u github.com/tal-tech/go-zero
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
 
 // 然后就可以开始你的微服务之旅了
 ```
