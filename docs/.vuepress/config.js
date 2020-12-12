@@ -26,9 +26,6 @@ module.exports = {
                 text: "框架文档",
                 link: "/zero/",
             },
-            { 
-                text: "Go China", link: "https://gocn.vip/" 
-            },
             {
                 text: "GoZero",link: "https://github.com/tal-tech/go-zero",
             },
