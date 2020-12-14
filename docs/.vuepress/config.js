@@ -75,7 +75,7 @@ module.exports = {
                 repo: 'zero-doc', // github一个项目的名称
                 clientId: '1252229e5b787945392d',   // 注册的Client ID
                 clientSecret: '567d4c19eee82ebd0724b880180f164e96a807a1',   // 注册的Client Secret
-                autoCreateIssue: true   // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
+                autoCreateIssue: false   // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
             },
         ],
         "@vuepress/back-to-top",
