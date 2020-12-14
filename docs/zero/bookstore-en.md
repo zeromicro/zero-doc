@@ -85,38 +85,34 @@ And now, let’s walk through the complete flow of quickly create a microservice
 
   ```go
   type (
-      addReq struct {
-          book  string `form:"book"`
-          price int64  `form:"price"`
-      }
-  
-      addResp struct {
-          ok bool `json:"ok"`
-      }
-  )
-  
-  type (
-      checkReq struct {
-          book string `form:"book"`
-      }
-  
-      checkResp struct {
-          found bool  `json:"found"`
-          price int64 `json:"price"`
-      }
-  )
-  
-  service bookstore-api {
-      @server(
-          handler: AddHandler
-      )
-      get /add(addReq) returns(addResp)
-  
-      @server(
-          handler: CheckHandler
-      )
-      get /check(checkReq) returns(checkResp)
-  }
+    	addReq {
+    		book string `form:"book"`
+    		price int64 `form:"price"`
+    	}
+    	
+    	addResp {
+    		ok bool `json:"ok"`
+    	}
+    )
+    
+    type (
+    	checkReq {
+    		book string `form:"book"`
+    	}
+    	
+    	checkResp {
+    		found bool `json:"found"`
+    		price int64 `json:"price"`
+    	}
+    )
+    
+    service bookstore-api {
+    	@handler AddHandler
+    	get /add (addReq) returns (addResp)
+    	
+    	@handler CheckHandler
+    	get /check (checkReq) returns (checkResp)
+    }
   ```
 
   the usage of `type` keyword is the same as that in go, service is used to define get/post/head/delete api requests, described below:
@@ -230,25 +226,23 @@ And now, let’s walk through the complete flow of quickly create a microservice
 
   ```Plain Text
   rpc/add
-  ├── add.go                      // rpc main entrance
-  ├── add.proto                   // rpc definition
-  ├── adder
-  │   ├── adder.go                // defines how rpc clients call this service
-  │   ├── adder_mock.go           // mock file, for test purpose
-  │   └── types.go                // request/response definition
-  ├── etc
-  │   └── add.yaml                // configuration file
-  ├── internal
-  │   ├── config
-  │   │   └── config.go           // configuration definition
-  │   ├── logic
-  │   │   └── addlogic.go         // add logic here
-  │   ├── server
-  │   │   └── adderserver.go      // rpc handler
-  │   └── svc
-  │       └── servicecontext.go   // defines service context, like dependencies
-  └── pb
-      └── add.pb.go
+    ├── add                   // pb.go
+    │   └── add.pb.go
+    ├── add.go                // rpc main entrance
+    ├── add.proto             // rpc definition
+    ├── adder                 // rpc client call entry
+    │   └── adder.go
+    ├── etc                   // configuration file
+    │   └── add.yaml
+    └── internal              
+        ├── config            // configuration definition
+        │   └── config.go
+        ├── logic             // add logic here
+        │   └── addlogic.go
+        ├── server            // rpc handler
+        │   └── adderserver.go
+        └── svc               // defines service context, like dependencies
+            └── servicecontext.go
   ```
 
 just run it, looks like:
@@ -298,26 +292,24 @@ you can change the listening port in file `etc/add.yaml`.
   the generated file structure looks like:
 
   ```Plain Text
-  rpc/check
-  ├── check.go                    // rpc main entrance
-  ├── check.proto                 // rpc definition
-  ├── checker
-  │   ├── checker.go              // defines how rpc clients call this service
-  │   ├── checker_mock.go         // mock file, for test purpose
-  │   └── types.go                // request/response definition
-  ├── etc
-  │   └── check.yaml              // configuration file
-  ├── internal
-  │   ├── config
-  │   │   └── config.go           // configuration definition
-  │   ├── logic
-  │   │   └── checklogic.go       // check logic here
-  │   ├── server
-  │   │   └── checkerserver.go    // rpc handler
-  │   └── svc
-  │       └── servicecontext.go   // defines service context, like dependencies
-  └── pb
-      └── check.pb.go
+   rpc/check
+    ├── check                     // pb.go
+    │   └── check.pb.go
+    ├── check.go                  // pc main entrance
+    ├── check.proto               // rpc definition
+    ├── checker                   // rpc client call entry
+    │   └── checker.go
+    ├── etc                       // configuration file
+    │   └── check.yaml
+    └── internal
+        ├── config                // configuration definition
+        │   └── config.go
+        ├── logic                 // add logic here
+        │   └── checklogic.go
+        ├── server                // rpc handler
+        │   └── checkerserver.go
+        └── svc                   // defines service context, like dependencies
+            └── servicecontext.go
   ```
 
   you can change the listening port in `etc/check.yaml`.
@@ -487,7 +479,6 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   type Config struct {
       zrpc.RpcServerConf
       DataSource string             // manual code
-      Table      string             // manual code
       Cache      cache.CacheConf    // manual code
   }
   ```
@@ -499,13 +490,13 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   type ServiceContext struct {
       c     config.Config
-      Model *model.BookModel   // manual code
+      Model model.BookModel   // manual code
   }
   
   func NewServiceContext(c config.Config) *ServiceContext {
       return &ServiceContext{
           c:             c,
-          Model: model.NewBookModel(sqlx.NewMysql(c.DataSource), c.Cache, c.Table), // manual code
+          Model: model.NewBookModel(sqlx.NewMysql(c.DataSource), c.Cache), // manual code
       }
   }
   ```

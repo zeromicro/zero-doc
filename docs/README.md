@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 actionText: 快速上手 →
-actionLink: /frame/
+actionLink: /zero/
 heroText: Go Zero
 tagline: 集成各种工程实践的 WEB 和 RPC 框架
 sidebar: auto
@@ -16,3 +16,9 @@ features:
 
 footer: MIT Licensed | Copyright © 2020-present GoZero
 ---
+```go
+// 安装 go-zero
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
+
+// 然后就可以开始你的微服务之旅了
+```

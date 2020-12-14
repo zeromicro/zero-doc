@@ -1,4 +1,4 @@
-# 2.1 日志
+# 日志
 
 # 基本使用
 ## Example
@@ -9,6 +9,9 @@ logx 的简单使用如下：
 
 ```go
 var c logx.LogConf
+// 从 yaml 文件中 初始化配置
+conf.MustLoad("config.yaml", &c)
+
 // logx 根据配置初始化
 logx.MustSetup(c)
 
@@ -254,5 +257,3 @@ type LogConf struct {
 
 
 **StackCooldownMillis** 定义了日志输出间隔，默认为 100 毫秒。// TODO:
-
-<Vssue title="logger" />

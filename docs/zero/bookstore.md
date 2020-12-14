@@ -41,11 +41,11 @@
 
 * API Gateway
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/doc/images/bookstore-api.png" alt="api" width="800" />
+  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-api.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="../../doc/images/bookstore-rpc.png" alt="架构图" width="800" />
+  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/bookstore-rpc.png" alt="架构图" width="800" />
 
 * model
 
@@ -85,45 +85,40 @@
 
   ```go
   type (
-      addReq struct {
-          book  string `form:"book"`
-          price int64  `form:"price"`
-      }
-  
-      addResp struct {
-          ok bool `json:"ok"`
-      }
+  	addReq {
+  		book string `form:"book"`
+  		price int64 `form:"price"`
+  	}
+  	
+  	addResp {
+  		ok bool `json:"ok"`
+  	}
   )
   
   type (
-      checkReq struct {
-          book string `form:"book"`
-      }
-  
-      checkResp struct {
-          found bool  `json:"found"`
-          price int64 `json:"price"`
-      }
+  	checkReq {
+  		book string `form:"book"`
+  	}
+  	
+  	checkResp {
+  		found bool `json:"found"`
+  		price int64 `json:"price"`
+  	}
   )
   
   service bookstore-api {
-      @server(
-          handler: AddHandler
-      )
-      get /add(addReq) returns(addResp)
-  
-      @server(
-          handler: CheckHandler
-      )
-      get /check(checkReq) returns(checkResp)
+  	@handler AddHandler
+  	get /add (addReq) returns (addResp)
+  	
+  	@handler CheckHandler
+  	get /check (checkReq) returns (checkResp)
   }
   ```
 
   type用法和go一致，service用来定义get/post/head/delete等api请求，解释如下：
 
   * `service bookstore-api {`这一行定义了service名字
-  * `@server`部分用来定义server端用到的属性
-  * `handler`定义了服务端handler名字
+  * `@handler`定义了服务端handler名字
   * `get /add(addReq) returns(addResp)`定义了get方法的路由、请求参数、返回参数等
 
 * 使用goctl生成API Gateway代码
@@ -232,25 +227,23 @@
 
   ```Plain Text
   rpc/add
-  ├── add.go                      // rpc服务main函数
-  ├── add.proto                   // rpc接口定义
-  ├── adder
-  │   ├── adder.go                // 提供了外部调用方法，无需修改
-  │   ├── adder_mock.go           // mock方法，测试用
-  │   └── types.go                // request/response结构体定义
-  ├── etc
-  │   └── add.yaml                // 配置文件
-  ├── internal
-  │   ├── config
-  │   │   └── config.go           // 配置定义
-  │   ├── logic
-  │   │   └── addlogic.go         // add业务逻辑在这里实现
-  │   ├── server
-  │   │   └── adderserver.go      // 调用入口, 不需要修改
-  │   └── svc
-  │       └── servicecontext.go   // 定义ServiceContext，传递依赖
-  └── pb
-      └── add.pb.go
+  ├── add                   // pb.go
+  │   └── add.pb.go
+  ├── add.go                // main函数入口
+  ├── add.proto             // proto源文件
+  ├── adder                 // rpc client call entry
+  │   └── adder.go
+  ├── etc                   // yaml配置文件
+  │   └── add.yaml
+  └── internal              
+      ├── config            // yaml配置文件对应的结构体定义
+      │   └── config.go
+      ├── logic             // 业务逻辑
+      │   └── addlogic.go
+      ├── server            // rpc server
+      │   └── adderserver.go
+      └── svc               // 资源依赖
+          └── servicecontext.go
   ```
 
 直接可以运行，如下：
@@ -303,25 +296,23 @@
 
   ```Plain Text
   rpc/check
-  ├── check.go                    // rpc服务main函数
-  ├── check.proto                 // rpc接口定义
-  ├── checker
-  │   ├── checker.go              // 提供了外部调用方法，无需修改
-  │   ├── checker_mock.go         // mock方法，测试用
-  │   └── types.go                // request/response结构体定义
-  ├── etc
-  │   └── check.yaml              // 配置文件
-  ├── internal
-  │   ├── config
-  │   │   └── config.go           // 配置定义
-  │   ├── logic
-  │   │   └── checklogic.go       // check业务逻辑在这里实现
-  │   ├── server
-  │   │   └── checkerserver.go    // 调用入口, 不需要修改
-  │   └── svc
-  │       └── servicecontext.go   // 定义ServiceContext，传递依赖
-  └── pb
-      └── check.pb.go
+  ├── check                     // pb.go
+  │   └── check.pb.go
+  ├── check.go                  // main入口
+  ├── check.proto               // proto源文件
+  ├── checker                   // rpc client call entry
+  │   └── checker.go
+  ├── etc                       // yaml配置文件
+  │   └── check.yaml
+  └── internal
+      ├── config                // yaml配置文件对应的结构体定义
+      │   └── config.go
+      ├── logic                 // 业务逻辑
+      │   └── checklogic.go
+      ├── server                // rpc server
+      │   └── checkerserver.go
+      └── svc                   // 资源依赖
+          └── servicecontext.go
   ```
 
   `etc/check.yaml`文件里可以修改侦听端口等配置
@@ -413,7 +404,8 @@
           Book:  req.Book,
       })
       if err != nil {
-          return nil, err
+          logx.Error(err)
+          return &types.CheckResp{}, err
       }
   
       return &types.CheckResp{
@@ -463,7 +455,7 @@
 
   ```Plain Text
   rpc/model
-  ├── bookstore.sql
+  ├── book.sql
   ├── bookstoremodel.go     // CRUD+cache代码
   └── vars.go               // 定义常量和变量
   ```
@@ -487,7 +479,6 @@
   type Config struct {
       zrpc.RpcServerConf
       DataSource string             // 手动代码
-      Table      string             // 手动代码
       Cache      cache.CacheConf    // 手动代码
   }
   ```
@@ -499,13 +490,13 @@
   ```go
   type ServiceContext struct {
       c     config.Config
-      Model *model.BookModel   // 手动代码
+      Model model.BookModel   // 手动代码
   }
   
   func NewServiceContext(c config.Config) *ServiceContext {
       return &ServiceContext{
           c:             c,
-          Model: model.NewBookModel(sqlx.NewMysql(c.DataSource), c.Cache, c.Table), // 手动代码
+          Model: model.NewBookModel(sqlx.NewMysql(c.DataSource), c.Cache), // 手动代码
       }
   }
   ```
@@ -537,7 +528,7 @@
       // 手动代码开始
       resp, err := l.svcCtx.Model.FindOne(in.Book)
       if err != nil {
-          return nil, err
+          return nil,err
       }
   
       return &check.CheckResp{
