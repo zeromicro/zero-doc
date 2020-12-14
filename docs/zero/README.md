@@ -119,3 +119,5 @@ goctl api dart -api greet.api -dir greet
 ## 6. go-zero背后的设计思考
 go-zero背后的思考，从整体上来理解微服务系统设计：
 [https://www.bilibili.com/video/BV1rD4y127PD/](https://www.bilibili.com/video/BV1rD4y127PD/)
+
+<Vssue title="readme" />
