@@ -623,4 +623,4 @@ go-zero不只是一个框架，更是一个建立在框架+工具基础上的，
 
 有任何好的提升工程效率的想法，随时欢迎交流！👏
 
-<Vssue :title="$title" />
+<Vssue title="multipleRPCs" />

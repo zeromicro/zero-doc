@@ -623,4 +623,4 @@ For the generated code by goctl, lots of microservice components are included, l
 
 If you have any ideas that can help us to improve the productivity, tell me any time! 👏
 
-<Vssue :title="$title" />
+<Vssue title="multipleRPCs" />

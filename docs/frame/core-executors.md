@@ -369,4 +369,4 @@ func (pe *PeriodicalExecutor) Wait() {
 
 在 `go-zero` 中还有很多实用的组件工具，用好工具对于提升服务性能和开发效率都有很大的帮助，希望本篇文章能给大家带来一些收获。
 
-<Vssue :title="$title" />
+<Vssue title="executors" />

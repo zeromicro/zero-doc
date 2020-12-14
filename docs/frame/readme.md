@@ -116,11 +116,8 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 3. 可以根据api文件生成前端需要的Java, TypeScript, Dart, JavaScript代码```shell
 goctl api java -api greet.api -dir greet
 goctl api dart -api greet.api -dir greet
-...
-```
-
-<Vssue :title="$title" />
-
 ## 6. go-zero背后的设计思考
 go-zero背后的思考，从整体上来理解微服务系统设计：
 [https://www.bilibili.com/video/BV1rD4y127PD/](https://www.bilibili.com/video/BV1rD4y127PD/)
+
+<Vssue title="readme" />
