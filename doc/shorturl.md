@@ -453,7 +453,7 @@
   ```go
   type ServiceContext struct {
     c     config.Config
-    Model *model.ShorturlModel   // 手动代码
+    Model model.ShorturlModel   // 手动代码
   }
   
   func NewServiceContext(c config.Config) *ServiceContext {
