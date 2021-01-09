@@ -430,8 +430,8 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
 
   ```go
   type ServiceContext struct {
-  	c     config.Config
-    Model *model.ShorturlModel   // manual code
+    c     config.Config
+    Model model.ShorturlModel   // manual code
   }
   
   func NewServiceContext(c config.Config) *ServiceContext {
