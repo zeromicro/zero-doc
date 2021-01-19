@@ -65,6 +65,12 @@
   ```shell
   go get -u github.com/golang/protobuf/protoc-gen-go
   ```
+* 安装 `protoc`
+  ``` shell
+  wget https://github.com/protocolbuffers/protobuf/releases/download/v3.14.protoc-3.14.0-linux-x86_64.zip
+  unzip protoc-3.14.0-linux-x86_64.zip
+  mv bin/protoc /usr/local/bin/
+  ```
 
 * 安装 goctl 工具
 
@@ -86,7 +92,7 @@
   require (
     github.com/golang/mock v1.4.3
     github.com/golang/protobuf v1.4.2
-    github.com/tal-tech/go-zero v1.0.16
+    github.com/tal-tech/go-zero v1.1.4
     golang.org/x/net v0.0.0-20200707034311-ab3426394381
     google.golang.org/grpc v1.29.1
   )
@@ -292,7 +298,12 @@
   $ go run transform.go -f etc/transform.yaml
   Starting rpc server at 127.0.0.1:8080...
   ```
-
+  查看服务是否注册
+  ```
+  $ETCDCTL_API=3 etcdctl get transform.rpc --prefix
+  transform.rpc/7587851893787585061
+  127.0.0.1:8080
+  ``` 
   `etc/transform.yaml` 文件里可以修改侦听端口等配置
 
 ## 7. 修改 API Gateway 代码调用 transform rpc 服务
@@ -339,19 +350,19 @@
 * 修改 `internal/logic/expandlogic.go` 里的 `Expand` 方法，如下：
 
   ```go
-  func (l *ExpandLogic) Expand(req types.ExpandReq) (*types.ExpandResp, error) {
+  func (l *ExpandLogic) Expand(req types.ExpandReq) (types.ExpandResp, error) {
     // 手动代码开始
-    resp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
-      Shorten: req.Shorten,
-    })
-    if err != nil {
-      return nil, err
-    }
-  
-    return &types.ExpandResp{
-      Url: resp.Url,
-    }, nil
-    // 手动代码结束
+	resp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
+		Shorten: req.Shorten,
+	})
+	if err != nil {
+		return types.ExpandResp{}, err
+	}
+
+	return types.ExpandResp{
+		Url: resp.Url,
+	}, nil
+	// 手动代码结束
   }
   ```
 
@@ -360,21 +371,22 @@
 * 修改 `internal/logic/shortenlogic.go`，如下：
 
   ```go
-  func (l *ShortenLogic) Shorten(req types.ShortenReq) (*types.ShortenResp, error) {
+  func (l *ShortenLogic) Shorten(req types.ShortenReq) (types.ShortenResp, error) {
     // 手动代码开始
-    resp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
-      Url: req.Url,
-    })
-    if err != nil {
-      return nil, err
-    }
-  
-    return &types.ShortenResp{
-      Shorten: resp.Shorten,
-    }, nil
-    // 手动代码结束
+	resp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
+		Url: req.Url,
+	})
+	if err != nil {
+		return types.ShortenResp{}, err
+	}
+
+	return types.ShortenResp{
+		Shorten: resp.Shorten,
+	}, nil
+	// 手动代码结束
   }
   ```
+有的版本生成返回值可能是指针类型，需要自己调整下
 
 通过调用 `transformer` 的 `Shorten` 方法实现 url 到短链的变换
 
@@ -427,7 +439,7 @@
 * 修改 `rpc/transform/etc/transform.yaml`，增加如下内容：
 
   ```yaml
-  DataSource: root:@tcp(localhost:3306)/gozero
+  DataSource: root:password@tcp(localhost:3306)/gozero
   Table: shorturl
   Cache:
     - Host: localhost:6379
