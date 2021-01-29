@@ -204,7 +204,7 @@
   Date: Thu, 27 Aug 2020 14:31:39 GMT
   Content-Length: 15
   
-  {"shortUrl":""}
+  {"shorten":""}
   ```
 
   可以看到我们 API Gateway 其实啥也没干，就返回了个空值，接下来我们会在 rpc 服务里实现业务逻辑
