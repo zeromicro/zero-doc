@@ -493,7 +493,7 @@
   }
   ```
 
-* 修改 `rpc/shorten/internal/logic/shortenlogic.go`，如下：
+* 修改 `rpc/transform/internal/logic/shortenlogic.go`，如下：
 
   ```go
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
