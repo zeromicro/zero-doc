@@ -473,7 +473,7 @@
 
   可以使用多个redis作为cache，支持redis单点或者redis集群
 
-* 修改`rpc/add/internal/config.go`和`rpc/check/internal/config.go`，如下：
+* 修改`rpc/add/internal/config/config.go`和`rpc/check/internal/config/config.go`，如下：
 
   ```go
   type Config struct {
