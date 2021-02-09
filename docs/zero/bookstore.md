@@ -600,7 +600,7 @@ Log:
 
 ## 13. 完整代码
 
-[https://github.com/tal-tech/go-zero/tree/master/example/bookstore](https://github.com/tal-tech/go-zero/tree/master/example/bookstore)
+[https://github.com/zeromicro/zero-examples/tree/main/bookstore](https://github.com/zeromicro/zero-examples/tree/main/bookstore)
 
 ## 14. 总结
 

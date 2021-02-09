@@ -27,7 +27,7 @@ fmt.Println(replacer.Replace("日本的首都是东京"))
 东京是日本的首都
 ```
 
-示例代码见`example/stringx/replace/replace.go`
+示例代码见`stringx/replace/replace.go`
 
 ## 3. 查找敏感词
 
@@ -77,7 +77,7 @@ fmt.Println(found)
 true
 ```
 
-示例代码见`example/stringx/filter/filter.go`
+示例代码见`stringx/filter/filter.go`
 
 ## 5. Benchmark
 

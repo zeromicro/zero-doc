@@ -572,7 +572,7 @@
 
 ## 12. 完整代码
 
-[https://github.com/tal-tech/go-zero/tree/master/example/shorturl](https://github.com/tal-tech/go-zero/tree/master/example/shorturl)
+[https://github.com/zeromicro/zero-examples/tree/main/shorturl](https://github.com/zeromicro/zero-examples/tree/main/shorturl)
 
 ## 12. 总结
 
