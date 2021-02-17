@@ -38,7 +38,7 @@ module.exports = {
         editLinks: true,
         editLinkText: "在github.com上编辑此页",
         sidebar: {
-            '/zero/': getGoZeroSidebar('简介', 'core', 'rest', 'zrpc', 'goctl', '源码解读', 'awesome'),
+            '/zero/': getGoZeroSidebar('简介', '开发指南', 'core', 'rest', 'zrpc', 'goctl', '源码解读', 'awesome'),
         },
         sidebarDepth: 2,
         lastUpdated: "上次更新",
@@ -86,7 +86,7 @@ module.exports = {
 };
 
 // go-zero main document file
-function getGoZeroSidebar(A, B, C, D, E, F, G) {
+function getGoZeroSidebar(A, B, C, D, E, F, G, H) {
     return [
         {
             title: A,
@@ -100,6 +100,26 @@ function getGoZeroSidebar(A, B, C, D, E, F, G) {
             title: B,
             collapsable: false,
             children: [
+                '开发指南',
+                '快速开始',
+                '功能描述',
+                ['HTTP Middleware', 'HTTP Middleware'],
+                '自定义错误返回',
+                '创建API服务',
+                'model生成',
+                '用户注册',
+                '用户登陆',
+                'JWT生成',
+                '获取用户信息(JWT鉴权)',
+                '获取用户信息(header)',
+                '中间件使用',
+                'rpc调用',
+            ]
+        },
+        {
+            title: C,
+            collapsable: false,
+            children: [
                 ['logx', 'logx'],
                 'bloom',
                 'executors',
@@ -107,7 +127,64 @@ function getGoZeroSidebar(A, B, C, D, E, F, G) {
                 ['timingWheel', 'timingWheel'],
                 'periodlimit',
                 'tokenlimit',
-                'redis-lock'
+                ['store all', 'store all'],
+                'store mysql',
+                'redis-lock',
+            ]
+        },
+        {
+            title: D,
+            collapsable: false,
+            children: [
+                ['server', 'server'],
+                'JWT鉴权中间件',
+                '自适应融断中间件',
+                '验签中间件',
+                'TraceHandler',
+                'params',
+                'router',
+                'tokenparser',
+                'rest engine',
+            ]
+        },
+        {
+            title: E,
+            collapsable: false,
+            children: [
+                ['zrpc简介', '简介'],
+                ['zrpc目录结构', '目录结构'],
+                '参数配置客户端',
+                '参数配置服务端',
+                '项目创建',
+                ['zrpc服务端', '服务端'],
+                ['zrpc客户端', '客户端'],
+                '自定义拦截器',
+                '服务注册',
+                '负载均衡',
+            ]
+        },
+        {
+            title: F,
+            collapsable: false,
+            children: [
+                'goctl-overview',
+                'goctl-api',
+                'goctl-rpc',
+                'goctl-model',
+                'goctl-template',
+                'goctl-plugin',
+                'goctl-docker',
+                'goctl-kube',
+                '附录1',
+                '附录2',
+                '附录3',
+            ]
+        },
+        {
+            title: H,
+            collapsable: false,
+            children: [
+                '10月3日线上交流问题汇总',
             ]
         },
     ]
