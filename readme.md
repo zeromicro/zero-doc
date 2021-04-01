@@ -19,7 +19,9 @@
 
 * API文档 (逐步完善中)
 
-  [https://www.yuque.com/tal-tech/go-zero](https://www.yuque.com/tal-tech/go-zero)
+  [https://www.yuque.com/tal-tech/go-zero](https://www.yuque.com/tal-tech/go-zero) [旧]
+  
+  [https://zeromicro.github.io/go-zero/](https://zeromicro.github.io/go-zero/) [新]
 
 * awesome系列
   * [快速构建高并发微服务](doc/shorturl.md)
