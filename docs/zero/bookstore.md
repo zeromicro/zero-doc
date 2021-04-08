@@ -60,7 +60,7 @@
 * 安装`protoc-gen-go`
 
   ```shell
-  go get -u github.com/golang/protobuf/protoc-gen-go
+   go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
   ```
 
 * 安装goctl工具
