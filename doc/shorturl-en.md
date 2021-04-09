@@ -63,7 +63,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 * install protoc-gen-go
 
   ```
-  go get -u github.com/golang/protobuf/protoc-gen-go
+  go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
   ```
 
 * install goctl
