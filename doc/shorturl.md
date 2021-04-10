@@ -377,7 +377,7 @@
 		Url: req.Url,
 	})
 	if err != nil {
-		return types.ShortenResp{}, err
+		return nil, err
 	}
 
 	return types.ShortenResp{
