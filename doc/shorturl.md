@@ -356,7 +356,7 @@
 		Shorten: req.Shorten,
 	})
 	if err != nil {
-		return types.ExpandResp{}, err
+		return nil, err
 	}
 
 	return types.ExpandResp{
