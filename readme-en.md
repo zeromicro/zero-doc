@@ -115,11 +115,11 @@ go get -u github.com/tal-tech/go-zero
 2. create the API file, like greet.api, you can install the plugin of goctl in vs code, api syntax is supported.
 
    ```go
-   type Request struct {
+   type Request {
      Name string `path:"name,options=you|me"` // parameters are auto validated
    }
 
-   type Response struct {
+   type Response {
      Message string `json:"message"`
    }
 

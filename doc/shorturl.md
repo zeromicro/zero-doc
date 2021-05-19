@@ -86,9 +86,9 @@
 
   ```Plain Text
   module shorturl
-
+  
   go 1.15
-
+  
   require (
     github.com/golang/mock v1.4.3
     github.com/golang/protobuf v1.4.2
@@ -112,21 +112,21 @@
 
   ```go
   type (
-    expandReq struct {
+    expandReq {
       shorten string `form:"shorten"`
     }
   
-    expandResp struct {
+    expandResp {
       url string `json:"url"`
     }
   )
   
   type (
-    shortenReq struct {
+    shortenReq {
       url string `form:"url"`
     }
   
-    shortenResp struct {
+    shortenResp {
       shorten string `json:"shorten"`
     }
   )
@@ -303,7 +303,7 @@
   $ETCDCTL_API=3 etcdctl get transform.rpc --prefix
   transform.rpc/7587851893787585061
   127.0.0.1:8080
-  ``` 
+  ```
   `etc/transform.yaml` 文件里可以修改侦听端口等配置
 
 ## 7. 修改 API Gateway 代码调用 transform rpc 服务
@@ -352,17 +352,17 @@
   ```go
   func (l *ExpandLogic) Expand(req types.ExpandReq) (types.ExpandResp, error) {
     // 手动代码开始
-	resp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
-		Shorten: req.Shorten,
-	})
-	if err != nil {
-		return types.ExpandResp{}, err
-	}
-
-	return types.ExpandResp{
-		Url: resp.Url,
-	}, nil
-	// 手动代码结束
+	  resp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
+	    Shorten: req.Shorten,
+	  })
+	  if err != nil {
+	    return types.ExpandResp{}, err
+	  }
+  
+	  return types.ExpandResp{
+	    Url: resp.Url,
+	  }, nil
+	  // 手动代码结束
   }
   ```
 
@@ -373,17 +373,17 @@
   ```go
   func (l *ShortenLogic) Shorten(req types.ShortenReq) (types.ShortenResp, error) {
     // 手动代码开始
-	resp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
-		Url: req.Url,
-	})
-	if err != nil {
-		return types.ShortenResp{}, err
-	}
+	  resp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
+		  Url: req.Url,
+	  })
+	  if err != nil {
+	    return types.ShortenResp{}, err
+	  }
 
-	return types.ShortenResp{
-		Shorten: resp.Shorten,
-	}, nil
-	// 手动代码结束
+	  return types.ShortenResp{
+	    Shorten: resp.Shorten,
+	  }, nil
+	  // 手动代码结束
   }
   ```
 有的版本生成返回值可能是指针类型，需要自己调整下
@@ -522,7 +522,7 @@
   
   ```golang
   import "shorturl/rpc/transform/model"
-
+  
   import "github.com/tal-tech/go-zero/core/stores/sqlx"
   ```
 

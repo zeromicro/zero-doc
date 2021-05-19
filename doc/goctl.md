@@ -45,39 +45,39 @@ info(
 
 type int userType
 
-type user struct {
+type user {
 	name string `json:"user"` // 用户姓名
 }
 
-type student struct {
+type student {
 	name string `json:"name"` // 学生姓名
 }
 
-type teacher struct {
+type teacher {
 }
 
 type (
-	address struct {
+	address {
 		city string `json:"city"`
 	}
 
-	innerType struct {
+	innerType {
 		image string `json:"image"`
 	}
 
-	createRequest struct {
+	createRequest {
 		innerType
 		name    string    `form:"name"`
 		age     int       `form:"age,optional"`
 		address []address `json:"address,optional"`
 	}
 
-	getRequest struct {
+	getRequest {
 		name string `path:"name"`
 		age  int    `form:"age,optional"`
 	}
 
-	getResponse struct {
+	getResponse {
 		code    int     `json:"code"`
 		desc    string  `json:"desc,omitempty"`
 		address address `json:"address"`

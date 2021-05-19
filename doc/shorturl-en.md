@@ -88,21 +88,21 @@ And now, let’s walk through the complete flow of quickly create a microservice
 
   ```go
   type (
-  	expandReq struct {
+  	expandReq {
   		shorten string `form:"shorten"`
   	}
   
-  	expandResp struct {
+  	expandResp {
   		url string `json:"url"`
   	}
   )
   
   type (
-  	shortenReq struct {
+  	shortenReq {
   		url string `form:"url"`
   	}
   
-  	shortenResp struct {
+  	shortenResp {
   		shorten string `json:"shorten"`
   	}
   )
