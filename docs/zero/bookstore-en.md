@@ -600,7 +600,7 @@ as shown above, in my MacBook Pro, the QPS is like 30K+.
 
 ## 13. Full code
 
-[https://github.com/tal-tech/go-zero/tree/master/example/bookstore](https://github.com/tal-tech/go-zero/tree/master/example/bookstore)
+[https://github.com/zeromicro/zero-examples/tree/main/bookstore](https://github.com/zeromicro/zero-examples/tree/main/bookstore)
 
 ## 14. Conclusion
 
