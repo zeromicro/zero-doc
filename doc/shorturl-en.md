@@ -81,7 +81,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 * use goctl to generate `api/shorturl.api`
 
   ```shell
-  goctl api -o bookstore.api
+  goctl api -o shorturl.api
   ```
 
   for simplicity, the leading `info` block is removed, and the code looks like:
