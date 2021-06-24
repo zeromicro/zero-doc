@@ -21,11 +21,11 @@
 
   [~~https://www.yuque.com/tal-tech/go-zero~~](https://www.yuque.com/tal-tech/go-zero) [已废弃]
   
-  [https://go-zero.dev/zh-hans/](https://go-zero.dev/cn/) [新]
+  [https://go-zero.dev](https://go-zero.dev/cn/) [新]
 
 * awesome系列
   * [快速构建高并发微服务](doc/shorturl.md)
-  * [快速构建高并发微服务-多RPC版](docs/frame/bookstore.md)
+  * [快速构建高并发微服务-多RPC版](docs/zero/bookstore.md)
   * [goctl使用帮助](doc/goctl.md)
   * [通过MapReduce降低服务响应时间](doc/mapreduce.md)
   * [关键字替换和敏感词过滤工具](doc/keywords.md)
