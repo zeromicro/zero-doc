@@ -37,4 +37,4 @@
 
 ## 3. 微信交流群
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/wechat.jpg" alt="wechat" width="300" />
+<img src="https://raw.githubusercontent.com/tal-tech/zero-doc/main/doc/images/wechat.jpg" alt="wechat" width="300" />
