@@ -112,7 +112,7 @@ service user {
 * `sex`：必填，取值为`male`或`female`
 * `avatar`：选填，默认为`default.png`
 
-更多详情参见[unmarshaler_test.go](../core/mapping/unmarshaler_test.go)
+更多详情参见[unmarshaler_test.go](https://github.com/tal-tech/go-zero/blob/master/core/mapping/unmarshaler_test.go)
 
 ## 2. http api返回体的序列化
 
