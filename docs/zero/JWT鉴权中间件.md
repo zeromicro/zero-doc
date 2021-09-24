@@ -1,6 +1,6 @@
 # JWT鉴权中间件
 
-这里只介绍我们如何使用该中间件，具体内容请点击[基于go-zero实现JWT认证](https://github.com/tal-tech/zero-doc/blob/main/doc/jwt.md)
+这里只介绍我们如何使用该中间件，具体内容请点击[基于go-zero实现JWT认证](https://github.com/zeromicro/zero-doc/blob/main/doc/jwt.md)
 
 
 ## example

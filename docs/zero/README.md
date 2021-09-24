@@ -105,7 +105,7 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 ```
 
 编写业务代码：
-   - api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
+   - api文件定义了服务对外暴露的路由，可参考[api规范](https://github.com/zeromicro/zero-doc/blob/main/doc/goctl.md)
    - 可以在servicecontext.go里面传递依赖给logic，比如mysql, redis等
    - 在api定义的get/post/put/delete等请求对应的logic里增加业务处理逻辑
 3. 可以根据api文件生成前端需要的Java, TypeScript, Dart, JavaScript代码
