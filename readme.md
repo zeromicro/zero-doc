@@ -4,24 +4,22 @@
 
 [English](readme-en.md) | 简体中文
 
-[![Go](https://github.com/tal-tech/go-zero/workflows/Go/badge.svg?branch=master)](https://github.com/tal-tech/go-zero/actions)
-[![codecov](https://codecov.io/gh/tal-tech/go-zero/branch/master/graph/badge.svg)](https://codecov.io/gh/tal-tech/go-zero)
-[![Go Report Card](https://goreportcard.com/badge/github.com/tal-tech/go-zero)](https://goreportcard.com/report/github.com/tal-tech/go-zero)
-[![Release](https://img.shields.io/github/v/release/tal-tech/go-zero.svg?style=flat-square)](https://github.com/tal-tech/go-zero)
+[![Go](https://github.com/zeromicro/go-zero/workflows/Go/badge.svg?branch=master)](https://github.com/zeromicro/go-zero/actions)
+[![codecov](https://codecov.io/gh/zeromicro/go-zero/branch/master/graph/badge.svg)](https://codecov.io/gh/zeromicro/go-zero)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zeromicro/go-zero)](https://goreportcard.com/report/github.com/zeromicro/go-zero)
+[![Release](https://img.shields.io/github/v/release/zeromicro/go-zero.svg?style=flat-square)](https://github.com/zeromicro/go-zero)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 1. 项目介绍
 
-* 项目官网：http://zero.gocn.vip
-* 项目地址：[https://github.com/tal-tech/go-zero](https://github.com/tal-tech/go-zero)
+* 项目官网：[https://go-zero.dev](https://go-zero.dev)
+* 项目地址：[https://github.com/zeromicro/go-zero](https://github.com/zeromicro/go-zero)
 
 ## 2. 项目文档
 
 * API文档 (逐步完善中)
 
-  [~~https://www.yuque.com/tal-tech/go-zero~~](https://www.yuque.com/tal-tech/go-zero) [已废弃]
-  
-  [https://go-zero.dev](https://go-zero.dev/cn/) [新]
+  [https://go-zero.dev](https://go-zero.dev/cn/)
 
 * awesome系列
   * [快速构建高并发微服务](doc/shorturl.md)
