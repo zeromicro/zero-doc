@@ -2,13 +2,13 @@
 
 go-zero微服务框架中提供了许多开箱即用的工具，好的工具不仅能提升服务的性能而且还能提升代码的鲁棒性避免出错，实现代码风格的统一方便他人阅读等等。
 
-本文主要讲述进程内共享调用神器[SharedCalls](https://github.com/tal-tech/go-zero/blob/master/core/syncx/sharedcalls.go)。  
+本文主要讲述进程内共享调用神器[SharedCalls](https://github.com/zeromicro/go-zero/blob/master/core/syncx/sharedcalls.go)。  
 
 ## 使用场景
 
 并发场景下，可能会有多个线程（协程）同时请求同一份资源，如果每个请求都要走一遍资源的请求过程，除了比较低效之外，还会对资源服务造成并发的压力。举一个具体例子，比如缓存失效，多个请求同时到达某服务请求某资源，该资源在缓存中已经失效，此时这些请求会继续访问DB做查询，会引起数据库压力瞬间增大。而使用SharedCalls可以使得同时多个请求只需要发起一次拿结果的调用，其他请求"坐享其成"，这种设计有效减少了资源服务的并发压力，可以有效防止缓存击穿。
 
-高并发场景下，当某个热点key缓存失效后，多个请求会同时从数据库加载该资源，并保存到缓存，如果不做防范，可能会导致数据库被直接打死。针对这种场景，go-zero框架中已经提供了实现，具体可参看[sqlc](https://github.com/tal-tech/go-zero/blob/master/core/stores/sqlc/cachedsql.go)和[mongoc](https://github.com/tal-tech/go-zero/blob/master/core/stores/mongoc/cachedcollection.go)等实现代码。
+高并发场景下，当某个热点key缓存失效后，多个请求会同时从数据库加载该资源，并保存到缓存，如果不做防范，可能会导致数据库被直接打死。针对这种场景，go-zero框架中已经提供了实现，具体可参看[sqlc](https://github.com/zeromicro/go-zero/blob/master/core/stores/sqlc/cachedsql.go)和[mongoc](https://github.com/zeromicro/go-zero/blob/master/core/stores/mongoc/cachedcollection.go)等实现代码。
 
 为了简化演示代码，我们通过多个线程同时去获取一个id来模拟缓存的场景。如下：
 

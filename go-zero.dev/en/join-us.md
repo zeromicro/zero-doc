@@ -6,11 +6,11 @@
 ## Summary
 <img src="./resource/go-zero-logo.png" alt="go-zero" width="100px" height="100px" align="right" />
 
-[go-zero](https://github.com/tal-tech/go-zero) is based on the [MIT License](https://github.com/tal-tech/go-zero/blob/master/LICENSE) open source projects, if you find bugs, new features, etc. in use, you can participate in the contribution of go-zero. We welcome your active participation and will respond to various questions raised by you as soon as possible. , Pr, etc.
+[go-zero](https://github.com/zeromicro/go-zero) is based on the [MIT License](https://github.com/zeromicro/go-zero/blob/master/LICENSE) open source projects, if you find bugs, new features, etc. in use, you can participate in the contribution of go-zero. We welcome your active participation and will respond to various questions raised by you as soon as possible. , Pr, etc.
 
 ## Contribution form
-* [Pull Request](https://github.com/tal-tech/go-zero/pulls)
-* [Issue](https://github.com/tal-tech/go-zero/issues)
+* [Pull Request](https://github.com/zeromicro/go-zero/pulls)
+* [Issue](https://github.com/zeromicro/go-zero/issues)
 
 ## Contribution notes
 The code in go-zero's Pull request needs to meet certain specifications
@@ -20,7 +20,7 @@ The code in go-zero's Pull request needs to meet certain specifications
 * Increase unit test coverage to 80%+
 
 ## Pull Request（pr）
-* Enter [go-zero](https://github.com/tal-tech/go-zero) project, fork a copy of [go-zero](https://github.com/tal-tech/go-zero) Project to its own GitHub repository.
+* Enter [go-zero](https://github.com/zeromicro/go-zero) project, fork a copy of [go-zero](https://github.com/zeromicro/go-zero) Project to its own GitHub repository.
 * Go back to your GitHub homepage and find the `xx/go-zero` project, where xx is your username, such as `anqiansong/go-zero`
 
     ![fork](./resource/fork.png)
@@ -37,7 +37,7 @@ The code in go-zero's Pull request needs to meet certain specifications
     ![pr](./resource/compare.png)
 
 * Click `[Create pull request]` to realize the pr application
-* To confirm whether the pr submission is successful, enter [Pull requests](https://github.com/tal-tech/go-zero) of [go-zero](https://github.com/tal-tech/go-zero) /pulls) view, there should be a record of your own submission, the name is your branch name during development.
+* To confirm whether the pr submission is successful, enter [Pull requests](https://github.com/zeromicro/go-zero) of [go-zero](https://github.com/zeromicro/go-zero) /pulls) view, there should be a record of your own submission, the name is your branch name during development.
 
     ![pr record](./resource/pr_record.png)
 
@@ -50,7 +50,7 @@ Feedback issues, including but not limited to bug, expected new features, etc., 
 You can also get the latest trend of go-zero here, and welcome everyone Come and actively participate in the discussion.
 
 ### How to issue
-* Click [here](https://github.com/tal-tech/go-zero/issues) to enter go-zero's Issue page or directly visit [https://github.com/tal-tech/go-zero/ issues](https://github.com/tal-tech/go-zero/issues) address
+* Click [here](https://github.com/zeromicro/go-zero/issues) to enter go-zero's Issue page or directly visit [https://github.com/zeromicro/go-zero/ issues](https://github.com/zeromicro/go-zero/issues) address
 * Click `[New issue]` in the upper right corner to create a new issue
 * Fill in the issue title and content
 * Click `【Submit new issue】` to submit an issue

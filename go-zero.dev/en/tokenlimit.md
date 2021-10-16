@@ -148,7 +148,7 @@ However, in the production of `token`, dynamic adjustment cannot be made accordi
 
 ## Reference
 
-- [go-zero tokenlimit](https://github.com/tal-tech/go-zero/blob/master/core/limit/tokenlimit.go)
+- [go-zero tokenlimit](https://github.com/zeromicro/go-zero/blob/master/core/limit/tokenlimit.go)
 - [Redis Rate](https://github.com/go-redis/redis_rate)
 
 

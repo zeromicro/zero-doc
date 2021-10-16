@@ -2,7 +2,7 @@
 
 # 企业级RPC框架zRPC
 
-近期比较火的开源项目[go-zero](https://github.com/zeromicro/go-zero)是一个集成了各种工程实践的包含了Web和RPC协议的功能完善的微服务框架，今天我们就一起来分析一下其中的RPC部分[zRPC](https://github.com/tal-tech/go-zero/tree/master/zrpc)。
+近期比较火的开源项目[go-zero](https://github.com/zeromicro/go-zero)是一个集成了各种工程实践的包含了Web和RPC协议的功能完善的微服务框架，今天我们就一起来分析一下其中的RPC部分[zRPC](https://github.com/zeromicro/go-zero/tree/master/zrpc)。
 
 zRPC底层依赖gRPC，内置了服务注册、负载均衡、拦截器等模块，其中还包括自适应降载，自适应熔断，限流等微服务治理方案，是一个简单易用的可直接用于生产的企业级RPC框架。
 
@@ -209,7 +209,7 @@ K: 倍值 (Google SRE推荐值为2)
 
 可以通过修改K的值来修改熔断发生的激进程度，降低K的值会使得自适应熔断算法更加激进，增加K的值则自适应熔断算法变得不再那么激进
 
-[熔断拦截器](https://github.com/tal-tech/go-zero/blob/master/zrpc/internal/clientinterceptors/breakerinterceptor.go)定义如下：
+[熔断拦截器](https://github.com/zeromicro/go-zero/blob/master/zrpc/internal/clientinterceptors/breakerinterceptor.go)定义如下：
 
 ```go
 func BreakerInterceptor(ctx context.Context, method string, req, reply interface{},
@@ -281,7 +281,7 @@ func (b *googleBreaker) doReq(req func() error, fallback func(err error) error, 
 
 服务监控是了解服务当前运行状态以及变化趋势的重要手段，监控依赖于服务指标的收集，通过prometheus进行监控指标的收集是业界主流方案，zRPC中也采用了prometheus来进行指标的收集
 
-[prometheus拦截器](https://github.com/tal-tech/go-zero/blob/master/zrpc/internal/serverinterceptors/prometheusinterceptor.go)定义如下：
+[prometheus拦截器](https://github.com/zeromicro/go-zero/blob/master/zrpc/internal/serverinterceptors/prometheusinterceptor.go)定义如下：
 
 这个拦截器主要是对服务的监控指标进行收集，这里主要是对RPC方法的耗时和调用错误进行收集，这里主要使用了Prometheus的Histogram和Counter数据类型
 

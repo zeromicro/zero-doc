@@ -13,10 +13,10 @@ Let's take a look at the link implementation of `go-zero`.
 
 ## Code structure
 
-- [spancontext](https://github.com/tal-tech/go-zero/blob/master/core/trace/spancontext.go) ：保存链路的上下文信息「traceid，spanid，或者是其他想要传递的内容」
-- [span](https://github.com/tal-tech/go-zero/blob/master/core/trace/span.go) ：链路中的一个操作，存储时间和某些信息
-- [propagator](https://github.com/tal-tech/go-zero/blob/master/core/trace/propagator.go) ： `trace` 传播下游的操作「抽取，注入」
-- [noop](https://github.com/tal-tech/go-zero/blob/master/core/trace/noop.go) ：实现了空的 `tracer` 实现
+- [spancontext](https://github.com/zeromicro/go-zero/blob/master/core/trace/spancontext.go) ：保存链路的上下文信息「traceid，spanid，或者是其他想要传递的内容」
+- [span](https://github.com/zeromicro/go-zero/blob/master/core/trace/span.go) ：链路中的一个操作，存储时间和某些信息
+- [propagator](https://github.com/zeromicro/go-zero/blob/master/core/trace/propagator.go) ： `trace` 传播下游的操作「抽取，注入」
+- [noop](https://github.com/zeromicro/go-zero/blob/master/core/trace/noop.go) ：实现了空的 `tracer` 实现
 
 ![](https://static.gocn.vip/photo/2020/2f244477-4ed3-4ad1-8003-ff82cbe2f8a0.png?x-oss-process=image/resize,w_1920)
 
@@ -64,7 +64,7 @@ Judging from the definition structure of `span`: In microservices, this is a com
 
 ## Example application
 
-In `go-zero`, http and rpc have been integrated as built-in middleware. We use [http](https://github.com/tal-tech/go-zero/blob/master/rest/handler/tracinghandler.go), [rpc](https://github.com/tal-tech /go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go), take a look at how `tracing` is used:
+In `go-zero`, http and rpc have been integrated as built-in middleware. We use [http](https://github.com/zeromicro/go-zero/blob/master/rest/handler/tracinghandler.go), [rpc](https://github.com/tal-tech /go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go), take a look at how `tracing` is used:
 
 ### HTTP
 
@@ -185,4 +185,4 @@ At the same time, `go-zero` does not provide a complete set of `trace` link solu
 
 ## Reference
 
-- [go-zero trace](https://github.com/tal-tech/go-zero/tree/master/core/trace)
+- [go-zero trace](https://github.com/zeromicro/go-zero/tree/master/core/trace)

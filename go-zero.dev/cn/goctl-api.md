@@ -51,12 +51,12 @@ USAGE:
 OPTIONS:
    --dir value    the target dir
    --api value    the api file
-   --style value  the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value  the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
 ```
 
 * --dir 代码输出目录
 * --api 指定api源文件
-* --style 指定生成代码文件的文件名称风格，详情见[文件名称命名style说明](https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md)
+* --style 指定生成代码文件的文件名称风格，详情见[文件名称命名style说明](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md)
 
 ## 使用示例
 ```shell

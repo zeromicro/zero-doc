@@ -118,7 +118,7 @@ The `periodlimit` current limiting scheme in `go-zero` is based on `redis` count
 
 ## Reference
 
-- [go-zero periodlimit](https://github.com/tal-tech/go-zero/blob/master/core/limit/periodlimit.go)
+- [go-zero periodlimit](https://github.com/zeromicro/go-zero/blob/master/core/limit/periodlimit.go)
 - [Distributed service current limit actual combat, has already lined up the pits for you](https://www.infoq.cn/article/Qg2tX8fyw5Vt-f3HH673)
 - [tokenlimit](tokenlimit.md)
 

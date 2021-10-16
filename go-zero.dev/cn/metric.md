@@ -14,7 +14,7 @@ Prometheus Server直接从监控目标中或者间接通过推送网关来拉取
 
 ## go-zero基于prometheus的服务指标监控
 
-[go-zero](https://github.com/tal-tech/go-zero) 框架中集成了基于prometheus的服务指标监控，下面我们通过go-zero官方的示例[shorturl](https://github.com/tal-tech/go-zero/blob/master/doc/shorturl.md)来演示是如何对服务指标进行收集监控的：
+[go-zero](https://github.com/zeromicro/go-zero) 框架中集成了基于prometheus的服务指标监控，下面我们通过go-zero官方的示例[shorturl](https://github.com/zeromicro/go-zero/blob/master/doc/shorturl.md)来演示是如何对服务指标进行收集监控的：
 
 - 第一步需要先安装Prometheus，安装步骤请参考[官方文档](https://prometheus.io/)
 - go-zero默认不开启prometheus监控，开启方式很简单，只需要在shorturl-api.yaml文件中增加配置如下，其中Host为Prometheus Server地址为必填配置，Port端口不填默认9091，Path为用来拉取指标的路径默认为/metrics

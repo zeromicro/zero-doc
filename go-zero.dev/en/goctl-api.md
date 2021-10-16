@@ -54,12 +54,12 @@ USAGE:
 OPTIONS:
    --dir value    the target dir
    --api value    the api file
-   --style value  the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value  the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
 ```
 
 * --dir: Code output directory
 * --api: Specify the api source file
-* --style: Specify the file name style of the generated code file, see for details [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md](https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md)
+* --style: Specify the file name style of the generated code file, see for details [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md)
 
 ## Usage example
 ```shell

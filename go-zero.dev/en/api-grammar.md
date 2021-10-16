@@ -291,7 +291,7 @@ Of course It also retains some of the characteristics of golang type, and the fo
 
 **Grammar definition**
 
-Since it is similar to golang, it will not be explained in detail. Please refer to the typeSpec definition in [ApiParser.g4](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/api/parser/g4/ApiParser.g4) for the specific syntax definition.
+Since it is similar to golang, it will not be explained in detail. Please refer to the typeSpec definition in [ApiParser.g4](https://github.com/zeromicro/go-zero/blob/master/tools/goctl/api/parser/g4/ApiParser.g4) for the specific syntax definition.
 
 **Grammar description**
 
