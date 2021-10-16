@@ -62,7 +62,7 @@ USAGE:
 OPTIONS:
    --src value, -s value  the path or path globbing patterns of the ddl
    --dir value, -d value  the target dir
-   --style value          the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value          the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
    --cache, -c            generate code with cache [optional]
    --idea                 for idea plugin [optional]
 ```
@@ -70,7 +70,7 @@ OPTIONS:
 
 - `--src`：指定sql文件名（含路径），支持相对路径，支持通配符匹配
 - `--dir`：指定代码存放的目标文件夹
-- `--style`：指定生成文件名命名方式，参考[config](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/config/readme.md)
+- `--style`：指定生成文件名命名方式，参考[config](https://github.com/zeromicro/go-zero/blob/master/tools/goctl/config/readme.md)
 - `--cache`：指定缓存方式，true：生成带redis缓存代码，false：生成不带redis缓存代码，默认：false
 - `--idea`：略
 
@@ -115,7 +115,7 @@ OPTIONS:
    --table value, -t value  the table or table globbing patterns in the database
    --cache, -c              generate code with cache [optional]
    --dir value, -d value    the target dir
-   --style value            the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value            the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
    --idea                   for idea plugin [optional]
 
 ```
@@ -124,7 +124,7 @@ OPTIONS:
 - `--url`：指定数据库连接地址，如`user:password@tcp(127.0.0.1:3306)/gozero`
 - `--table`：指定表名，支持通配符匹配，即匹配`gozero`数据库中的表
 - `--dir`：指定代码存放的目标文件夹
-- `--style`：指定生成文件名命名方式，参考[config](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/config/readme.md)
+- `--style`：指定生成文件名命名方式，参考[config](https://github.com/zeromicro/go-zero/blob/master/tools/goctl/config/readme.md)
 - `--cache`：指定缓存方式，true：生成带redis缓存代码，false：生成不带redis缓存代码，默认：false
 - `--idea`：略
 

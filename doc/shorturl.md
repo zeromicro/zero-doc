@@ -1,3 +1,5 @@
+# DEPRECATED: PLEASE MOVE TO https://go-zero.dev/cn/extended-reading.html
+
 # 快速构建高并发微服务
 
 [English](shorturl-en.md) | 简体中文
@@ -23,7 +25,7 @@
 
 另外，我们始终秉承 **工具大于约定和文档** 的理念。我们希望尽可能减少开发人员的心智负担，把精力都投入到产生业务价值的代码上，减少重复代码的编写，所以我们开发了 `goctl` 工具。
 
-下面我通过短链微服务来演示通过 [go-zero](https://github.com/tal-tech/go-zero) 快速的创建微服务的流程，走完一遍，你就会发现：原来编写微服务如此简单！
+下面我通过短链微服务来演示通过 [go-zero](https://github.com/zeromicro/go-zero) 快速的创建微服务的流程，走完一遍，你就会发现：原来编写微服务如此简单！
 
 ## 1. 什么是短链服务
 

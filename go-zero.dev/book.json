@@ -1,0 +1,90 @@
+{
+  "title": "go-zero document",
+  "author": "anqiansong",
+  "description": "Golang 微服务框架 | 集成各种工程实践的 WEB 和 RPC 框架 | 一键生成 Go, iOS, Android, Kotlin, Dart, TypeScript, JavaScript 代码",
+  "language": "zh-hans",
+  "gitbook": "3.2.3",
+  "plugins": [
+    "back-to-top-button",
+    "chapter-fold",
+    "code",
+    "-lunr",
+    "-search",
+    "search-pro",
+    "github",
+    "splitter",
+    "-sharing",
+    "sharing-plus",
+    "tbfed-pagefooter",
+    "flexible-alerts",
+    "page-toc-button",
+    "pageview-count",
+    "popup",
+    "hide-element",
+    "edit-link",
+    "-highlight",
+    "prism",
+    "theme-comscore"
+  ],
+  "pluginsConfig": {
+    "prism": {
+      "lang": {
+        "shell": "bash"
+      },
+      "css": [
+        "prismjs/themes/prism-tomorrow.css"
+      ]
+    },
+    "github": {
+      "url": "https://github.com/zeromicro/go-zero"
+    },
+    "page-toc-button": {
+      "maxTocDepth": 2,
+      "minTocSize": 2
+    },
+    "tbfed-pagefooter": {
+      "copyright": "Copyright © 2019-2021 go-zero",
+      "modify_label": "Last UpdateTime：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "hide-element": {
+      "elements": [
+        ".gitbook-link"
+      ]
+    },
+    "edit-link": {
+      "base": "https://github.com/zeromicro/zero-doc/tree/main/go-zero.dev",
+      "label": "EDIT THIS PAGE"
+    },
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": true,
+      "hatenaBookmark": false,
+      "instapaper": false,
+      "line": true,
+      "linkedin": true,
+      "messenger": false,
+      "pocket": false,
+      "qq": false,
+      "qzone": true,
+      "stumbleupon": false,
+      "twitter": false,
+      "viber": false,
+      "vk": false,
+      "weibo": true,
+      "whatsapp": false,
+      "all": [
+        "douban",
+        "facebook",
+        "google",
+        "linkedin",
+        "twitter",
+        "weibo",
+        "qq",
+        "qzone",
+        "weibo"
+      ]
+    }
+  }
+}

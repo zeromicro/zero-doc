@@ -9,8 +9,8 @@ $ goctl api plugin -p goctl-android="android -package com.tal" -api user.api -di
 上面这个命令可以分解成如下几部：
 
 1. goctl 解析api文件
-1. goctl 将解析后的结构 [ApiSpec](https://github.com/tal-tech/go-zero/blob/16bfb1b7be2db014348b6be9a0e0abe0f765cd38/tools/goctl/api/spec/spec.go) 和参数传递给goctl-android可执行文件
-1. goctl-android 根据 [ApiSpec](https://github.com/tal-tech/go-zero/blob/16bfb1b7be2db014348b6be9a0e0abe0f765cd38/tools/goctl/api/spec/spec.go) 结构体自定义生成逻辑。
+1. goctl 将解析后的结构 [ApiSpec](https://github.com/zeromicro/go-zero/blob/16bfb1b7be2db014348b6be9a0e0abe0f765cd38/tools/goctl/api/spec/spec.go) 和参数传递给goctl-android可执行文件
+1. goctl-android 根据 [ApiSpec](https://github.com/zeromicro/go-zero/blob/16bfb1b7be2db014348b6be9a0e0abe0f765cd38/tools/goctl/api/spec/spec.go) 结构体自定义生成逻辑。
 
 
 
@@ -18,7 +18,7 @@ $ goctl api plugin -p goctl-android="android -package com.tal" -api user.api -di
 ## 怎么编写自定义插件？
 
 
-go-zero框架中包含了一个很简单的自定义插件 [demo](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/plugin/demo/goctlplugin.go)，代码如下：
+go-zero框架中包含了一个很简单的自定义插件 [demo](https://github.com/zeromicro/go-zero/blob/master/tools/goctl/plugin/demo/goctlplugin.go)，代码如下：
 ```go
 package main
 

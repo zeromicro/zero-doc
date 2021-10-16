@@ -17,7 +17,7 @@
 
 ## 2. 项目文档
 
-* API文档 (逐步完善中)
+* API文档
 
   [https://go-zero.dev](https://go-zero.dev/cn/)
 
@@ -32,7 +32,7 @@
   * [基于prometheus的微服务指标监控](doc/metric.md)
   * [文本序列化和反序列化](doc/mapping.md)
   * [快速构建jwt鉴权认证](doc/jwt.md)
-
+  
 ## 3. 微信交流群
 
 <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/wechat.jpg" alt="wechat" width="300" />

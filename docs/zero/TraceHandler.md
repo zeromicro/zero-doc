@@ -9,10 +9,10 @@
 ## 代码结构
 
 
-- [spancontext](https://github.com/tal-tech/go-zero/blob/master/core/trace/spancontext.go)：保存链路的上下文信息「traceid，spanid，或者是其他想要传递的内容」
-- [span](https://github.com/tal-tech/go-zero/blob/master/core/trace/span.go)：链路中的一个操作，存储时间和某些信息
-- [propagator](https://github.com/tal-tech/go-zero/blob/master/core/trace/propagator.go)： `trace` 传播下游的操作「抽取，注入」
-- [noop](https://github.com/tal-tech/go-zero/blob/master/core/trace/noop.go)：实现了空的 `tracer` 实现
+- [spancontext](https://github.com/zeromicro/go-zero/blob/master/core/trace/spancontext.go)：保存链路的上下文信息「traceid，spanid，或者是其他想要传递的内容」
+- [span](https://github.com/zeromicro/go-zero/blob/master/core/trace/span.go)：链路中的一个操作，存储时间和某些信息
+- [propagator](https://github.com/zeromicro/go-zero/blob/master/core/trace/propagator.go)： `trace` 传播下游的操作「抽取，注入」
+- [noop](https://github.com/zeromicro/go-zero/blob/master/core/trace/noop.go)：实现了空的 `tracer` 实现
 
 
 
@@ -63,7 +63,7 @@ type Span struct {
 ## 实例应用
 
 
-在 `go-zero` 中http，rpc中已经作为内置中间件集成。我们以 [http](https://github.com/tal-tech/go-zero/blob/master/rest/handler/tracinghandler.go)，[rpc](https://github.com/tal-tech/go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go) 中，看看 `tracing` 是怎么使用的：
+在 `go-zero` 中http，rpc中已经作为内置中间件集成。我们以 [http](https://github.com/zeromicro/go-zero/blob/master/rest/handler/tracinghandler.go)，[rpc](https://github.com/zeromico/go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go) 中，看看 `tracing` 是怎么使用的：
 
 
 ### HTTP
@@ -195,7 +195,7 @@ func StartClientSpan(ctx context.Context, serviceName, operationName string) (co
 ## 参考
 
 
-- [go-zero trace](https://github.com/tal-tech/go-zero/tree/master/core/trace)
+- [go-zero trace](https://github.com/zeromicro/go-zero/tree/master/core/trace)
 - [https://zhuanlan.zhihu.com/p/34318538](https://zhuanlan.zhihu.com/p/34318538)
 
 

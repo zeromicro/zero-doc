@@ -1,3 +1,4 @@
+# DEPRECATED: PLEASE MOVE TO https://go-zero.dev
 ---
 home: true
 heroImage: /logo.png
