@@ -57,7 +57,7 @@ Done.
 ```
 
 
-> NOTE:关于api语法请查看[《api语法》](https://www.yuque.com/tal-tech/go-zero/ze9i30)
+> NOTE:关于api语法请查看[《api语法》](https://www.yuque.com/zeromicro/go-zero/ze9i30)
 
 
 

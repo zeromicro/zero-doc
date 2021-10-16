@@ -1,0 +1,35 @@
+# Project Development
+> [!TIP]
+> This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc-contibute.md)
+
+In the previous chapters, we have introduced go-zero from the dimensions of some concepts, backgrounds, and quick start. Seeing this, I believe you already have some understanding of go-zero.
+From here, we will start to explain the entire process from environment preparation to service deployment. In order to ensure that everyone can thoroughly understand the go-zero development process, then prepare your patience and move on.
+In the chapters, the following subsections will be included:
+* [Prepare](prepare.md)
+* [Golang Installation](golang-install.md)
+* [Go Module Configuration](gomod-config.md)
+* [Goctl Installation](goctl-install.md)
+* [protoc & protoc-gen-go Installation](protoc-install.md)
+* [More](prepare-other.md)
+* [Development Rules](dev-specification.md)
+  * [Naming Rules](naming-spec.md)
+  * [Route Rules](route-naming-spec.md)
+  * [Coding Rules](coding-spec.md)
+* [Development Flow](dev-flow.md)
+* [Configuration Introduction](config-introduction.md)
+  * [API Configuration](api-config.md)
+  * [RPC Configuration](rpc-config.md)
+* [Business Development](business-dev.md)
+  * [Directory Structure](service-design.md)
+  * [Model Generation](model-gen.md)
+  * [API Coding](api-coding.md)
+  * [Business Coding](business-coding.md)
+  * [JWT](jwt.md)
+  * [Middleware](middleware.md)
+  * [RPC Implement & Call](rpc-call.md)
+  * [Error Handling](error-handle.md)
+* [CI/CD](ci-cd.md)
+* [Service Deployment](service-deployment.md)
+* [Log Collection](log-collection.md)
+* [Trace](trace.md)
+* [Monitor](service-monitor.md)

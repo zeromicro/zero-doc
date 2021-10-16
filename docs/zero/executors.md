@@ -340,7 +340,7 @@ func (pe *PeriodicalExecutor) Wait() {
 
 
 
-- 在分析 `confirmChan` 发现，在此次[提交](https://github.com/tal-tech/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4)才出现，为什么会这么设计？
+- 在分析 `confirmChan` 发现，在此次[提交](https://github.com/zeromicro/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4)才出现，为什么会这么设计？
 
 
 

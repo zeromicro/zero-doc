@@ -156,7 +156,7 @@ return allowed
 ## 参考
 
 
-- [go-zero tokenlimit](https://github.com/tal-tech/go-zero/blob/master/core/limit/tokenlimit.go)
+- [go-zero tokenlimit](https://github.com/zeromicro/go-zero/blob/master/core/limit/tokenlimit.go)
 - [Go-Redis 提供的分布式限流库](https://github.com/go-redis/redis_rate)
 
 <Vssue title="tokenLimit" />
