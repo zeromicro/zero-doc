@@ -9,7 +9,7 @@ but also improve the robustness of the code to avoid errors,
 and realize the uniformity of the code style for others to read, etc. 
 A series of articles will respectively introduce the use of tools in the go-zero framework and their implementation principles.
 
-## Bloom filter [bloom](https://github.com/tal-tech/go-zero/blob/master/core/bloom/bloom.go)
+## Bloom filter [bloom](https://github.com/zeromicro/go-zero/blob/master/core/bloom/bloom.go)
 When doing server development, I believe you have heard of Bloom filters, 
 you can judge whether a certain element is in the collection, 
 because there are certain misjudgments and delete complex problems, 

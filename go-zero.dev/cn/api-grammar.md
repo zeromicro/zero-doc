@@ -284,7 +284,7 @@ info(
 
 **语法定义**
 
-由于其和golang相似，因此不做详细说明，具体语法定义请在 [ApiParser.g4](https://github.com/tal-tech/go-zero/blob/master/tools/goctl/api/parser/g4/ApiParser.g4) 中查看typeSpec定义。
+由于其和golang相似，因此不做详细说明，具体语法定义请在 [ApiParser.g4](https://github.com/zeromicro/go-zero/blob/master/tools/goctl/api/parser/g4/ApiParser.g4) 中查看typeSpec定义。
 
 **语法说明**
 

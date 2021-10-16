@@ -5,7 +5,7 @@
 流数据处理在我们的日常工作中非常常见，举个例子，我们在业务开发中往往会记录许多业务日志，这些日志一般是先发送到 Kafka，然后再由 Job 消费 Kafaka 写到 elasticsearch，在进行日志流处理的过程中，往往还会对日志做一些处理，比如过滤无效的日志，做一些计算以及重新组合日志等等，示意图如下:
 ![fx_log.png](./resource/fx_log.png)
 ### 流处理工具fx
-[go-zero](https://github.com/tal-tech/go-zero) 是一个功能完备的微服务框架，框架中内置了很多非常实用的工具，其中就包含流数据处理工具[fx](https://github.com/tal-tech/go-zero/tree/master/core/fx) ，下面我们通过一个简单的例子来认识下该工具：
+[go-zero](https://github.com/zeromicro/go-zero) 是一个功能完备的微服务框架，框架中内置了很多非常实用的工具，其中就包含流数据处理工具[fx](https://github.com/zeromicro/go-zero/tree/master/core/fx) ，下面我们通过一个简单的例子来认识下该工具：
 ```go
 package main
 

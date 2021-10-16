@@ -142,7 +142,7 @@ In the practice of go-zero content, there are two solutions to this problem:
 
 * Increased memory cache: The memory cache is used to store data that may have a large amount of sudden access. Commonly used storage schemes use map data structure to store. 
   Map data storage is relatively simple to implement, but cache expiration processing needs to be increased
-  The timer comes out, another solution is through [Cache](https://github.com/tal-tech/go-zero/blob/master/core/collection/cache.go) in the go-zero library, It is specialized
+  The timer comes out, another solution is through [Cache](https://github.com/zeromicro/go-zero/blob/master/core/collection/cache.go) in the go-zero library, It is specialized
   Used for memory management.
 * Use biz redis and set a reasonable expiration time
 

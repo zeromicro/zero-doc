@@ -116,7 +116,7 @@ func ListByRangeTime(r redis.Redis, start, end time.Time) ([]*Content, error) {
 或者说不会再访问了，面对这种场景，如果我又该如何考虑缓存的设计呢？在go-zero内容实践中，有两种方案可以解决这种问题：
 
 * 增加内存缓存：通过内存缓存来存储当前可能突发访问量比较大的数据，常用的存储方案采用map数据结构来存储，map数据存储实现比较简单，但缓存过期处理则需要增加
-  定时器来出来，另一宗方案是通过go-zero库中的 [Cache](https://github.com/tal-tech/go-zero/blob/master/core/collection/cache.go) ，其是专门
+  定时器来出来，另一宗方案是通过go-zero库中的 [Cache](https://github.com/zeromicro/go-zero/blob/master/core/collection/cache.go) ，其是专门
   用于内存管理.
 * 采用biz redis,并设置合理的过期时间
 

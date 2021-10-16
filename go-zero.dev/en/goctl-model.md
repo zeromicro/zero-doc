@@ -261,7 +261,7 @@ OPTIONS:
       OPTIONS:
          --src value, -s value  the path or path globbing patterns of the ddl
          --dir value, -d value  the target dir
-         --style value          the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+         --style value          the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
          --cache, -c            generate code with cache [optional]
          --idea                 for idea plugin [optional]
       ```
@@ -286,7 +286,7 @@ OPTIONS:
          --table value, -t value  the table or table globbing patterns in the database
          --cache, -c              generate code with cache [optional]
          --dir value, -d value    the target dir
-         --style value            the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+         --style value            the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
          --idea                   for idea plugin [optional]
       ```
 

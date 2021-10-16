@@ -233,6 +233,6 @@ At the same time, there are many useful component tools in `go-zero`. Good use o
 
 
 ## Reference
-- [go-zero](https://github.com/tal-tech/go-zero)
+- [go-zero](https://github.com/zeromicro/go-zero)
 - [Java Stream](https://colobu.com/2016/03/02/Java-Stream/)
 - [Stream API in Java 8](https://mp.weixin.qq.com/s/xa98C-QUHRUK0BhWLzI3XQ)

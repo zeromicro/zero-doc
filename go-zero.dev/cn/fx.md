@@ -8,7 +8,7 @@
 
 ### 流处理工具fx
 
-[gozero](https://github.com/tal-tech/go-zero)是一个功能完备的微服务框架，框架中内置了很多非常实用的工具，其中就包含流数据处理工具[fx](https://github.com/tal-tech/go-zero/tree/master/core/fx)，下面我们通过一个简单的例子来认识下该工具：
+[gozero](https://github.com/zeromicro/go-zero)是一个功能完备的微服务框架，框架中内置了很多非常实用的工具，其中就包含流数据处理工具[fx](https://github.com/zeromicro/go-zero/tree/master/core/fx)，下面我们通过一个简单的例子来认识下该工具：
 
 ```go
 package main

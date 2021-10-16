@@ -27,7 +27,7 @@ module.exports = {
                 link: "/zero/",
             },
             {
-                text: "go-zero",link: "https://github.com/tal-tech/go-zero",
+                text: "go-zero",link: "https://github.com/zeromicro/go-zero",
             },
             {
                 text: "CDS",link: "https://github.com/tal-tech/cds",

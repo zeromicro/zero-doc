@@ -4,13 +4,13 @@
 
 那么通过什么手段来优化呢？我们首先想到的是通过并发来的方式来处理依赖，这样就能降低整个依赖的耗时，Go基础库中为我们提供了 [WaitGroup](https://golang.org/pkg/sync/#WaitGroup) 工具用来进行并发控制，但实际业务场景中多个依赖如果有一个出错我们期望能立即返回而不是等所有依赖都执行完再返回结果，而且WaitGroup中对变量的赋值往往需要加锁，每个依赖函数都需要添加Add和Done对于新手来说比较容易出错
 
-基于以上的背景，go-zero框架中为我们提供了并发处理工具[MapReduce](https://github.com/tal-tech/go-zero/blob/master/core/mr/mapreduce.go)，该工具开箱即用，不需要做什么初始化，我们通过下图看下使用MapReduce和没使用的耗时对比:
+基于以上的背景，go-zero框架中为我们提供了并发处理工具[MapReduce](https://github.com/zeromicro/go-zero/blob/master/core/mr/mapreduce.go)，该工具开箱即用，不需要做什么初始化，我们通过下图看下使用MapReduce和没使用的耗时对比:
 
 ![依赖耗时对比](https://gitee.com/kevwan/static/raw/master/doc/images/mr_time.png)
 
 相同的依赖，串行处理的话需要200ms，使用MapReduce后的耗时等于所有依赖中最大的耗时为100ms，可见MapReduce可以大大降低服务耗时，而且随着依赖的增加效果就会越明显，减少处理耗时的同时并不会增加服务器压力
 
-## 并发处理工具[MapReduce](https://github.com/tal-tech/go-zero/tree/master/core/mr)
+## 并发处理工具[MapReduce](https://github.com/zeromicro/go-zero/tree/master/core/mr)
 
 [MapReduce](https://zh.wikipedia.org/wiki/MapReduce)是Google提出的一个软件架构，用于大规模数据集的并行运算，go-zero中的MapReduce工具正是借鉴了这种架构思想  
 

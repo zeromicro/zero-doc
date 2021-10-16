@@ -117,7 +117,7 @@ end
 ## 参考
 
 
-- [go-zero periodlimit](https://github.com/tal-tech/go-zero/blob/master/core/limit/periodlimit.go)
+- [go-zero periodlimit](https://github.com/zeromicro/go-zero/blob/master/core/limit/periodlimit.go)
 - [分布式服务限流实战，已经为你排好坑了](https://www.infoq.cn/article/Qg2tX8fyw5Vt-f3HH673)
 - [tokenlimit](tokenlimit.md)
 

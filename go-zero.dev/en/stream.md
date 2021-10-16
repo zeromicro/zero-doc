@@ -7,7 +7,7 @@ Stream processing is a computer programming paradigm that allows given a data se
 Streaming data processing is very common in our daily work. For example, we often record many business logs in business development. These logs are usually sent to Kafka first, and then written to elasticsearch by the Job consumption Kafka, and the logs are in progress. In the process of stream processing, logs are often processed, such as filtering invalid logs, doing some calculations and recombining logs, etc. The schematic diagram is as follows:
 ![fx_log.png](./resource/fx_log.png)
 ### fx
-[go-zero](https://github.com/tal-tech/go-zero) is a full-featured microservice framework. There are many very useful tools built in the framework, including streaming data processing tools [fx ](https://github.com/tal-tech/go-zero/tree/master/core/fx), let’s use a simple example to understand the tool:
+[go-zero](https://github.com/zeromicro/go-zero) is a full-featured microservice framework. There are many very useful tools built in the framework, including streaming data processing tools [fx ](https://github.com/zeromicro/go-zero/tree/master/core/fx), let’s use a simple example to understand the tool:
 ```go
 package main
 

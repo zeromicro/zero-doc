@@ -306,7 +306,7 @@ func (pe *PeriodicalExecutor) Wait() {
 > [!TIP]
 > `go test` 存在竞态，使用加锁来避免这种情况
 
-- 在分析 `confirmChan` 时发现，`confirmChan` 在此次[提交](https://github.com/tal-tech/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4)才出现，为什么会这么设计？
+- 在分析 `confirmChan` 时发现，`confirmChan` 在此次[提交](https://github.com/zeromicro/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4)才出现，为什么会这么设计？
 
 > 之前是：`wg.Add(1)` 是写在 `executeTasks()` ；现在是：先`wg.Add(1)`，再放开 `confirmChan` 阻塞
 > 如果 `executor func` 执行阻塞，`Add task` 还在进行，因为没有阻塞，可能很快执行到 `Executor.Wait()`，这时就会出现 `wg.Wait()` 在 `wg.Add()` 前执行，这会 `panic`

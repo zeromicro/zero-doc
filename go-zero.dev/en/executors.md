@@ -308,7 +308,7 @@ In looking at the source code, I thought about some other design ideas, do you h
 > [!TIP]
 > There is a race condition in `go test`, use locking to avoid this situation
 
-- After analyzing `confirmChan`, it was found that this [submit](https://github.com/tal-tech/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4) only appeared, why is it designed like this?
+- After analyzing `confirmChan`, it was found that this [submit](https://github.com/zeromicro/go-zero/commit/9d9399ad1014c171cc9bd9c87f78b5d2ac238ce4) only appeared, why is it designed like this?
 
 > It used to be: `wg.Add(1)` was written in `executeTasks()`; now it is: first `wg.Add(1)`, then release `confirmChan` blocking
 > If the execution of `executor func` is blocked, `Add task` is still in progress, because there is no block, it may be executed to `Executor.Wait()` soon, and this is where `wg.Wait()` appears in `wg.Add ()` before execution, this will be `panic`

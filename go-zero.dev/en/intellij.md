@@ -4,7 +4,7 @@
 
 ## Go-Zero Plugin
 
-[<img src="https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github" alt="go-zero"/>](https://github.com/tal-tech/go-zero)
+[<img src="https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github" alt="go-zero"/>](https://github.com/zeromicro/go-zero)
 [<img src="https://img.shields.io/badge/License-MIT-blue" alt="license"/>](https://github.com/zeromicro/goctl-intellij/blob/main/LICENSE)
 [<img src="https://img.shields.io/badge/Release-0.7.14-red" alt="release"/>](https://github.com/zeromicro/goctl-intellij/releases)
 [<img src="https://github.com/zeromicro/goctl-intellij/workflows/Java%20CI%20with%20Gradle/badge.svg" alt="Java CI with Gradle" />](https://github.com/zeromicro/goctl-intellij/actions)

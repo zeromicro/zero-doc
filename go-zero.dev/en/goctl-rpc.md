@@ -134,7 +134,7 @@ OPTIONS:
    --src value, -s value         the file path of the proto source file
    --proto_path value, -I value  native command of protoc, specify the directory in which to search for imports. [optional]
    --dir value, -d value         the target path of the code
-   --style value                 the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value                 the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
    --idea                        whether the command execution environment is from idea plugin. [optional]
 ```
 
@@ -143,7 +143,7 @@ OPTIONS:
 * --src: required, the proto data source, currently supports the generation of a single proto file
 * --proto_path: optional. The protoc native subcommand is used to specify where to find proto import. You can specify multiple paths, such as `goctl rpc -I={path1} -I={path2} ...`, in You can leave it blank when there is no import. The current proto path does not need to be specified, it is already built-in. For the detailed usage of `-I`, please refer to `protoc -h`
 * --dir: optional, the default is the directory where the proto file is located, the target directory of the generated code
-* --style value                 the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+* --style value                 the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
 * --idea: optional, whether it is executed in the idea plug-in, terminal execution can be ignored
 
 
