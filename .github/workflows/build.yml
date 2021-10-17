@@ -12,18 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: echo pwd
-        run: export wd=${PWD} && echo $wd
-      - name: echo work dir
-        run: echo ${wd}
       - name: checkout code
         uses: actions/checkout@v2
       - name: chmod contributor tool
-        run: chmod +x ${wd}/.github/workflows/contributor-tool
+        run: chmod +x ${{ github.workspace }}/.github/workflows/contributor-tool
       - name: get latest contributors(cn)
-        run: ${wd}/.github/workflows/contributor-tool -f contributor -l zh -o ${wd}/go-zero.dev/cn/contributor.md
+        run: ${{ github.workspace }}/.github/workflows/contributor-tool -f contributor -l zh -o ${{ github.workspace }}/go-zero.dev/cn/contributor.md
       - name: get latest contributors(en)
-        run: ${wd}/.github/workflows/contributor-tool -f contributor -l en -o ${wd}/go-zero.dev/en/contributor.md
+        run: ${{ github.workspace }}/.github/workflows/contributor-tool -f contributor -l en -o ${{ github.workspace }}/go-zero.dev/en/contributor.md
       - name: use node.js
         uses: actions/setup-node@v1
         with:
@@ -35,13 +31,13 @@ jobs:
       - name: gitbook install
         run: gitbook install
       - name: build
-        run: cd ${wd}/go-zero.dev && gitbook build
+        run: cd ${{ github.workspace }}/go-zero.dev && gitbook build
       - name: delete original index
-        run: rm -f ${wd}/go-zero.dev/_book/index.html
+        run: rm -f ${{ github.workspace }}/go-zero.dev/_book/index.html
       - name: build index
-        run: ${wd}/.github/workflows/contributor-tool -i  ${wd}/go-zero.dev/_book/index.html
+        run: ${{ github.workspace }}/.github/workflows/contributor-tool -i  ${{ github.workspace }}/go-zero.dev/_book/index.html
       - name: chmod
-        run: chmod +x ${wd}/.github/workflows/build.sh
+        run: chmod +x ${{ github.workspace }}/.github/workflows/build.sh
       - name: publish
-        run: ${wd}/.github/workflows/build.sh ${{ secrets.ACCESSTOKEN }}
+        run: ${{ github.workspace }}/.github/workflows/build.sh ${{ secrets.ACCESSTOKEN }}
         shell: bash
