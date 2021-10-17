@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo pwd
-        run: echo pwd
+        run: pwd
       - name: enter work dir
         run: cd go-zero.dev
       - name: checkout code
