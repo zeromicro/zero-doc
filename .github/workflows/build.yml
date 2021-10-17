@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: echo pwd
         run: pwd
+      - name: list
+        run: ls
       - name: enter work dir
         run: cd ./go-zero.dev
       - name: checkout code
