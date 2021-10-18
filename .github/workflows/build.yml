@@ -1,4 +1,4 @@
-# 当main有代码提交或者有pr时，自动build gitbook，并覆盖git@github.com:zeromicro/go-zero.git仓库中内容
+# 当main有代码提交或者有pr时，自动build gitbook，并覆盖git@github.com:zeromicro/go-zero-pages.git仓库中内容
 # 以实现自动发布文档
 
 name: Document Build
