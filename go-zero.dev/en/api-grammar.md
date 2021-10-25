@@ -385,6 +385,9 @@ type Foo{
   <tr>
   <td>form</td> <td>Mark that the request body is a form (in the POST method) or a query (in the GET method)<code>/search?name=keyword</code>)</td> <td>go-zero</td> <td>request</td> <td><code>form:"name"</code></td>
   </tr>
+  <tr>
+  <td>header</td> <td>Parse values from HTTP headers, like <code>Name: value</code></td> <td>go-zero</td> <td>request</td> <td><code>header:"name"</code></td>
+  </tr>
   </table>
 * tag modifier
 
