@@ -378,6 +378,9 @@ type Foo{
   <tr>
   <td>form</td> <td>标志请求体是一个form（POST方法时）或者一个query(GET方法时<code>/search?name=keyword</code>)</td> <td>go-zero</td> <td>request</td> <td><code>form:"name"</code></td>
   </tr>
+  <tr>
+  <td>header</td> <td>HTTP header，如 <code>Name: value</code></td> <td>go-zero</td> <td>request</td> <td><code>header:"name"</code></td>
+  </tr>
   </table>
 * tag修饰符
 
