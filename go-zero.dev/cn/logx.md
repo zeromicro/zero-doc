@@ -47,7 +47,7 @@ const (
 	InfoLevel = iota
 	// 打印 errors, slows, stacks 日志
 	ErrorLevel
-	// 仅打印 server 级别日志
+	// 仅打印 severe 级别日志
 	SevereLevel
 )
 ```
