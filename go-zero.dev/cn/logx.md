@@ -30,9 +30,10 @@ logx.MustSetUp(c)
 
 ## Level
 logx 支持的打印日志级别有：
+- alert
 - info
 - error
-- server
+- severe
 - fatal
 - slow
 - stat
@@ -43,7 +44,7 @@ logx 支持的打印日志级别有：
 ```go
 const (
 	// 打印所有级别的日志
-	InfoLevel = iotas
+	InfoLevel = iota
 	// 打印 errors, slows, stacks 日志
 	ErrorLevel
 	// 仅打印 server 级别日志
