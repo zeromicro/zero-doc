@@ -1,6 +1,6 @@
 <img align="right" width="150px" src="https://raw.githubusercontent.com/tal-tech/zero-doc/main/doc/images/go-zero.png">
 
-# go-zero
+# go-zero ![GitHub Repo stars](https://img.shields.io/github/stars/tal-tech/go-zero?style=social) ![GitHub forks](https://img.shields.io/github/forks/tal-tech/go-zero?style=social)
 
 [![Go](https://github.com/zeromicro/go-zero/workflows/Go/badge.svg?branch=master)](https://github.com/zeromicro/go-zero/actions)
 [![codecov](https://codecov.io/gh/zeromicro/go-zero/branch/master/graph/badge.svg)](https://codecov.io/gh/zeromicro/go-zero)
