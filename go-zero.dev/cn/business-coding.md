@@ -81,7 +81,7 @@ func (l *LoginLogic) Login(req types.LoginReq) (*types.LoginReply, error) {
         return nil, errors.New("参数错误")
     }
     
-    userInfo, err := l.svcCtx.UserModel.FindOneByNumber(req.Username)
+    userInfo, err := l.svcCtx.UserModel.FindOneByName(req.Username)
     switch err {
     case nil:
     case model.ErrNotFound:
@@ -104,7 +104,7 @@ func (l *LoginLogic) Login(req types.LoginReq) (*types.LoginReply, error) {
     // ---end---
     
     return &types.LoginReply{
-        Id:           userInfo.Id,
+        Id:           userInfo.ID,
         Name:         userInfo.Name,
         Gender:       userInfo.Gender,
         AccessToken:  jwtToken,
