@@ -488,6 +488,9 @@ When modifying the service
 <tr>
 <td>middleware</td><td>Declare that the current service needs to open the middleware</td><td><code>middleware: AuthMiddleware</code></td>
 </tr>
+<tr>
+<td>prefix</td><td>Declare a route prefix</td><td><code>prefix: /api</code></td>
+</tr>
 </table>
 
 When modifying the route
@@ -510,6 +513,7 @@ eg1：Irregular writing
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
+  prefix: /api
 )
 service foo-api{
   @doc(
@@ -537,6 +541,7 @@ eg2：Standard writing (recommended)
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
+  prefix: /api
 )
 service foo-api{
   @doc "foo"

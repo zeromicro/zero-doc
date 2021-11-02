@@ -482,6 +482,10 @@ path：api请求路径，必须以'/'或者'/:'开头，切不能以'/'结尾，
 <tr>
 <td>middleware</td><td>声明当前service需要开启中间件</td><td><code>middleware: AuthMiddleware</code></td>
 </tr>
+
+<tr>
+<td>prefix</td><td>添加路由分组</td><td><code>prefix: /api</code></td>
+</tr>
 </table>
 
 修饰route时
@@ -504,6 +508,7 @@ eg1：不规范写法
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
+  prefix /api
 )
 service foo-api{
   @doc(
@@ -531,6 +536,7 @@ eg2：规范写法（推荐）
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
+  prefix: /api
 )
 service foo-api{
   @doc "foo"
