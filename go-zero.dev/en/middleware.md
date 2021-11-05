@@ -19,9 +19,9 @@ Here we take the `search` service as an example to demonstrate the use of middle
     ```
     ```text
     type SearchReq struct {}
-  
+    
     type SearchReply struct {}
-  
+    
     @server(
         jwt: Auth
         middleware: Example // Routing middleware declaration
@@ -56,7 +56,7 @@ Here we take the `search` service as an example to demonstrate the use of middle
         Config config.Config
         Example rest.Middleware
     }
-
+    
     func NewServiceContext(c config.Config) *ServiceContext {
         return &ServiceContext{
             Config: c,
@@ -72,7 +72,7 @@ Here we take the `search` service as an example to demonstrate the use of middle
     ```
     ```go
     package middleware
-
+  
     import "net/http"
     
     type ExampleMiddleware struct {
@@ -125,3 +125,36 @@ func main() {
 ```text
 {"@timestamp":"2021-02-09T11:50:15.388+08","level":"info","content":"global middleware"}
 ```
+
+### Call another service within the middleware
+
+Pass another service into the middleware by closure, example as below:
+
+```go
+// simulated another service
+type AnotherService struct{}
+
+func (s *AnotherService) GetToken() string {
+	return stringx.Rand()
+}
+
+// regular middleware
+func middleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("X-Middleware", "static-middleware")
+		next(w, r)
+	}
+}
+
+// the middleware that calls another service
+func middlewareWithAnotherService(s *AnotherService) rest.Middleware {
+	return func(next http.HandlerFunc) http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("X-Middleware", s.GetToken())
+			next(w, r)
+		}
+	}
+}
+```
+
+For full example, see: [https://github.com/zeromicro/zero-examples/tree/main/http/middleware](https://github.com/zeromicro/zero-examples/tree/main/http/middleware)

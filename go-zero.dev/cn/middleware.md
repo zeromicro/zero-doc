@@ -16,9 +16,9 @@
     ```
     ```text
     type SearchReq struct {}
-  
+    
     type SearchReply struct {}
-  
+    
     @server(
         jwt: Auth
         middleware: Example // 路由中间件声明
@@ -53,7 +53,7 @@
         Config config.Config
         Example rest.Middleware
     }
-
+    
     func NewServiceContext(c config.Config) *ServiceContext {
         return &ServiceContext{
             Config: c,
@@ -69,7 +69,7 @@
     ```
     ```go
     package middleware
-
+    
     import "net/http"
     
     type ExampleMiddleware struct {
@@ -122,3 +122,37 @@ func main() {
 ```text
 {"@timestamp":"2021-02-09T11:50:15.388+08","level":"info","content":"global middleware"}
 ```
+
+### 在中间件里调用其它服务
+
+通过闭包的方式把其它服务传递给中间件，示例如下：
+
+```go
+// 模拟的其它服务
+type AnotherService struct{}
+
+func (s *AnotherService) GetToken() string {
+	return stringx.Rand()
+}
+
+// 常规中间件
+func middleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("X-Middleware", "static-middleware")
+		next(w, r)
+	}
+}
+
+// 调用其它服务的中间件
+func middlewareWithAnotherService(s *AnotherService) rest.Middleware {
+	return func(next http.HandlerFunc) http.HandlerFunc {
+		return func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("X-Middleware", s.GetToken())
+			next(w, r)
+		}
+	}
+}
+```
+
+完整代码参考：[https://github.com/zeromicro/zero-examples/tree/main/http/middleware](https://github.com/zeromicro/zero-examples/tree/main/http/middleware)
+
