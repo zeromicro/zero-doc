@@ -8,6 +8,7 @@
 ## 创建greet服务
 ```shell
 $ cd ~/go-zero-demo
+$ go mod init go-zero-demo
 $ goctl api new greet
 Done.
 ```
