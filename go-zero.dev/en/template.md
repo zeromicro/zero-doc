@@ -66,9 +66,12 @@ import (
 	"net/http"
 	"greet/response"// ①
 
+	{% raw %}
 	{{.ImportPackages}}
+	{% endraw %}
 )
 
+{% raw %}
 func {{.HandlerName}}(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		{{if .HasRequest}}var req types.{{.RequestType}}
@@ -83,6 +86,7 @@ func {{.HandlerName}}(ctx *svc.ServiceContext) http.HandlerFunc {
 			
 	}
 }
+{% endraw %}
 ```
 
 ① Replace with your real `response` package name, for reference only
