@@ -105,7 +105,7 @@ func (tw *TimingWheel) run() {
 ```
 
 
-可以看出，在初始化的时候就开始了 `timer` 执行，并以`internal`时间段转动，然后底层不停的获取来自 `slot` 中的  `list` 的task，交给 `execute` 执行。
+可以看出，在初始化的时候就开始了 `timer` 执行，并以`interval`时间段转动，然后底层不停的获取来自 `slot` 中的  `list` 的task，交给 `execute` 执行。
 
 
 ![3bbddc1ebb79455da91dfcf3da6bc72f~tplv-k3u1fbpfcp-zoom-1.image.png](./resource/3bbddc1ebb79455da91dfcf3da6bc72f_tplv-k3u1fbpfcp-zoom-1.image.png)
@@ -204,7 +204,7 @@ func (tw *TimingWheel) moveTask(task baseEntry) {
 以上过程有以下几种情况：
 
 
-- `delay < internal`：因为 < 单个时间精度，表示这个任务已经过期，需要马上执行
+- `delay < interval`：因为 < 单个时间精度，表示这个任务已经过期，需要马上执行
 - 针对改变的 `delay`：
     - `new >= old`：`<newPos, newCircle, diff>`
     - `newCircle > 0`：计算diff，并将 circle 转换为 下一层，故diff + numslots
@@ -219,7 +219,7 @@ func (tw *TimingWheel) moveTask(task baseEntry) {
 
 
 ```go
-// 定时器 「每隔 internal 会执行一次」
+// 定时器 「每隔 interval 会执行一次」
 func (tw *TimingWheel) onTick() {
   // 每次执行更新一下当前执行 tick 位置
 	tw.tickedPos = (tw.tickedPos + 1) % tw.numSlots
