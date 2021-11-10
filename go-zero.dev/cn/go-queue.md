@@ -290,7 +290,7 @@
   	go func() {
   		for {
   			s := <-ch
-  			logx.Info("get a signal %s", s.String())
+  			logx.Infof("get a signal %s", s.String())
   			switch s {
   			case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
   				fmt.Printf("stop group")
