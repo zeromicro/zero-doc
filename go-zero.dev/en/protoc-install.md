@@ -30,11 +30,6 @@ Demonstration environment of this document
     libprotoc 3.14.0
     ```
 ## protoc-gen-* installation
-With goctl versions greater than 1.2.1, there is no need to install the `protoc-gen-go` plugin, because after that version, goctl has been implemented as a plugin for `protoc`, and goctl will automatically
-create a symbolic link `protoc-gen-goctl` to `goctl`, which will generate pb.go according to the following logic.
-1. check if the `protoc-gen-goctl` plug-in exists in the environment variable, if so, skip to step 3
-2. detect the existence of `protoc-gen-go` plugin in the environment variable, if not, the generation process is finished
-3. generate pb.go based on the detected plugins
 
 > [!TIPS]
 >

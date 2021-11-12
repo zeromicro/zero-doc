@@ -29,17 +29,6 @@ protoc是一款用C++编写的工具，其可以将proto文件翻译为指定语
     ```
   
 ## protoc-gen-*安装
-在goctl版本大于1.2.1时，则不需要安装 `protoc-gen-go` 插件了，因为在该版本以后，goctl已经实现了作为 `protoc` 的插件了，goctl在指定 `goctl xxx` 命令时会自动
-将 `goctl` 创建一个符号链接 `protoc-gen-goctl` ，在生成pb.go时会按照如下逻辑生成：
-1. 检测环境变量中是否存在 `protoc-gen-goctl` 插件，如果是，则跳转到第3步
-2. 检测环境变量中是否存在 `protoc-gen-go` 插件，如果不存在，则生成流程结束
-3. 根据检测到的插件生成pb.go
-
-> [!TIPS]
-> 
-> Windows 在创建符号链接可能会报错， `A required privilege is not held by the client.`, 原因是在Windows下执行goctl需要"以管理员身份"运行。
-> 
-
 * 下载安装`protoc-gen-go`
 
   如果goctl 版本已经是1.2.1以后了，可以忽略此步骤。
