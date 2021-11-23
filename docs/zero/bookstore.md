@@ -591,7 +591,7 @@ ulimit -n 20000
 
 ```yaml
 Log:
-	Level: error
+  Level: error
 ```
 
 ![Benchmark](../../doc/images/bookstore-benchmark.png)
