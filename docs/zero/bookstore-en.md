@@ -1,4 +1,4 @@
-# Rapid development of microservices - multiple RPCs
+﻿# Rapid development of microservices - multiple RPCs
 
 English | [简体中文](bookstore.md)
 
@@ -506,7 +506,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
       // manual code start
-      _, err := l.svcCtx.Model.Insert(model.Book{
+      _, err := l.svcCtx.Model.Insert(&model.Book{
           Book:  in.Book,
           Price: in.Price,
       })

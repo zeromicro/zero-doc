@@ -1,4 +1,4 @@
-# 1.1 快速构建微服务-多RPC版
+﻿# 1.1 快速构建微服务-多RPC版
 
 [English](bookstore-en.md) | 简体中文
 
@@ -506,7 +506,7 @@
   ```go
   func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
       // 手动代码开始
-      _, err := l.svcCtx.Model.Insert(model.Book{
+      _, err := l.svcCtx.Model.Insert(&model.Book{
           Book:  in.Book,
           Price: in.Price,
       })
