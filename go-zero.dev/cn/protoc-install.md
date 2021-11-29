@@ -28,7 +28,7 @@ protoc是一款用C++编写的工具，其可以将proto文件翻译为指定语
     libprotoc 3.14.0
     ```
   
-## protoc-gen-*安装
+## protoc-gen-go 安装
 * 下载安装`protoc-gen-go`
 
   如果goctl 版本已经是1.2.1以后了，可以忽略此步骤。
@@ -41,5 +41,5 @@ protoc是一款用C++编写的工具，其可以将proto文件翻译为指定语
     ```
 * 将protoc-gen-go移动到被添加环境变量的任意path下，如`$GOPATH/bin`，由于`go get`后的二进制本身就在`$GOPATH/bin`目录中，因此只要确保你的`$GOPATH/bin`在环境变量即可。
 
-> **[!WARNING]
+> [!WARNING]
 > protoc-gen-go安装失败请阅读[常见错误处理](error.md)
