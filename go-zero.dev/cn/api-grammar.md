@@ -308,7 +308,7 @@ type Bar struct{
 type(
     // 非导出型结构体
     fooBar struct{
-        FooBar int
+        FooBar int `json:"fooBar"`
     }
 )
 ```
@@ -327,7 +327,7 @@ type Bar{
 
 type(
     FooBar{
-        FooBar int
+        FooBar int `json:"fooBar"`
     }
 )
 ```
@@ -341,7 +341,7 @@ type Gender int // 不支持
 
 // 非struct token
 type Foo structure{ 
-  CreateTime time.Time // 不支持time.Time
+  CreateTime time.Time // 不支持time.Time，且没有声明 tag
 }
 
 // golang关键字 var
@@ -349,13 +349,13 @@ type var{}
 
 type Foo{
   // golang关键字 interface
-  Foo interface 
+  Foo interface  // 没有声明 tag
 }
 
 
 type Foo{
   foo int 
-  // map key必须要golang内置数据类型
+  // map key必须要golang内置数据类型，且没有声明 tag
   m map[Bar]string
 }
 ```
