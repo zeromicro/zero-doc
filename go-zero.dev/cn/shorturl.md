@@ -65,6 +65,7 @@
   ```shell
   go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
   ```
+  
 * 安装 `protoc`
   ``` shell
   wget https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protoc-3.14.0-linux-x86_64.zip
@@ -80,7 +81,9 @@
 
 * 创建工作目录 `shorturl` 和 `shorturl/api`
 
-`mkdir -p shorturl/api`
+  ```
+  mkdir -p shorturl/api
+  ```
 
 * 在 `shorturl` 目录下执行 `go mod init shorturl` 初始化 `go.mod`
 
