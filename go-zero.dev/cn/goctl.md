@@ -45,7 +45,11 @@ goctl version 1.1.5 darwin/amd64
 ### 方式一（go get）
 
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+# Go 1.15 及之前版本
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl@cli
+
+# Go 1.16 及以后版本
+GOPROXY=https://goproxy.cn/,direct go install github.com/tal-tech/go-zero/tools/goctl@cli
 ```
 
 通过此命令可以将goctl工具安装到 `$GOPATH/bin` 目录下
