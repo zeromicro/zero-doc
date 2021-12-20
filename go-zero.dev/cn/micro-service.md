@@ -222,7 +222,7 @@ $ mkdir mall && cd mall
       Etcd:
         Hosts:
         - 127.0.0.1:2379
-      Key: user.rpc
+        Key: user.rpc
     ```
 * 完善服务依赖
 
