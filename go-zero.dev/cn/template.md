@@ -18,14 +18,14 @@
 我们提前在`module`为`greet`的工程下的`response`包中写一个`Response`方法，目录树类似如下：
 ```text
 greet
-├── reponse
+├── response
 │   └── response.go
 └── xxx...
 ```
 
 代码如下
 ```go
-package reponse
+package response
 
 import (
 	"net/http"
@@ -79,7 +79,7 @@ func {{.HandlerName}}(ctx *svc.ServiceContext) http.HandlerFunc {
 
 		l := logic.New{{.LogicType}}(r.Context(), ctx)
 		{{if .HasResp}}resp, {{end}}err := l.{{.Call}}({{if .HasRequest}}req{{end}})
-		{{if .HasResp}}reponse.Response(w, resp, err){{else}}reponse.Response(w, nil, err){{end}}//②
+		{{if .HasResp}}response.Response(w, resp, err){{else}}response.Response(w, nil, err){{end}}//②
 			
 	}
 }
@@ -128,7 +128,7 @@ func GreetHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 
 		l := logic.NewGreetLogic(r.Context(), ctx)
 		resp, err := l.Greet(req)
-		reponse.Response(w, resp, err)
+		response.Response(w, resp, err)
 	}
 }
 ```
