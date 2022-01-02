@@ -66,7 +66,7 @@
 * 安装goctl工具
 
   ```shell
-  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl@cli
+  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl@latest
   ```
 
 * 创建工作目录 `bookstore` 和 `bookstore/api`

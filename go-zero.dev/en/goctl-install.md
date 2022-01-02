@@ -11,10 +11,10 @@ Here we strongly recommend that you install it, because most of the follow-up de
 * download&install
     ```shell
     # Go 1.15 及之前版本
-    GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl@cli
+    GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl@latest
 
     # Go 1.16 及以后版本
-    go install github.com/tal-tech/go-zero/tools/goctl@cli
+    go install github.com/tal-tech/go-zero/tools/goctl@latest
     ```
 * Environmental variable detection
 
