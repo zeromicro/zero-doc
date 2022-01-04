@@ -156,8 +156,8 @@ $ mkdir mall && cd mall
 * 修改目录文件
     
     ```shell
-    $ cd ~/go-zero-demo/mall/rpc
-    $ mkdir userclient && mv /user/user.go /userclient 
+    $ cd ~/go-zero-demo/mall/user/rpc
+    $ mkdir userclient && mv user/user.go /userclient 
     ```
 
 ## 创建order api服务
@@ -234,7 +234,7 @@ $ mkdir mall && cd mall
 
     import (
         "go-zero-demo/mall/order/api/internal/config"
-        "go-zero-demo/mall/user/rpc/userclient"
+        userclient "go-zero-demo/mall/user/rpc/userclient"
 
         "github.com/tal-tech/go-zero/zrpc"
     )
