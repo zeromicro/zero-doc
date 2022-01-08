@@ -8,7 +8,7 @@
         <td>公众号二维码</td>
     </tr>
     <tr>
-        <td>微服务实战</td>
+        <td>微服务实践</td>
         <td><a href="https://github.com/kevwan">kevwan</a></td>
         <td><img src="https://zeromicro.github.io/go-zero-pages/resource/go-zero-practise.png" alt="微服务实践" width="300"/></td>
     </tr>
