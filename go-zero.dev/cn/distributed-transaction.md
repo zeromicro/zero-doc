@@ -10,9 +10,9 @@
 面对这些本地事务无法解决的场景，我们需要分布式事务的解决方案，保证跨服务、跨数据库更新数据的一致性。
 
 ## 解决方案
-go-zero与[dtm](https://github.com/yedf/dtm)强强联合，推出了在go-zero中无缝接入dtm的极简方案，是go生态中首家提供分布式事务能力的微服务框架。该方案具备以下特征：
+go-zero与[dtm](https://github.com/dtm-labs/dtm)强强联合，推出了在go-zero中无缝接入dtm的极简方案，是go生态中首家提供分布式事务能力的微服务框架。该方案具备以下特征：
 * dtm服务可以通过配置，直接注册到go-zero的注册中心
 * go-zero能够以内建的target格式访问dtm服务器
 * dtm能够识别go-zero的target格式，动态访问go-zero中的服务
 
-详细的接入方式，参见[dtm文档：go-zero支持](https://dtm.pub/protocol/gozero.html)
+详细的接入方式，参见dtm文档：[go-zero支持](https://dtm.pub/ref/gozero.html)
