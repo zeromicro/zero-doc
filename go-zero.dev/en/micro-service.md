@@ -31,7 +31,7 @@ two services to initially implement this small demo.
 
 ## Create mall project
 ```shell
-$ cd ~/go-zero-demo
+$ cd ~/go-zero-demo && go mod init go-zero-demo
 $ mkdir mall && cd mall
 ```
 
@@ -40,7 +40,7 @@ $ mkdir mall && cd mall
 * new user rpc
     ```shell
     $ cd ~/go-zero-demo/mall
-    $ mkdir -p user/rpc&&cd user/rpc  
+    $ mkdir -p user/rpc && cd user/rpc
     ```
 
 * Add `user.proto` file, add `getUser` method
@@ -53,8 +53,8 @@ $ mkdir mall && cd mall
     syntax = "proto3";
 
     package user;
-    
-    option go_package = "user";
+    //If the installed version of protoc-gen-go is larger than 1.4.0, you have to add go_package to the proto file
+    option go_package = "./user";
   
     message IdRequest {
         string id = 1;
@@ -97,7 +97,7 @@ $ mkdir mall && cd mall
       
         "go-zero-demo/mall/user/internal/svc"
         "go-zero-demo/mall/user/user"
-    
+
         "github.com/tal-tech/go-zero/core/logx"
     )
     
@@ -122,7 +122,41 @@ $ mkdir mall && cd mall
         }, nil
     }
     ```
+* Modify the config file
 
+    ```shell
+    $ vim internal/config/config.go
+    ```
+    ```go
+	package config
+
+	import (
+		"github.com/tal-tech/go-zero/zrpc"
+	)
+
+	type Config struct {
+		zrpc.RpcServerConf
+	}
+    ```
+* Add user.yaml item
+
+    ```shell
+    $ vim etc/user.yaml 
+    ```
+    ```yaml
+    Name: user.rpc
+    ListenOn: 127.0.0.1:8080
+    Etcd:
+      Hosts:
+      - 127.0.0.1:2379
+      Key: user.rpc
+    ```
+* Modify the dir
+    
+    ```shell
+    $ cd ~/go-zero-demo/mall/rpc
+    $ mkdir userclient && mv /user/user.go /userclient 
+    ```
 ## Create order api service
 * Create an `order api` service
 

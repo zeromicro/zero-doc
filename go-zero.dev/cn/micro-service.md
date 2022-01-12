@@ -29,7 +29,7 @@
 
 ## 创建mall工程
 ```shell
-$ cd ~/go-zero-demo
+$ cd ~/go-zero-demo && go mod init go-zero-demo
 $ mkdir mall && cd mall
 ```
 
@@ -37,7 +37,7 @@ $ mkdir mall && cd mall
 
 * 创建user rpc服务
     ```shell
-    $ cd ~/go-zero-demo/mall
+    $ cd ~/go-zero-demo/mall 
     $ mkdir -p user/rpc && cd user/rpc  
     ```
 
@@ -52,7 +52,8 @@ $ mkdir mall && cd mall
 
     package user;
     
-    option go_package = "user";
+    //protoc-gen-go 版本大于1.4.0, proto文件需要加上go_package,否则无法生成
+    option go_package = "./user";
   
     message IdRequest {
         string id = 1;
@@ -75,6 +76,7 @@ $ mkdir mall && cd mall
 
     ```shell
     $ cd ~/go-zero-demo/mall/user/rpc
+    $ goctl rpc template -o user.proto
     $ goctl rpc proto -src user.proto -dir .
     [goclt version <=1.2.1] protoc  -I=/Users/xx/mall/user user.proto --goctl_out=plugins=grpc:/Users/xx/mall/user/user
     [goctl version > 1.2.1] protoc  -I=/Users/xx/mall/user user.proto --go_out=plugins=grpc:/Users/xx/mall/user/user
@@ -94,10 +96,10 @@ $ mkdir mall && cd mall
     import (
     	"context"
 
-	"go-zero-demo/mall/user/rpc/internal/svc"
-	"go-zero-demo/mall/user/rpc/user"
-
-	"github.com/tal-tech/go-zero/core/logx"
+	    "go-zero-demo/mall/user/rpc/internal/svc"
+	    "go-zero-demo/mall/user/rpc/user"
+        
+	    "github.com/tal-tech/go-zero/core/logx"
     )
     
     type GetUserLogic struct {
@@ -137,6 +139,25 @@ $ mkdir mall && cd mall
 	type Config struct {
 		zrpc.RpcServerConf
 	}
+    ```
+* 添加yaml配置
+
+    ```shell
+    $ vim etc/user.yaml 
+    ```
+    ```yaml
+    Name: user.rpc
+    ListenOn: 127.0.0.1:8080
+    Etcd:
+      Hosts:
+      - 127.0.0.1:2379
+      Key: user.rpc
+    ```
+* 修改目录文件
+    
+    ```shell
+    $ cd ~/go-zero-demo/mall/rpc
+    $ mkdir userclient && mv /user/user.go /userclient 
     ```
 
 ## 创建order api服务
@@ -203,33 +224,33 @@ $ mkdir mall && cd mall
         - 127.0.0.1:2379
         Key: user.rpc
     ```
-  * 完善服务依赖
+* 完善服务依赖
 
-      ```shell
-      $ vim internal/svc/servicecontext.go
-      ```
-      ```go
-      package svc
+    ```shell
+    $ vim internal/svc/servicecontext.go
+    ```
+    ```go
+    package svc
 
-      import (
-          "go-zero-demo/mall/order/api/internal/config"
-          "go-zero-demo/mall/user/rpc/userclient"
-  
-          "github.com/tal-tech/go-zero/zrpc"
-      )
-    
-      type ServiceContext struct {
-          Config  config.Config
-          UserRpc userclient.User
-      }
-    
-      func NewServiceContext(c config.Config) *ServiceContext {
-          return &ServiceContext{
-              Config:  c,
-              UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
-          }
-      }
-      ```
+    import (
+        "go-zero-demo/mall/order/api/internal/config"
+        "go-zero-demo/mall/user/rpc/userclient"
+
+        "github.com/tal-tech/go-zero/zrpc"
+    )
+
+    type ServiceContext struct {
+        Config  config.Config
+        UserRpc userclient.User
+    }
+
+    func NewServiceContext(c config.Config) *ServiceContext {
+        return &ServiceContext{
+            Config:  c,
+            UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+        }
+    }
+    ```
 
 * 添加order演示逻辑
   

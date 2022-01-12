@@ -86,8 +86,6 @@
   	group.Add(logic.NewProducerLogic(context.Background(),serverCtx))
   	group.Add(logic.NewConsumerLogic(context.Background(),serverCtx))
   
-  	group.Start()
-  
   }
   ```
 
@@ -289,26 +287,30 @@
   	//捕捉信号
   	ch := make(chan os.Signal)
   	signal.Notify(ch, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
-  	for {
-  		s := <-ch
-  		logx.Info("get a signal %s", s.String())
-  		switch s {
-  		case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
-  			fmt.Printf("stop group")
-  			group.Stop()
-  			logx.Info("job exit")
-  			time.Sleep(time.Second)
-  			return
-  		case syscall.SIGHUP:
-  		default:
-  			return
+  	go func() {
+  		for {
+  			s := <-ch
+  			logx.Infof("get a signal %s", s.String())
+  			switch s {
+  			case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
+  				fmt.Printf("stop group")
+  				group.Stop()
+  				logx.Info("job exit")
+  				time.Sleep(time.Second)
+  				return
+  			case syscall.SIGHUP:
+  			default:
+  				return
+  			}
   		}
   	}
+  	
+  	group.Start()
   }
   ```
 
   #### 常见问题：
 
-  为什么使用`dp`，需要使用`redis`？
+  为什么使用`dq`，需要使用`redis`？
 
-  - 因为`beanstalk`是单点服务，无法保证高可用。`dp`可以使用多个单点`beanstalk`服务，互相备份 & 保证高可用。使用`redis`解决重复消费问题。
+  - 因为`beanstalk`是单点服务，无法保证高可用。`dq`可以使用多个单点`beanstalk`服务，互相备份 & 保证高可用。使用`redis`解决重复消费问题。

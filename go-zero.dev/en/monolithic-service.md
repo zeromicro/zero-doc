@@ -11,6 +11,7 @@ It is not that every service must adopt the design of the microservice architect
 ## Create greet service
 ```shell
 $ cd ~/go-zero-demo
+$ go mod init go-zero-demo
 $ goctl api new greet
 Done.
 ```

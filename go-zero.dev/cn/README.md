@@ -142,7 +142,7 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 
    编写业务代码：
 
-    * api 文件定义了服务对外暴露的路由，可参考 [api 规范](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
+    * api 文件定义了服务对外暴露的路由，可参考 [api 规范](https://github.com/zeromicro/zero-doc/blob/main/go-zero.dev/cn/api-grammar.md)
     * 可以在 servicecontext.go 里面传递依赖给 logic，比如 mysql, redis 等
     * 在 api 定义的 get/post/put/delete 等请求对应的 logic 里增加业务处理逻辑
 
@@ -165,16 +165,6 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 * [API 文档](api-grammar.md)
 
 * [goctl 使用帮助](goctl.md)
-
-* 常见问题
-
-  * 因为 `etcd` 和 `grpc` 兼容性问题，请使用 `grpc@v1.29.1`
-
-    `google.golang.org/grpc v1.29.1`
-
-  * 因为 `protobuf` 兼容性问题，请使用 `protocol-gen@v1.3.2`
-
-    `go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2`
 
 * awesome 系列（更多文章见『微服务实践』公众号）
     * [快速构建高并发微服务](https://github.com/tal-tech/zero-doc/blob/main/doc/shorturl.md)
