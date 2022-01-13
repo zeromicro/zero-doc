@@ -76,7 +76,6 @@ $ mkdir mall && cd mall
 
     ```shell
     $ cd ~/go-zero-demo/mall/user/rpc
-    $ goctl rpc template -o user.proto
     $ goctl rpc proto -src user.proto -dir .
     [goclt version <=1.2.1] protoc  -I=/Users/xx/mall/user user.proto --goctl_out=plugins=grpc:/Users/xx/mall/user/user
     [goctl version > 1.2.1] protoc  -I=/Users/xx/mall/user user.proto --go_out=plugins=grpc:/Users/xx/mall/user/user
