@@ -1,0 +1,30 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.简介": {
+    "message": "Introduction",
+    "description": "The label for category 简介 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.快速开始": {
+    "message": "Quick Start",
+    "description": "The label for category 快速开始 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.构建工具": {
+    "message": "Build Tool",
+    "description": "The label for category 构建工具 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.框架组件": {
+    "message": "Components",
+    "description": "The label for category 框架组件 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.其他组件": {
+    "message": "Other Components",
+    "description": "The label for category 其他组件 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.问题汇总": {
+    "message": "Problems",
+    "description": "The label for category 问题汇总 in sidebar tutorialSidebar"
+  }
+}
