@@ -55,7 +55,7 @@ go-zero 的Pull request中的代码需要满足一定规范
 
 ## 文档贡献
 
-文档仓库[`go-zero.dev`](https://github.com/zeromicro/go-zero.dev)，使用[docusaurus](https://docusaurus.io)构建，文档变更合并主分支后会自动触发Github Actions进行自动部署。
+文档仓库[`go-zero.dev`](https://github.com/zeromicro/zero-doc/tree/main/website)，使用[docusaurus](https://docusaurus.io)构建，文档变更合并主分支后会自动触发Github Actions进行自动部署。
 
 ### 新增/修改文档
 首先fork文档仓库，并clone自己的仓库到本地，然后在docs目录中对应的子目录下新增修改文档，文档格式为Markdown，并支持一些扩展语法，具体支持的语法请参考[Docusaurus: Markdown Features](https://docusaurus.io/docs/markdown-features)
