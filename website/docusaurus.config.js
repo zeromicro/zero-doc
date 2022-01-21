@@ -9,7 +9,7 @@ const config = {
   title: 'go-zero',
   tagline: 'go-zero是一个集成了各种工程实践的web和rpc框架。通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验',
   url: 'https://zeromicro.github.io',
-  baseUrl: '/zero-doc/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/go-zero.svg',
