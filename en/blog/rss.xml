@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>go-zero Blog</title>
-        <link>https://zeromicro.github.io/zero-doc/en/blog</link>
+        <link>https://zeromicro.github.io/en/blog</link>
         <description>go-zero Blog</description>
         <lastBuildDate>Mon, 03 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[梦想总是要有的 - 工作20年程序员的2021年终总结]]></title>
-            <link>https://zeromicro.github.io/zero-doc/en/blog/梦想总是要有的 - 工作20年程序员的2021年终总结</link>
+            <link>https://zeromicro.github.io/en/blog/梦想总是要有的 - 工作20年程序员的2021年终总结</link>
             <guid>梦想总是要有的 - 工作20年程序员的2021年终总结</guid>
             <pubDate>Mon, 03 Jan 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[跌宕起伏的2021年快要过去了，今年对我来说经历的实在太多，提笔做个简单的总结吧。]]></description>

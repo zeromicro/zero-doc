@@ -4,8 +4,8 @@
   <ShortName>go-zero</ShortName>
   <Description>Search go-zero</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://zeromicro.github.io/zero-doc/img/go-zero.svg</Image>
-  <Url type="text/html" method="get" template="https://zeromicro.github.io/zero-doc/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://zeromicro.github.io/zero-doc/opensearch.xml" />
-  <moz:SearchForm>https://zeromicro.github.io/zero-doc/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://zeromicro.github.io/img/go-zero.svg</Image>
+  <Url type="text/html" method="get" template="https://zeromicro.github.io/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://zeromicro.github.io/opensearch.xml" />
+  <moz:SearchForm>https://zeromicro.github.io/</moz:SearchForm>
 </OpenSearchDescription>

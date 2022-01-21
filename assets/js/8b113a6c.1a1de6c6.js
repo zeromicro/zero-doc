@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktmp=self.webpackChunktmp||[]).push([[2905],{5655:function(e){e.exports=JSON.parse('{"allTagsPath":"/zero-doc/blog/tags","slug":"/zero-doc/blog/tags/dream","name":"dream","count":1,"permalink":"/zero-doc/blog/tags/dream"}')}}]);

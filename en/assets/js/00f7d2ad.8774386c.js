@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktmp=self.webpackChunktmp||[]).push([[5960],{3383:function(a){a.exports=JSON.parse('{"allTagsPath":"/en/blog/tags","slug":"/en/blog/tags/golang","name":"golang","count":1,"permalink":"/en/blog/tags/golang"}')}}]);

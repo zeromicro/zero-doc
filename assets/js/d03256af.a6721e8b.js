@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktmp=self.webpackChunktmp||[]).push([[2273],{1036:function(o){o.exports=JSON.parse('{"allTagsPath":"/zero-doc/blog/tags","slug":"/zero-doc/blog/tags/golang","name":"golang","count":1,"permalink":"/zero-doc/blog/tags/golang"}')}}]);
