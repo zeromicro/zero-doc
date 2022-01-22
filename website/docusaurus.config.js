@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'go-zero',
-  tagline: 'go-zero是一个集成了各种工程实践的web和rpc框架。通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验',
+  tagline: '缩短从需求到上线的距离',
   url: 'https://zeromicro.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
