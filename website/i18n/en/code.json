@@ -38,8 +38,8 @@
   "大量微服务治理和并发工具包": {
     "message": "Extensive microservice governance and concurrency toolkit"
   },
-  "go-zero是一个集成了各种工程实践的web和rpc框架。通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验": {
-    "message": "go-zero is a web and rpc framework with lots of builtin engineering practices. It’s born to ensure the stability of the busy services with resilience design, and has been serving sites with tens of millions users for years"
+  "缩短从需求到上线的距离": {
+    "message": "Shorten the distance from demand to online"
   },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
