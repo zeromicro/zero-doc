@@ -96,7 +96,7 @@ That is, Go Module is how Golang manages dependencies, similar to Maven in Java 
   
 ## Goctl installation
 
-Goctl has a great role in go-zero project development, it can effectively help developers to greatly improve development efficiency, reduce the error rate of the code, shorten the workload of business development, for more information about Goctl, please read [Goctl Introduction](goctl.md),
+Goctl has a great role in go-zero project development, it can effectively help developers to greatly improve development efficiency, reduce the error rate of the code, shorten the workload of business development,
 Here we highly recommend you to install it, because most of our subsequent demo examples will be demonstrated with goctl.
 
 ### Installation (mac&linux)
