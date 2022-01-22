@@ -23,6 +23,10 @@
     "message": "Other Components",
     "description": "The label for category 其他组件 in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.项目开发": {
+    "message": "Project",
+    "description": "The label for category 项目开发 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.框架生态": {
     "message": "Ecology",
     "description": "The label for category 框架生态 in sidebar tutorialSidebar"
