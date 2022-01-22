@@ -31,6 +31,10 @@
     "message": "Ecology",
     "description": "The label for category 框架生态 in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.扩展阅读": {
+    "message": "Extension",
+    "description": "The label for category 扩展阅读 in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.问题汇总": {
     "message": "Problems",
     "description": "The label for category 问题汇总 in sidebar tutorialSidebar"
