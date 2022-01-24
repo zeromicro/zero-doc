@@ -23,9 +23,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          editUrl: undefined,
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            if (locale !== 'en') {
+              return `https://github.com/zeromicro/zero-doc/tree/main/website/docs/${docPath}`;
+            }
+            return `https://github.com/zhoushuguang/zero-doc/tree/main/website/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`;
+          },
         },
         blog: {
           showReadingTime: true,
