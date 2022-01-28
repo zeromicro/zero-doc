@@ -4,6 +4,6 @@
 以下仅给出了需要的准备工作，不以文档篇幅作详细介绍了。
 
 ## 其他环境
-* [etcd](https://etcd.io/docs/current/rfc/v3api/)
+* [etcd](https://etcd.io/docs/v3.5/)
 * [redis](https://redis.io/)
 * [mysql](https://www.mysql.com/)
