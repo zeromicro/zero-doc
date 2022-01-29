@@ -82,7 +82,7 @@ $ mkdir mall && cd mall
     [goctl version > 1.2.1] protoc  -I=/Users/xx/mall/user user.proto --go_out=plugins=grpc:/Users/xx/mall/user/user
     Done.
     ```
-> [!TIPS]
+> [!TIP]
 > 如果安装的 `protoc-gen-go` 版大于1.4.0, proto文件建议加上`go_package`
 
 * 填充业务逻辑
