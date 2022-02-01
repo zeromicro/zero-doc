@@ -47,14 +47,14 @@ Version number description
 ### The way one（go get）
 
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 Use this command to install the goctl tool into the `GOPATHbin` directory
 
 ### The way two （fork and build）
 
-Pull a source code from the go-zero code repository `git@github.com:tal-techgo-zero.git`, enter the `toolsgoctl` directory to compile the goctl file, and then add it to the environment variable.
+Pull a source code from the go-zero code repository `git@github.com:zeromicro/go-zero.git`, enter the `tools/goctl` directory to compile the goctl file, and then add it to the environment variable.
 
 After the installation is complete, execute `goctl -v`. If the version information is output, the installation is successful, for example:
 

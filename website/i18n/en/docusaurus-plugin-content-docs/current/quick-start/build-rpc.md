@@ -76,7 +76,7 @@ import (
     "go-zero-demo/mall/user/rpc/internal/svc"
     "go-zero-demo/mall/user/rpc/user"
     
-    "github.com/tal-tech/go-zero/core/logx"
+    "github.com/zeromicro/go-zero/core/logx"
 )
 
 type GetUserLogic struct {
@@ -111,7 +111,7 @@ $ vim internal/config/config.go
 package config
 
 import (
-    "github.com/tal-tech/go-zero/zrpc"
+    "github.com/zeromicro/go-zero/zrpc"
 )
 
 type Config struct {

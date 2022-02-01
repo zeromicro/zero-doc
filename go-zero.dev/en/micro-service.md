@@ -98,7 +98,7 @@ $ mkdir mall && cd mall
         "go-zero-demo/mall/user/internal/svc"
         "go-zero-demo/mall/user/user"
 
-        "github.com/tal-tech/go-zero/core/logx"
+        "github.com/zeromicro/go-zero/core/logx"
     )
     
     type GetUserLogic struct {
@@ -131,7 +131,7 @@ $ mkdir mall && cd mall
 	package config
 
 	import (
-		"github.com/tal-tech/go-zero/zrpc"
+		"github.com/zeromicro/go-zero/zrpc"
 	)
 
 	type Config struct {
@@ -198,8 +198,8 @@ $ mkdir mall && cd mall
     ```go
     package config
 
-    import "github.com/tal-tech/go-zero/rest"
-    import "github.com/tal-tech/go-zero/zrpc"
+    import "github.com/zeromicro/go-zero/rest"
+    import "github.com/zeromicro/go-zero/zrpc"
   
     type Config struct {
         rest.RestConf
@@ -233,7 +233,7 @@ $ mkdir mall && cd mall
         "go-zero-demo/mall/order/api/internal/config"
         "go-zero-demo/mall/user/rpc/userclient"
   
-        "github.com/tal-tech/go-zero/zrpc"
+        "github.com/zeromicro/go-zero/zrpc"
     )
     
     type ServiceContext struct {

@@ -31,7 +31,7 @@ package response
 import (
 	"net/http"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 type Body struct {

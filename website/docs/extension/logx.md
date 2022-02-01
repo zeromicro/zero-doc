@@ -82,7 +82,7 @@ logx.Close()
 
 推荐写法：
 ```go
-import "github.com/tal-tech/go-zero/core/proc"
+import "github.com/zeromicro/go-zero/core/proc"
 
 // grace close log
 proc.AddShutdownListener(func() {

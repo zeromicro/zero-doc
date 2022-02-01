@@ -133,7 +133,7 @@ consumer
 
 分为 cluster 和 node。cluster：
 
-`https://github.com/tal-tech/go-queue/blob/master/dq/consumer.go#L45`
+`https://github.com/zeromicro/go-queue/blob/master/dq/consumer.go#L45`
 
 - cluster 内部将 consume handler 做了一层再封装
 - 对 consume body 做hash，并使用此 hash 作为 redis 去重的key
@@ -141,7 +141,7 @@ consumer
 
 #### node
 
-`https://github.com/tal-tech/go-queue/blob/master/dq/consumernode.go#L36`
+`https://github.com/zeromicro/go-queue/blob/master/dq/consumernode.go#L36`
 
 - 消费 node 获取到 ready job；先执行 Reserve(TTR)，预订此job，将执行该job进行逻辑处理
 - 在 node 中 delete(job)；然后再进行消费

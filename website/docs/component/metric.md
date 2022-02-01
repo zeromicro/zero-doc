@@ -57,7 +57,7 @@ docker run \
 
 上面例子中的请求方式是 `HTTP`，也就是在请求服务端时，监控指标数据不断被搜集。很容易想到是 中间件 的功能，具体代码：
 
-```go title="https://github.com/tal-tech/go-zero/blob/master/rest/handler/prometheushandler.go"
+```go title="https://github.com/zeromicro/go-zero/blob/master/rest/handler/prometheushandler.go"
 var (
  metricServerReqDur = metric.NewHistogramVec(&metric.HistogramVecOpts{
   ...
@@ -107,7 +107,7 @@ func PromethousHandler(path string) func(http.Handler) http.Handler {
 `go-zero` 中也提供了 `prometheus metric` 基本封装，供开发者自己开发自己 prometheus 中间件。
 
 :::tip
-代码：https://github.com/tal-tech/go-zero/tree/master/core/metric
+代码：https://github.com/zeromicro/go-zero/tree/master/core/metric
 :::
 
 | 名称 | 用途 | 搜集函数 |

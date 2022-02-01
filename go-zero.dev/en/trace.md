@@ -64,7 +64,7 @@ Judging from the definition structure of `span`: In microservices, this is a com
 
 ## Example application
 
-In `go-zero`, http and rpc have been integrated as built-in middleware. We use [http](https://github.com/zeromicro/go-zero/blob/master/rest/handler/tracinghandler.go), [rpc](https://github.com/tal-tech /go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go), take a look at how `tracing` is used:
+In `go-zero`, http and rpc have been integrated as built-in middleware. We use [http](https://github.com/zeromicro/go-zero/blob/master/rest/handler/tracinghandler.go), [rpc](https://github.com/zeromicro/go-zero/blob/master/zrpc/internal/clientinterceptors/tracinginterceptor.go), take a look at how `tracing` is used:
 
 ### HTTP
 

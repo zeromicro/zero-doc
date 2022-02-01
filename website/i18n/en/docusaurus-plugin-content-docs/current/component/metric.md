@@ -57,7 +57,7 @@ For basic access to the above, see our other article: https://zeromicro.github.i
 
 The request method in the above example is `HTTP`, which means that the monitoring metrics data is continuously collected when requesting the server side. It is easy to think of the middleware function, the specific code.
 
-```go title="https://github.com/tal-tech/go-zero/blob/master/rest/handler/prometheushandler.go"
+```go title="https://github.com/zeromicro/go-zero/blob/master/rest/handler/prometheushandler.go"
 var (
  metricServerReqDur = metric.NewHistogramVec(&metric.HistogramVecOpts{
   ...
@@ -108,7 +108,7 @@ The whole thing is actually quite simple.
 The `go-zero` also provides the `prometheus metric` basic wrapper for developers to develop their own prometheus middleware.
 
 :::tip
-code：https://github.com/tal-tech/go-zero/tree/master/core/metric
+code：https://github.com/zeromicro/go-zero/tree/master/core/metric
 :::
 
 | Name | Usage | Search Functions |

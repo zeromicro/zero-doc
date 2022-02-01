@@ -32,7 +32,7 @@ The code in go-zero's Pull request needs to meet certain specifications
 
     ![pr](./resource/new_pr.png)
 
-* `base repository` choose `tal-tech/go-zero` `base:master`,`head repository` choose `xx/go-zero` `compare:$branch` ，`$branch` is the branch you developed, as shown in the figure:
+* `base repository` choose `zeromicro/go-zero` `base:master`,`head repository` choose `xx/go-zero` `compare:$branch` ，`$branch` is the branch you developed, as shown in the figure:
 
     ![pr](./resource/compare.png)
 

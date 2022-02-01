@@ -649,8 +649,8 @@ So the basic `rpc` is finished, and then we connect the rpc with the model and t
 package config
 
 import (
-    "github.com/tal-tech/go-zero/core/stores/cache"
-    "github.com/tal-tech/go-zero/zrpc"
+    "github.com/zeromicro/go-zero/core/stores/cache"
+    "github.com/zeromicro/go-zero/zrpc"
 )
 
 type Config struct {
@@ -674,7 +674,7 @@ import (
     "datacenter/common/model"
     "datacenter/common/rpc/internal/config"
 
-    "github.com/tal-tech/go-zero/core/stores/sqlx"
+    "github.com/zeromicro/go-zero/core/stores/sqlx"
 )
 
 type ServiceContext struct {
@@ -705,9 +705,9 @@ The above code has already associated `rpc` with the `model` database, we will n
 package config
 
 import (
-    "github.com/tal-tech/go-zero/core/stores/cache"
-    "github.com/tal-tech/go-zero/rest"
-    "github.com/tal-tech/go-zero/zrpc"
+    "github.com/zeromicro/go-zero/core/stores/cache"
+    "github.com/zeromicro/go-zero/rest"
+    "github.com/zeromicro/go-zero/zrpc"
 )
 
 type Config struct {
@@ -745,12 +745,12 @@ import (
     "net/http"
     "time"
 
-    "github.com/tal-tech/go-zero/core/logx"
-    "github.com/tal-tech/go-zero/core/stores/cache"
-    "github.com/tal-tech/go-zero/core/stores/redis"
-    "github.com/tal-tech/go-zero/core/syncx"
-    "github.com/tal-tech/go-zero/rest"
-    "github.com/tal-tech/go-zero/zrpc"
+    "github.com/zeromicro/go-zero/core/logx"
+    "github.com/zeromicro/go-zero/core/stores/cache"
+    "github.com/zeromicro/go-zero/core/stores/redis"
+    "github.com/zeromicro/go-zero/core/syncx"
+    "github.com/zeromicro/go-zero/rest"
+    "github.com/zeromicro/go-zero/zrpc"
     "google.golang.org/grpc"
 )
 
@@ -817,7 +817,7 @@ import (
     "datacenter/common/model"
     "datacenter/common/rpc/common"
 
-    "github.com/tal-tech/go-zero/core/logx"
+    "github.com/zeromicro/go-zero/core/logx"
 )
 
 type AppInfoLogic struct {

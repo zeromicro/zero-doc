@@ -18,7 +18,7 @@ internal api的调用即通过内网直接访问api协议的方式获取数据�
 # rpc服务创建
 
 
-首先创建library、user两个rpc服务，这里就不详细描述rpc创建服务了，rpc快速开始请点击[通过goctl快速创建rpc服务](https://www.yuque.com/tal-tech/go-zero/apuyly)
+首先创建library、user两个rpc服务，这里就不详细描述rpc创建服务了，rpc快速开始请点击[通过goctl快速创建rpc服务](https://www.yuque.com/zeromicro/go-zero/apuyly)
 
 
 这里我就直接把图书管理系统(library)和借阅系统(borrow)相关rpc服务代码上传到[github](https://github.com/anqiansong/book)中去了，可以把course模块的代码直接拿过来使用,其中使用到的table（数据表）`library`的ddl如下:
@@ -303,8 +303,8 @@ import (
 	"book/library/rpc/libraryclient"
 	"book/user/rpc/user"
 
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {

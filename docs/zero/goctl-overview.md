@@ -6,10 +6,10 @@
 goctl是[go-zero](https://github.com/zeromico/go-zero)微服务框架下的代码生成工具，其可以快速提升开发效率，让开发人员将时间重点放在业务coding上，其具体功能如下：
 
 
-- [api服务生成](https://www.yuque.com/tal-tech/go-zero/ppnpng)
-- [rpc服务生成](https://www.yuque.com/tal-tech/go-zero/hlxlbt)
-- [model代码生成](https://www.yuque.com/tal-tech/go-zero/nkg20f)
-- [模板管理](https://www.yuque.com/tal-tech/go-zero/mkpuit)
+- [api服务生成](https://www.yuque.com/zeromicro/go-zero/ppnpng)
+- [rpc服务生成](https://www.yuque.com/zeromicro/go-zero/hlxlbt)
+- [model代码生成](https://www.yuque.com/zeromicro/go-zero/nkg20f)
+- [模板管理](https://www.yuque.com/zeromicro/go-zero/mkpuit)
 
 
 
@@ -56,7 +56,7 @@ goctl version xxxxxx darwin/amd64
 
 
 ```bash
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl@latest
 ```
 
 
@@ -66,7 +66,7 @@ $ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tec
 ### 方式二 （fork and build）
 
 
-从[go-zero](https://github.com/zeromicro/go-zero)拉取一份go-zero源码`git@github.com:tal-tech/go-zero.git`，进入goctl（`tools/goctl/`）目录下编译一下goctl文件，然后将其添加到环境变量中。
+从[go-zero](https://github.com/zeromicro/go-zero)拉取一份go-zero源码`git@github.com:zeromicro/go-zero.git`，进入goctl（`tools/goctl/`）目录下编译一下goctl文件，然后将其添加到环境变量中。
 
 
 # 校验

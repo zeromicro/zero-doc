@@ -79,7 +79,7 @@ At the same time, note that when the log output is turned off, the log cannot be
 
 Recommended writing:
 ```go
-import "github.com/tal-tech/go-zero/core/proc"
+import "github.com/zeromicro/go-zero/core/proc"
 
 // grace close log
 proc.AddShutdownListener(func() {

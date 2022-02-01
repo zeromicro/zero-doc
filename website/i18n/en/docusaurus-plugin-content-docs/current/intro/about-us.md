@@ -23,4 +23,4 @@ He is also a lecturer at Tencent Cloud Developer Conference.
 We currently have more than 7000 community members, where you can discuss any technology about go-zero with everyone, feedback on issues, get the latest go-zero information, and technical insights shared by all the big guys every day.
 
 ## go-zero Community Groups
-<img src="https://raw.githubusercontent.com/tal-tech/zero-doc/main/doc/images/wechat.jpg" width="300" alt="Community Groups"/>
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/wechat.jpg" width="300" alt="Community Groups"/>

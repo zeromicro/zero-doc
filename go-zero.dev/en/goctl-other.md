@@ -26,7 +26,7 @@ ENV TZ Asia/Shanghai
 ### Dockerfile writing process
 * First install the goctl tool
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 * Create a hello service under the greet project
@@ -144,7 +144,7 @@ For demonstration, here we take the `redis:6-alpine` image as an example.
 - First install the `goctl` tool
 
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 - One-click generation of K8S deployment files

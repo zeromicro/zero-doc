@@ -135,5 +135,5 @@ Clusters:
 * [elasticsearch](https://www.elastic.co/cn/elasticsearch/)
 * [kibana](https://www.elastic.co/cn/kibana)
 * [filebeat](https://www.elastic.co/cn/beats/filebeat)
-* [go-stash](https://github.com/tal-tech/go-stash)
+* [go-stash](https://github.com/kevwan/go-stash)
 * [filebeat配置](https://www.elastic.co/guide/en/beats/filebeat/current/index.html)

@@ -13,7 +13,7 @@ $ vim service/user/cmd/api/internal/config/config.go
 ```go
 package config
 
-import "github.com/tal-tech/go-zero/rest"
+import "github.com/zeromicro/go-zero/rest"
 
 type Config struct {
     rest.RestConf

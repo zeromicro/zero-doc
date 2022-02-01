@@ -18,7 +18,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/fx"
+	"github.com/zeromicro/go-zero/core/fx"
 )
 
 func main() {

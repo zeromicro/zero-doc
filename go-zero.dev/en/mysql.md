@@ -52,7 +52,7 @@ func NewMysqlModel(conn sqlx.SqlConn, table string) *MysqlModel {
 
 Prepare an `User model`
 ```go
-var userBuilderQueryRows = strings.Join(builderx.FieldNames(&User{}), ",")
+var userBuilderQueryRows = strings.Join(builder.FieldNames(&User{}), ",")
 
 type User struct {
     Avatar string `db:"avatar"` 			

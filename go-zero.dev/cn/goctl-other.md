@@ -23,7 +23,7 @@ ENV TZ Asia/Shanghai
 ### Dockerfile编写过程
 * 首先安装 goctl 工具
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 * 在 greet 项目下创建一个 hello 服务
@@ -141,7 +141,7 @@ goctl 工具极大简化了 Dockerfile 文件的编写，提供了开箱即用�
 - 首先安装 `goctl` 工具
 
 ```shell
-$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+$ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 - 一键生成 K8S 部署文件

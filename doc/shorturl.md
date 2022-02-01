@@ -77,7 +77,7 @@
 * 安装 goctl 工具
 
   ```shell
-  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl@latest
+  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl@latest
   ```
 
 * 创建工作目录 `shorturl` 和 `shorturl/api`
@@ -94,7 +94,7 @@
   require (
     github.com/golang/mock v1.4.3
     github.com/golang/protobuf v1.4.2
-    github.com/tal-tech/go-zero v1.1.4
+    github.com/zeromicro/go-zero v1.3.0
     golang.org/x/net v0.0.0-20200707034311-ab3426394381
     google.golang.org/grpc v1.29.1
   )
@@ -519,13 +519,13 @@
   至此代码修改完成，凡是手动修改的代码我加了标注
 
   **注意：**
-  1. undefined cache，你需要 `import "github.com/tal-tech/go-zero/core/stores/cache"`
+  1. undefined cache，你需要 `import "github.com/zeromicro/go-zero/core/stores/cache"`
   2. undefined model, sqlx, hash 等，你需要在文件中
   
   ```golang
   import "shorturl/rpc/transform/model"
   
-  import "github.com/tal-tech/go-zero/core/stores/sqlx"
+  import "github.com/zeromicro/go-zero/core/stores/sqlx"
   ```
 
 ## 10. 完整调用演示

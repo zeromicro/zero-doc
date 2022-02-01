@@ -34,15 +34,15 @@ goctl model 为go-zero下的工具模块中的组件之一，目前支持识别m
         "strings"
         "time"
     
-        "github.com/tal-tech/go-zero/core/stores/cache"
-        "github.com/tal-tech/go-zero/core/stores/sqlc"
-        "github.com/tal-tech/go-zero/core/stores/sqlx"
-        "github.com/tal-tech/go-zero/core/stringx"
-        "github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx"
+        "github.com/zeromicro/go-zero/core/stores/builder"
+        "github.com/zeromicro/go-zero/core/stores/cache"
+        "github.com/zeromicro/go-zero/core/stores/sqlc"
+        "github.com/zeromicro/go-zero/core/stores/sqlx"
+        "github.com/zeromicro/go-zero/core/stringx"
     )
     
     var (
-        userFieldNames          = builderx.RawFieldNames(&User{})
+        userFieldNames          = builder.RawFieldNames(&User{})
         userRows                = strings.Join(userFieldNames, ",")
         userRowsExpectAutoSet   = strings.Join(stringx.Remove(userFieldNames, "`id`", "`create_time`", "`update_time`"), ",")
         userRowsWithPlaceHolder = strings.Join(stringx.Remove(userFieldNames, "`id`", "`create_time`", "`update_time`"), "=?,") + "=?"

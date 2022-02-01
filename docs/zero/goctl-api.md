@@ -112,9 +112,6 @@ service user-api {
 ```
 
 
-api 语法详细描述 [https://www.yuque.com/tal-tech/go-zero/ze9i30](https://www.yuque.com/tal-tech/go-zero/ze9i30)
-
-
 总结如下：
 
 1. info部分：描述了api基本信息，比如Auth，api是哪个用途。

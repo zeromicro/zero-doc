@@ -77,9 +77,9 @@ If you think it's good, don't forget to **star** 👏
 
 #### For the full example, please see
 
-   [Quick Build Highly Concurrent Microservices](https://github.com/tal-tech/zero-doc/blob/main/doc/shorturl.md)
+   [Quick Build Highly Concurrent Microservices](https://github.com/zeromicro/zero-doc/blob/main/doc/shorturl.md)
 
-   [Quick Build Highly Concurrent Microservices - Multi RPC Edition](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
+   [Quick Build Highly Concurrent Microservices - Multi RPC Edition](https://github.com/zeromicro/zero-doc/blob/main/docs/zero/bookstore.md)
    
 #### Install the `goctl` tool
 
@@ -87,13 +87,13 @@ If you think it's good, don't forget to **star** 👏
 to free our hands 👈
 
 ```shell
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 If you are using go1.16, you can install it with the `go install` command
 
 ```shell
-GOPROXY=https://goproxy.cn/,direct go install github.com/tal-tech/go-zero/tools/goctl@latest
+GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/go-zero/tools/goctl@latest
 ```
 
 Ensure that `goctl` is executable
@@ -146,8 +146,8 @@ goctl api dart -api greet.api -dir greet
 [The test code is available here](https://github.com/smallnest/go-web-framework-benchmark)
 
 * awesome series (more articles in 『microservices practice』public)
-    * [Quickly Building Highly Concurrent Microservices](https://github.com/tal-tech/zero-doc/blob/main/doc/shorturl.md)
-    * [Quickly Building Highly Concurrent Microservices - Multi RPC Edition](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
+    * [Quickly Building Highly Concurrent Microservices](https://github.com/zeromicro/zero-doc/blob/main/doc/shorturl.md)
+    * [Quickly Building Highly Concurrent Microservices - Multi RPC Edition](https://github.com/zeromicro/zero-doc/blob/main/docs/zero/bookstore.md)
     
 * Featured `goctl` plugin
 
@@ -184,4 +184,4 @@ In order to prevent advertising users, identify technical peers, please ***star*
 
 Before adding me, please click ***star***, a small ***star*** is the motivation for the authors to answer a lot of questions 🤝
 
-<img src="https://raw.githubusercontent.com/tal-tech/zero-doc/main/doc/images/wechat.jpg" alt="wechat" width="300" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/wechat.jpg" alt="wechat" width="300" />

@@ -91,7 +91,7 @@ As below, go-zero protects the system with couple layers and mechanisms:
 Run the following command under your project:
 
 ```shell
-go get -u github.com/tal-tech/go-zero
+go get -u github.com/zeromicro/go-zero
 ```
 
 ## 6. Quick Start
@@ -107,7 +107,7 @@ go get -u github.com/tal-tech/go-zero
    `goctl`can be read as `go control`. `goctl` means not to be controlled by code, instead, we control it. The inside `go` is not `golang`. At the very beginning, I was expecting it to help us improve the productivity, and make our lives easier.
 
    ```shell
-   GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl
+   GO111MODULE=on go get -u github.com/zeromicro/go-zero/tools/goctl
    ```
 
    make sure goctl is executable.

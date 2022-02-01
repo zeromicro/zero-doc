@@ -133,7 +133,7 @@ Here is a description of how the consumer side of the framework to ensure the un
 
 There are cluster and node. cluster.
 
-`https://github.com/tal-tech/go-queue/blob/master/dq/consumer.go#L45`
+`https://github.com/zeromicro/go-queue/blob/master/dq/consumer.go#L45`
 
 - The cluster internally repackages the consume handler with a layer
 - hash the consume body and use this hash as the key for redis de-duplication
@@ -141,7 +141,7 @@ There are cluster and node. cluster.
 
 #### node
 
-`https://github.com/tal-tech/go-queue/blob/master/dq/consumernode.go#L36`
+`https://github.com/zeromicro/go-queue/blob/master/dq/consumernode.go#L36`
 
 - consume node to get ready job; first execute Reserve(TTR), book this job, will execute this job for logical processing
 - delete(job) in the node; then consume

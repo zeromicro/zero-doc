@@ -103,10 +103,10 @@ Here we highly recommend you to install it, because most of our subsequent demo 
 * download&install
     ```shell
     # Go 1.15 and earlier
-    GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl@latest
+    GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl@latest
 
     # Go 1.16 and later
-    GOPROXY=https://goproxy.cn/,direct go install github.com/tal-tech/go-zero/tools/goctl@latest
+    GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/go-zero/tools/goctl@latest
     ```
 * Environment variable detection
 

@@ -29,7 +29,7 @@ go-zero 的Pull request中的代码需要满足一定规范
 
     ![pr](./resource/new_pr.png)
 
-* `base repository`选择`tal-tech/go-zero` `base:master`,`head repository`选择`xx/go-zero` `compare:$branch` ，`$branch`为你开发的分支，如图：
+* `base repository`选择`zeromicro/go-zero` `base:master`,`head repository`选择`xx/go-zero` `compare:$branch` ，`$branch`为你开发的分支，如图：
 
     ![pr](./resource/compare.png)
 
