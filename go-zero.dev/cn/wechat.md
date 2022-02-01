@@ -1,5 +1,5 @@
 # 公众号
-微服务实战是go-zero的官方公众号，在这里会发布最新的go-zero最佳实践，同步go夜读、go开源说、GopherChina、腾讯云开发者大会等多渠道关于go-zero的最新技术和资讯。
+<strong>微服务实战</strong> 是go-zero的官方公众号，在这里会发布最新的go-zero最佳实践，同步go夜读、go开源说、GopherChina、腾讯云开发者大会等多渠道关于go-zero的最新技术和资讯。
 
 <table>
     <tr>
@@ -13,6 +13,23 @@
         <td><img src="https://zeromicro.github.io/go-zero-pages/resource/go-zero-practise.png" alt="微服务实践" width="300"/></td>
     </tr>
 </table>
+
+# 推荐系列
+
+## 《带你十天轻松搞定 Go 微服务》
+
+通过本系列带你在本机利用 Docker 环境利用 go-zero 快速开发一个商城系统，让你快速上手微服务。完整示例代码：https://github.com/nivin-studio/go-zero-mall
+
+- [第一天：环境搭建](https://mp.weixin.qq.com/s/PFT4t_1CvIgqLQusRVYTHg)
+- [第二天：服务拆分](https://mp.weixin.qq.com/s/yjBGPm3CK3e26D-qi4-mxQ)
+- [第三天：用户服务](https://mp.weixin.qq.com/s/ZAl64UdsWYfGn9n1TCX1_A)
+- [第四天：产品服务](https://mp.weixin.qq.com/s/OXl6EQKM9c4vhrdaRvEtJQ)
+- [第五天：订单服务](https://mp.weixin.qq.com/s/IeqOg0oiyLB_aKJqSoP3gw)
+- [第六天：支付服务](https://mp.weixin.qq.com/s/WVjeyrdsge7Yd6uuzW-jKA)
+- [第七天：RPC服务 Auth验证](https://mp.weixin.qq.com/s/TNK6USlxUKQmrOjPtJIS1Q)
+- [第八天：服务监控](https://mp.weixin.qq.com/s/cp--0RS3NybMufBUsht8bw)
+- [第九天：链路追踪](https://mp.weixin.qq.com/s/gpF-2NQ6Umxn-VqkzRPQpw)
+- [第十天：分布式事务](https://mp.weixin.qq.com/s/M1Xx_UI-62JhWVRdSfbDMg)
 
 # 干货
 这里列举一些干货，想要收获更多go-zero最佳实践干货，可以关注公众号获取最新动态。
