@@ -10,6 +10,7 @@
 $ cd ~/go-zero-demo
 $ go mod init go-zero-demo
 $ goctl api new greet
+$ go mod tidy
 Done.
 ```
 
