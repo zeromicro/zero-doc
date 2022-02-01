@@ -13,6 +13,7 @@ It is not that every service must adopt the design of the microservice architect
 $ cd ~/go-zero-demo
 $ go mod init go-zero-demo
 $ goctl api new greet
+$ go mod tidy
 Done.
 ```
 
