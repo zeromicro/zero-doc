@@ -157,8 +157,13 @@ $ mkdir mall && cd mall
     
     ```shell
     $ cd ~/go-zero-demo/mall/rpc
-    $ mkdir userclient && mv /user/user.go /userclient 
+    $ mkdir userclient && mv ../user/rpc/user/user.go ./userclient/
     ```
+* 修改包名
+
+   go-zero-demo/mall/rpc/userclient/user.go里的包名
+ 
+  `package user` 改为  `package userclient`     
 
 ## 创建order api服务
 * 创建 `order api`服务
@@ -277,6 +282,12 @@ $ mkdir mall && cd mall
     }, nil
   }
   ```
+  
+* 修改`getorderlogic`对userclient的引用
+  
+  `"go-zero-demo/mall/user/rpc/userclient"`
+  改为:
+  `"go-zero-demo/mall/rpc/userclient"`
 
 ## 启动服务并验证
 * 启动etcd
@@ -285,6 +296,8 @@ $ mkdir mall && cd mall
   ```
 * 启动user rpc
   ```shell
+  $ cd ~/go-zero-demo/mall/user/rpc
+  $ go mod tidy
   $ go run user.go -f etc/user.yaml
   ```
   ```text
@@ -293,6 +306,8 @@ $ mkdir mall && cd mall
   
 * 启动order api
   ```shell
+  $ cd ~/go-zero-demo/mall/order/api
+  $ go mod tidy
   $ go run order.go -f etc/order.yaml
   ```
   ```text
