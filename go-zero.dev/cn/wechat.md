@@ -28,8 +28,8 @@
 - [第六天：支付服务](https://zhuanlan.zhihu.com/p/463164718)
 - [第七天：RPC服务Auth验证](https://zhuanlan.zhihu.com/p/463327110)
 - [第八天：服务监控](https://zhuanlan.zhihu.com/p/463418864)
-- [第九天：链路追踪](https://mp.weixin.qq.com/s/gpF-2NQ6Umxn-VqkzRPQpw)
-- [第十天：分布式事务](https://mp.weixin.qq.com/s/M1Xx_UI-62JhWVRdSfbDMg)
+- [第九天：链路追踪](https://zhuanlan.zhihu.com/p/463593194)
+- [第十天：分布式事务](https://zhuanlan.zhihu.com/p/463593875)
 
 
 # 干货
