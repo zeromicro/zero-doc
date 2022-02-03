@@ -1,26 +1,29 @@
 # 单体服务
 
 ## 前言
-由于go-zero集成了web/rpc于一体，社区有部分小伙伴会问我，go-zero的定位是否是一款微服务框架，
-答案是不止于此，go-zero虽然集众多功能于一身，但你可以将其中任何一个功能独立出来去单独使用，也可以开发单体服务，
+由于go-zero集成了web/rpc于一体，社区有部分小伙伴会问我，go-zero的定位是否是一款微服务框架，答案是不止于此，
+go-zero虽然集众多功能于一身，但你可以将其中任何一个功能独立出来去单独使用，也可以开发单体服务，
 不是说每个服务上来就一定要采用微服务的架构的设计，这点大家可以看看作者(kevin)的第四期[开源说](https://www.bilibili.com/video/BV1Jy4y127Xu) ，其中对此有详细的讲解。
 
 ## 创建greet服务
+
 ```shell
-$ cd ~/go-zero-demo
+$ mkdir go-zero-demo
+$ cd go-zero-demo
 $ go mod init go-zero-demo
 $ goctl api new greet
 $ go mod tidy
 Done.
 ```
 
-查看一下`greet`服务的结构
+> 说明：如无 `cd` 改变目录的操作，所有操作均在 `go-zero-demo` 目录执行
+
+查看一下`greet`服务的目录结构
 ```shell
-$ cd greet
-$ tree
+$ tree greet
 ```
 ```text
-.
+greet
 ├── etc
 │   └── greet-api.yaml
 ├── greet.api
@@ -42,7 +45,7 @@ $ tree
 
 ## 编写逻辑
 ```shell
-$ vim ~/go-zero-demo/greet/internal/logic/greetlogic.go 
+$ vim greet/internal/logic/greetlogic.go 
 ```
 ```go
 func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
@@ -55,19 +58,25 @@ func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
 ## 启动并访问服务
 
 * 启动服务
+
     ```shell
-    $ cd ~/go-zero-demo/greet
+    $ cd greet
     $ go run greet.go -f etc/greet-api.yaml
     ```
+
+    输出如下，服务启动并侦听在8888端口：
+
     ```text
     Starting server at 0.0.0.0:8888...
     ```
 
 * 访问服务
+
     ```shell
-    $ curl -i -X GET \
-      http://localhost:8888/from/you
+    $ curl -i -X GET http://localhost:8888/from/you
     ```
+    
+    返回如下：
 
     ```text
     HTTP/1.1 200 OK
