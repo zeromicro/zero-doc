@@ -10,7 +10,7 @@
 ## 情景提要
 假设我们在开发一个商城项目，而开发者小明负责用户模块(user)和订单模块(order)的开发，我们姑且将这两个模块拆分成两个微服务①
 
-> **[注意]**
+> [!NOTE] 
 > ①：微服务的拆分也是一门学问，这里我们就不讨论怎么去拆分微服务的细节了。
 
 ## 演示功能目标
@@ -84,41 +84,37 @@ $ go mod init go-zero-demo
 
 * 生成代码
 
-  ```shell
-  $ cd mall/user/rpc
-  $ goctl rpc template -o user.proto
-  $ goctl rpc protoc user.proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=.
-  protoc user.proto --go_out=./pb --go-grpc_out=./pb
-  Done.
-  ```
-
-  > [注意]
-  > 如果安装的 `protoc-gen-go` 版大于1.4.0, proto文件建议加上`go_package`
+    ```shell
+    $ cd ~/go-zero-demo/mall/user/rpc
+    $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
+    Done.
+    ```
+> [!TIPS]
+> grpc 指令详情参考 https://grpc.io/docs/languages/go/quickstart/
 
 * 填充业务逻辑
 
   ```shell
   $ vim internal/logic/getuserlogic.go
   ```
-
   ```go
   package logic
-
+  
   import (
       "context"
-
+  
       "go-zero-demo/mall/user/rpc/internal/svc"
-      "go-zero-demo/mall/user/rpc/user"
-        
+      "go-zero-demo/mall/user/rpc/types/user"
+  
       "github.com/zeromicro/go-zero/core/logx"
   )
-    
+  
   type GetUserLogic struct {
       ctx    context.Context
       svcCtx *svc.ServiceContext
       logx.Logger
   }
-    
+  
   func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLogic {
       return &GetUserLogic{
           ctx:    ctx,
@@ -126,13 +122,12 @@ $ go mod init go-zero-demo
           Logger: logx.WithContext(ctx),
       }
   }
-    
+  
   func (l *GetUserLogic) GetUser(in *user.IdRequest) (*user.UserResponse, error) {
-      return &user.UserResponse{
-          Id:   "1",
-          Name: "test",
-      }, nil
-  }
+      // todo: add your logic here and delete this line
+  
+      return &user.UserResponse{}, nil
+  }  
   ```
 
 * 修改配置
@@ -144,9 +139,9 @@ $ go mod init go-zero-demo
   ```go
   package config
 
-  import (
-      "github.com/zeromicro/go-zero/zrpc"
-  )
+	import (
+		"github.com/zeromicro/go-zero/zrpc"
+	)
 
   type Config struct {
       zrpc.RpcServerConf
@@ -168,12 +163,6 @@ $ go mod init go-zero-demo
     Key: user.rpc
   ```
 
-* 修改目录文件
-    
-  ```shell
-  $ cd ~/go-zero-demo/mall/rpc
-  $ mkdir userclient && mv /user/user.go /userclient 
-  ```
 
 ## 创建order api服务
 * 创建 `order api`服务
@@ -219,8 +208,8 @@ $ go mod init go-zero-demo
     ```go
     package config
 
-    import "github.com/zeromicro/go-zero/rest"
-    import "github.com/zeromicro/go-zero/zrpc"
+    import "github.com/tal-tech/go-zero/zrpc"
+    import "github.com/tal-tech/go-zero/rest"
   
     type Config struct {
         rest.RestConf
@@ -252,7 +241,7 @@ $ go mod init go-zero-demo
 
     import (
         "go-zero-demo/mall/order/api/internal/config"
-        "go-zero-demo/mall/user/rpc/userclient"
+        "go-zero-demo/mall/user/rpc/user"
 
         "github.com/zeromicro/go-zero/zrpc"
     )
@@ -330,7 +319,7 @@ $ go mod init go-zero-demo
   {"id":"1","name":"test order"}
   ```
 
-> [TIP]
+> [!TIP]
 > 在演示中的提及的api语法，rpc生成，goctl，goctl环境等怎么使用和安装，快速入门中不作详细概述，我们后续都会有详细的文档进行描述，你也可以点击下文的【猜你想看】快速跳转的对应文档查看。
 
 # 源码
