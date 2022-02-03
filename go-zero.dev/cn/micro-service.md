@@ -92,8 +92,8 @@ $ go mod init go-zero-demo
   Done.
   ```
 
-> [TIPS]
-> 如果安装的 `protoc-gen-go` 版大于1.4.0, proto文件建议加上`go_package`
+  > [注意]
+  > 如果安装的 `protoc-gen-go` 版大于1.4.0, proto文件建议加上`go_package`
 
 * 填充业务逻辑
 
