@@ -298,7 +298,7 @@ $ go mod init go-zero-demo
   ```
 * 启动user rpc
   ```shell
-  # 在 `mall/user/rpc` 目录
+  # 在 mall/user/rpc 目录
   $ go run user.go -f etc/user.yaml
   ```
   ```text
@@ -307,7 +307,7 @@ $ go mod init go-zero-demo
   
 * 启动order api
   ```shell
-  # 在 `mall/order/api` 目录
+  # 在 mall/order/api 目录
   $ go run order.go -f etc/order.yaml
   ```
   ```text
