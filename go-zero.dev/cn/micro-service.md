@@ -89,7 +89,7 @@ $ go mod init go-zero-demo
     $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
     Done.
     ```
-> [!TIPS]
+> [!TIP]
 > grpc 指令详情参考 https://grpc.io/docs/languages/go/quickstart/
 
 * 填充业务逻辑
