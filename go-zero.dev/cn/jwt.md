@@ -163,7 +163,7 @@ Auth:
     ```shell
     $ curl -i -X POST \
       http://127.0.0.1:8888/user/login \
-      -H 'content-type: application/json' \
+      -H 'Content-Type: application/json' \
       -d '{
         "username":"666",
         "password":"123456"
@@ -198,7 +198,7 @@ Auth:
     ```shell
     $ curl -i -X GET \
       'http://127.0.0.1:8889/search/do?name=%E8%A5%BF%E6%B8%B8%E8%AE%B0' \
-      -H 'authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80'
+      -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI4NjcwNzQsImlhdCI6MTYxMjc4MDY3NCwidXNlcklkIjoxfQ.JKa83g9BlEW84IiCXFGwP2aSd0xF3tMnxrOzVebbt80'
     ```
     ```text
     HTTP/1.1 200 OK
