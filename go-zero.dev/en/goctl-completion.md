@@ -38,7 +38,7 @@ $ echo PROG=goctl source /Users/keson/.goctl/.auto_complete/bash/goctl_autocompl
 Use the `tab` key to bring up the autocomplete prompt
 
 ```shell
-$ goctl completion -h
+$ goctl
 api -- generate api-related files
 bug -- report a bug
 completion -- generates a completion script, which is only available for unix-like operating systems

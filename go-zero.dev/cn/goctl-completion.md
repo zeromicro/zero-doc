@@ -38,7 +38,7 @@ $ echo PROG=goctl source /Users/keson/.goctl/.auto_complete/bash/goctl_autocompl
 使用 `tab` 键出现自动补全提示
 
 ```shell
-$ goctl completion -h
+$ goctl
 api            -- generate api related files
 bug            -- report a bug
 completion     -- generation completion script, it only works for unix-like OS
