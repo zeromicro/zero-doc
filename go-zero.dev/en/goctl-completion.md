@@ -35,7 +35,7 @@ $ echo PROG=goctl source /Users/keson/.goctl/.auto_complete/bash/goctl_autocompl
 ```
 
 ## Demo effect
-Use the ```tab``` key to bring up the autocomplete prompt
+Use the `tab` key to bring up the autocomplete prompt
 
 ```shell
 $ goctl completion -h
