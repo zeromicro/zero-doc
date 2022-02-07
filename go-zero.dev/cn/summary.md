@@ -44,6 +44,7 @@
     * [链路追踪](trace.md)
     * [服务监控](service-monitor.md)
 * [Goctl](goctl.md)
+    * [自动补全设置](goctl-completion.md)
     * [命令大全](goctl-commands.md)
     * [api命令](goctl-api.md)
     * [rpc命令](goctl-rpc.md)

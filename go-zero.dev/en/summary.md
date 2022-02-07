@@ -43,6 +43,7 @@
     * [Trace](trace.md)
     * [Monitor](service-monitor.md)
 * [Goctl](goctl.md)
+    * [Auto Completion](goctl-completion.md)
     * [Commands & Flags](goctl-commands.md)
     * [API Commands](goctl-api.md)
     * [RPC Commands](goctl-rpc.md)
