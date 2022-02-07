@@ -11,6 +11,7 @@ goctl is a code generation tool under the go-zero microservice framework. Using 
 
 This section will contain the following:
 
+* [Auto Completion](goctl-completion.md)
 * [Commands & Flags](goctl-commands.md)
 * [API Commands](goctl-api.md)
 * [RPC Commands](goctl-rpc.md)

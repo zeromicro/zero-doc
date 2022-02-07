@@ -9,6 +9,7 @@ goctl是go-zero微服务框架下的代码生成工具。使用 goctl 可显著�
 
 本节将包含以下内容：
 
+* [自动补全设置](goctl-completion.md)
 * [命令大全](goctl-commands.md)
 * [api命令](goctl-api.md)
 * [rpc命令](goctl-rpc.md)
