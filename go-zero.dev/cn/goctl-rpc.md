@@ -71,6 +71,10 @@ if strings.ToLower(proto.Service.Name) == strings.ToLower(proto.GoPackage) {
 
 rpc一键生成常见问题解决，见[常见错误处理](error.md)
 
+> [!TIP]
+> 
+> 新版本目录详见 [rpc目录](rpc-dir.md)
+
 ### 方式二：通过指定proto生成rpc服务
 
 * 生成proto模板
@@ -108,8 +112,14 @@ rpc一键生成常见问题解决，见[常见错误处理](error.md)
 
 * 生成rpc服务代码
 
+  **不推荐使用**
   ```Bash
-  goctl rpc proto -src user.proto -dir .
+  $ goctl rpc proto -src user.proto -dir .
+  ```
+  
+  **推荐使用**
+  ```shell
+  $ goctl rpc protoc greet.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
 ## 准备工作

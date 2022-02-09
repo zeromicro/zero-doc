@@ -86,10 +86,16 @@ $ go mod init go-zero-demo
   ```shell
   $ cd mall/user/rpc
   $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
+  $ # goctl rpc protoc user.proto --go_out=plugins:grpc./types  --zrpc_out=.
   Done.
   ```
 
-  > [注意] grpc 指令详情参考 https://grpc.io/docs/languages/go/quickstart/
+  > [注意] 
+  > 
+  > 【推荐】最新版grpc使用 请情参考 https://grpc.io/docs/languages/go/quickstart/
+  >
+  > 旧版本的 `protoc-gen-go` 不支持 `--go-grpc_out`
+  > 
 
 * 填充业务逻辑
 
