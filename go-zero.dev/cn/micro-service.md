@@ -19,7 +19,7 @@
 ## 服务设计分析
 
 根据情景提要我们可以得知，订单是直接面向用户，通过http协议访问数据，而订单内部需要获取用户的一些基础数据，既然我们的服务是采用微服务的架构设计，
-那么两个服务（user,order）就必须要进行数据交换，服务间的数据交换即服务间的通讯，到了这里，采用合理的通讯协议也是一个开发人员需要
+那么两个服务（user, order）就必须要进行数据交换，服务间的数据交换即服务间的通讯，到了这里，采用合理的通讯协议也是一个开发人员需要
 考虑的事情，可以通过http，rpc等方式来进行通讯，这里我们选择rpc来实现服务间的通讯，相信这里我已经对"rpc服务存在有什么作用？"已经作了一个比较好的场景描述。
 当然，一个服务开发前远不止这点设计分析，我们这里就不详细描述了。从上文得知，我们需要一个
 * user rpc
@@ -86,7 +86,6 @@ $ go mod init go-zero-demo
   ```shell
   $ cd mall/user/rpc
   $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
-  $ # goctl rpc protoc user.proto --go_out=plugins:grpc./types  --zrpc_out=.
   Done.
   ```
 
@@ -132,39 +131,8 @@ $ go mod init go-zero-demo
       return &user.UserResponse{
               Id:   "1",
               Name: "test",
-          }, nil
+      }, nil
   }  
-  ```
-
-* 修改配置
-
-  ```shell
-  $ vim internal/config/config.go
-  ```
-
-  ```go
-  package config
-
-  import "github.com/zeromicro/go-zero/zrpc"
-
-  type Config struct {
-      zrpc.RpcServerConf
-  }
-  ```
-
-* 添加yaml配置
-
-  ```shell
-  $ vim etc/user.yaml 
-  ```
-
-  ```yaml
-  Name: user.rpc
-  ListenOn: 127.0.0.1:8080
-  Etcd:
-    Hosts:
-      - 127.0.0.1:2379
-    Key: user.rpc
   ```
 
 ## 创建order api服务
@@ -214,8 +182,8 @@ $ go mod init go-zero-demo
   ```go
   package config
 
-  import "github.com/tal-tech/go-zero/zrpc"
-  import "github.com/tal-tech/go-zero/rest"
+  import "github.com/zeromicro/go-zero/zrpc"
+  import "github.com/zeromicro/go-zero/rest"
   
   type Config struct {
       rest.RestConf
@@ -278,21 +246,21 @@ $ go mod init go-zero-demo
 
   ```go
   func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
-    user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdRequest{
-        Id: "1",
-    })
-    if err != nil {
-        return nil, err
-    }
+      user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdRequest{
+          Id: "1",
+      })
+      if err != nil {
+          return nil, err
+      }
 
-    if user.Name != "test" {
-        return nil, errors.New("用户不存在")
-    }
+      if user.Name != "test" {
+          return nil, errors.New("用户不存在")
+      }
 
-    return &types.OrderReply{
-        Id:   req.Id,
-        Name: "test order",
-    }, nil
+      return &types.OrderReply{
+          Id:   req.Id,
+          Name: "test order",
+      }, nil
   }
   ```
 
