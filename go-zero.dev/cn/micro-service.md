@@ -224,13 +224,13 @@ $ go mod init go-zero-demo
 
   type ServiceContext struct {
       Config  config.Config
-      UserRpc userclient.User
+      UserRpc user.User
   }
 
   func NewServiceContext(c config.Config) *ServiceContext {
       return &ServiceContext{
           Config:  c,
-          UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+          UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
       }
   }
   ```
@@ -244,8 +244,15 @@ $ go mod init go-zero-demo
   ```
 
   ```go
+  import (
+    ...
+    "go-zero-demo/mall/user/rpc/types/user"
+    ...
+  )
+  ...
+  
   func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
-      user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdRequest{
+      user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
           Id: "1",
       })
       if err != nil {
