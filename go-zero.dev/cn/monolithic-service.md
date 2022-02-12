@@ -21,8 +21,6 @@ Done.
 查看一下`greet`服务的目录结构
 ```shell
 $ tree greet
-```
-```text
 greet
 ├── etc
 │   └── greet-api.yaml
