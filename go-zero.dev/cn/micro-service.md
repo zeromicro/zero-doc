@@ -83,6 +83,8 @@ $ go mod init go-zero-demo
 
 * 生成代码
 
+  如未安装 `protoc-gen-go`，请参考 [https://grpc.io/docs/languages/go/quickstart/](https://grpc.io/docs/languages/go/quickstart/) 自行安装。
+  
   ```shell
   $ cd mall/user/rpc
   $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
@@ -132,7 +134,7 @@ $ go mod init go-zero-demo
               Id:   "1",
               Name: "test",
       }, nil
-  }  
+  }
   ```
 
 ## 创建order api服务
@@ -182,8 +184,10 @@ $ go mod init go-zero-demo
   ```go
   package config
 
-  import "github.com/zeromicro/go-zero/zrpc"
-  import "github.com/zeromicro/go-zero/rest"
+  import (
+      "github.com/zeromicro/go-zero/zrpc"
+      "github.com/zeromicro/go-zero/rest"
+  )
   
   type Config struct {
       rest.RestConf
@@ -265,9 +269,15 @@ $ go mod init go-zero-demo
   ```
 
 ## 启动服务并验证
+
 * 启动etcd
   ```shell
   $ etcd
+  ```
+* 下载依赖
+  ```shell
+  # 在 go-zero-demo 目录下
+  $ go mod tidy
   ```
 * 启动user rpc
   ```shell
