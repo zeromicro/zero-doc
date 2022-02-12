@@ -193,7 +193,7 @@ $ go mod init go-zero-demo
 * Add yaml configuration
 
     ```shell
-    $ vim etc/order.yaml 
+    $ vim etc/order.yaml
     ```
     ```yaml
     Name: order
@@ -299,15 +299,18 @@ $ go mod init go-zero-demo
   ```
 * start user rpc
   ```shell
+  # in dir mall/user/rpc
   $ go run user.go -f etc/user.yaml
   Starting rpc server at 127.0.0.1:8080...
-  ``` text
+  ```
 
 * start order api
   ```shell
+  # in dir mall/order/api
   $ go run order.go -f etc/order.yaml
   Starting server at 0.0.0.0:8888...
-  ``` text
+  ```
+  
 * Accessing the order api
   ```shell
   curl -i -X GET http://localhost:8888/api/order/get/1
