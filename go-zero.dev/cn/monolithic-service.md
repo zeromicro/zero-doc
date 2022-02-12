@@ -59,32 +59,32 @@ func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
 
 * 启动服务
 
-    ```shell
-    $ cd greet
-    $ go run greet.go -f etc/greet-api.yaml
-    ```
+  ```shell
+  $ cd greet
+  $ go run greet.go -f etc/greet-api.yaml
+  ```
 
-    输出如下，服务启动并侦听在8888端口：
+  输出如下，服务启动并侦听在8888端口：
 
-    ```text
-    Starting server at 0.0.0.0:8888...
-    ```
+  ```text
+  Starting server at 0.0.0.0:8888...
+  ```
 
 * 访问服务
 
-    ```shell
-    $ curl -i -X GET http://localhost:8888/from/you
-    ```
+  ```shell
+  $ curl -i -X GET http://localhost:8888/from/you
+  ```
     
-    返回如下：
+  返回如下：
 
-    ```text
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-    Date: Sun, 07 Feb 2021 04:31:25 GMT
-    Content-Length: 27
+  ```text
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Date: Sun, 07 Feb 2021 04:31:25 GMT
+  Content-Length: 27
     
-    {"message":"Hello go-zero"}
+  {"message":"Hello go-zero"}
     ```
 
 # 源码
@@ -96,6 +96,3 @@ func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
 * [api语法](api-grammar.md)
 * [api配置文件介绍](api-config.md)
 * [api中间件使用](middleware.md)
-
-
-
