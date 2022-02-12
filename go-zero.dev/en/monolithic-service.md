@@ -6,11 +6,12 @@
 Since go-zero integrates web/rpc, some friends in the community will ask me whether go-zero is positioned as a microservice framework.
 The answer is no. Although go-zero integrates many functions, you can use any one of them independently, or you can develop a single service.
 
-It is not that every service must adopt the design of the microservice architecture. For this point, you can take a look at the fourth issue of the author (kevin) [OpenTalk](https://www.bilibili.com/video/BV1Jy4y127Xu) , Which has a detailed explanation on this.
+It is not that every service must adopt the design of the microservice architecture.
 
 ## Create greet service
 ```shell
-$ cd ~/go-zero-demo
+$ mkdir go-zero-demo
+$ cd go-zero-demo
 $ go mod init go-zero-demo
 $ goctl api new greet
 $ go mod tidy
@@ -21,8 +22,6 @@ Take a look at the structure of the `greet` service
 ```shell
 $ cd greet
 $ tree
-```
-```text
 .
 ├── etc
 │   └── greet-api.yaml
@@ -46,7 +45,7 @@ It can be observed from the above directory structure that although the `greet` 
 
 ## Write logic
 ```shell
-$ vim ~/go-zero-demo/greet/internal/logic/greetlogic.go 
+$ vim greet/internal/logic/greetlogic.go
 ```
 ```go
 func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
@@ -60,20 +59,14 @@ func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
 
 * Start service
     ```shell
-    $ cd ~/go-zer-demo/greet
+    $ cd greet
     $ go run greet.go -f etc/greet-api.yaml
-    ```
-    ```text
     Starting server at 0.0.0.0:8888...
     ```
 
 * Access service
     ```shell
-    $ curl -i -X GET \
-      http://localhost:8888/from/you
-    ```
-
-    ```text
+    $ curl -i -X GET http://localhost:8888/from/you
     HTTP/1.1 200 OK
     Content-Type: application/json
     Date: Sun, 07 Feb 2021 04:31:25 GMT
@@ -91,6 +84,3 @@ func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
 * [API IDL](api-grammar.md)
 * [API Configuration](api-config.md)
 * [Middleware](middleware.md)
-
-
-
