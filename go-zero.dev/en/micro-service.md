@@ -65,7 +65,7 @@ $ go mod init go-zero-demo
   package user;
     
   // protoc-gen-go version is greater than 1.4.0, proto file needs to add go_package, otherwise it can't be generated
-  option go_package = ". /user";
+  option go_package = "./user";
   
   message IdRequest {
       string id = 1;
