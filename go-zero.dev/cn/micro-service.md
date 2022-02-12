@@ -244,13 +244,33 @@ $ go mod init go-zero-demo
   ```
 
   ```go
+  package logic
+
   import (
-    ...
-    "go-zero-demo/mall/user/rpc/types/user"
-    ...
+      "context"
+      "errors"
+
+      "go-zero-demo/mall/order/api/internal/svc"
+      "go-zero-demo/mall/order/api/internal/types"
+      "go-zero-demo/mall/user/rpc/types/user"
+
+      "github.com/zeromicro/go-zero/core/logx"
   )
-  ...
-  
+
+  type GetOrderLogic struct {
+      logx.Logger
+      ctx    context.Context
+      svcCtx *svc.ServiceContext
+  }
+
+  func NewGetOrderLogic(ctx context.Context, svcCtx *svc.ServiceContext) GetOrderLogic {
+      return GetOrderLogic{
+          Logger: logx.WithContext(ctx),
+          ctx:    ctx,
+          svcCtx: svcCtx,
+      }
+  }
+
   func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
       user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
           Id: "1",
@@ -285,8 +305,6 @@ $ go mod init go-zero-demo
   ```shell
   # 在 mall/user/rpc 目录
   $ go run user.go -f etc/user.yaml
-  ```
-  ```text
   Starting rpc server at 127.0.0.1:8080...
   ```
   
@@ -294,16 +312,11 @@ $ go mod init go-zero-demo
   ```shell
   # 在 mall/order/api 目录
   $ go run order.go -f etc/order.yaml
-  ```
-  ```text
   Starting server at 0.0.0.0:8888...
   ```
 * 访问order api
   ```shell
-  curl -i -X GET http://localhost:8888/api/order/get/1
-  ```
-  
-  ```text
+  $ curl -i -X GET http://localhost:8888/api/order/get/1
   HTTP/1.1 200 OK
   Content-Type: application/json
   Date: Sun, 07 Feb 2021 03:45:05 GMT
@@ -312,7 +325,7 @@ $ go mod init go-zero-demo
   {"id":"1","name":"test order"}
   ```
 
-> [注意] 在演示中的提及的api语法，rpc生成，goctl，goctl环境等怎么使用和安装，快速入门中不作详细概述，我们后续都会有详细的文档进行描述，你也可以点击下文的【猜你想看】快速跳转的对应文档查看。
+> 注意：在演示中的提及的api语法，rpc生成，goctl，goctl环境等怎么使用和安装，快速入门中不作详细概述，我们后续都会有详细的文档进行描述，你也可以点击下文的【猜你想看】快速跳转的对应文档查看。
 
 # 源码
 [mall源码](https://github.com/zeromicro/go-zero-demo/tree/master/mall)
