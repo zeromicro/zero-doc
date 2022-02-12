@@ -135,37 +135,6 @@ $ go mod init go-zero-demo
   }
   ```
 
-* Modify the configuration
-
-  ```shell
-  $ vim internal/config/config.go
-  ```
-
-  ```go
-  package config
-
-  import "github.com/zeromicro/go-zero/zrpc"
-
-  type Config struct {
-      zrpc.RpcServerConf
-  }
-  ```
-
-* Add yaml configuration
-
-  ```shell
-  $ vim etc/user.yaml 
-  ```
-
-  ```yaml
-  Name: user.rpc
-  ListenOn: 127.0.0.1:8080
-  Etcd:
-    Hosts:
-      - 127.0.0.1:2379
-    Key: user.rpc
-  ```
-
 ## Create order api service
 * Create `order api` service
 
