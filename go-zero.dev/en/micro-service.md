@@ -114,14 +114,14 @@ $ go mod init go-zero-demo
   )
   
   type GetUserLogic struct {
-      ctx context.Context
+      ctx    context.Context
       svcCtx *svc.ServiceContext
       logx.Logger
-  Logger }
+  }
   
   func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLogic {
       return &GetUserLogic{
-          ctx: ctx,
+          ctx:    ctx,
           svcCtx: svcCtx,
           Logger: logx.WithContext(ctx),
       }
@@ -129,10 +129,10 @@ $ go mod init go-zero-demo
   
   func (l *GetUserLogic) GetUser(in *user.IdRequest) (*user.UserResponse, error) {
       return &user.UserResponse{
-              Id: "1",
+              Id:   "1",
               Name: "test",
-          }, nil
-  }  
+      }, nil
+  }
   ```
 
 * Modify the configuration
