@@ -35,7 +35,7 @@ two services to initially implement this little demo.
 
 > If you run the monolithic example, which is also called ``go-zero-demo``, you may need to change the parent directory.
 
-``shell
+```shell
 $ mkdir go-zero-demo
 $ cd go-zero-demo
 $ go mod init go-zero-demo
@@ -87,11 +87,12 @@ $ go mod init go-zero-demo
 
 * Generate the code
 
-    ```shell
-    $ cd ~/go-zero-demo/mall/user/rpc
-    $ goctl rpc protoc user.proto --go_out=. /types --go-grpc_out=. /types --zrpc_out=.
-    Done.
-    ```
+  ```shell
+  $ cd mall/user/rpc
+  $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
+  Done.
+  ```
+
 > [!TIPS]
 > grpc directive details refer to https://grpc.io/docs/languages/go/quickstart/
 
@@ -143,9 +144,7 @@ $ go mod init go-zero-demo
   ```go
   package config
 
-	import (
-		"github.com/zeromicro/go-zero/zrpc"
-	)
+  import "github.com/zeromicro/go-zero/zrpc"
 
   type Config struct {
       zrpc.RpcServerConf
@@ -167,12 +166,11 @@ $ go mod init go-zero-demo
     Key: user.rpc
   ```
 
-
 ## Create order api service
 * Create `order api` service
 
   ```shell
-  $ cd ~/go-zero-demo/mall
+  # in dir go-zero-demo/mall
   $ mkdir -p order/api && cd order/api
   ```
 
@@ -200,26 +198,28 @@ $ go mod init go-zero-demo
   ```
 
 * Generate the order service
-    ```shell
-    $ goctl api go -api order.api -dir .
-    Done.
+  ```shell
+  $ goctl api go -api order.api -dir .
+  Done.
     ```
 * Add user rpc configuration
 
-    ```shell
-    $ vim internal/config/config.go
-    ```
-    ```go
-    package config
+  ```shell
+  $ vim internal/config/config.go
+  ```
+  ```go
+  package config
 
-    import "github.com/tal-tech/go-zero/zrpc"
-    import "github.com/tal-tech/go-zero/rest"
+  import (
+      "github.com/zeromicro/go-zero/zrpc"
+      "github.com/zeromicro/go-zero/rest"
+  )
   
-    type Config struct {
-        rest.RestConf
-        UserRpc zrpc.RpcClientConf
-    }
-    ```
+  type Config struct {
+      rest.RestConf
+      UserRpc zrpc.RpcClientConf
+  }
+  ```
 * Add yaml configuration
 
     ```shell
@@ -237,85 +237,110 @@ $ go mod init go-zero-demo
     ```
 * refine the service dependencies
 
-    ```shell
-    $ vim internal/svc/servicecontext.go
-    ```
-    ```go
-    package svc
+  ```shell
+  $ vim internal/svc/servicecontext.go
+  ```
+  ```go
+  package svc
 
-    import (
-        "go-zero-demo/mall/order/api/internal/config"
-        "go-zero-demo/mall/user/rpc/user"
+  import (
+      "go-zero-demo/mall/order/api/internal/config"
+      "go-zero-demo/mall/user/rpc/user"
 
-        "github.com/zeromicro/go-zero/zrpc"
-    )
+      "github.com/zeromicro/go-zero/zrpc"
+  )
 
-    type ServiceContext struct {
-        Config config.
-        UserRpc userclient.User
-    }
+  type ServiceContext struct {
+      Config  config.Config
+      UserRpc user.User
+  }
 
-    func NewServiceContext(config.Config) *ServiceContext {
-        return &ServiceContext{
-            Config: c,
-            UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
-        }
-    }
-    ```
+  func NewServiceContext(c config.Config) *ServiceContext {
+      return &ServiceContext{
+          Config:  c,
+          UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
+      }
+  }
+  ```
 
-
-* Adding order presentation logic
+* Adding order demo logic
 
   Add business logic to `getorderlogic`
   ```shell
-  $ vim ~/go-zero-demo/mall/order/api/internal/logic/getorderlogic.go
+  $ vim internal/logic/getorderlogic.go
   ```
+
   ```go
+  package logic
+
+  import (
+      "context"
+      "errors"
+
+      "go-zero-demo/mall/order/api/internal/svc"
+      "go-zero-demo/mall/order/api/internal/types"
+      "go-zero-demo/mall/user/rpc/types/user"
+
+      "github.com/zeromicro/go-zero/core/logx"
+  )
+
+  type GetOrderLogic struct {
+      logx.Logger
+      ctx    context.Context
+      svcCtx *svc.ServiceContext
+  }
+
+  func NewGetOrderLogic(ctx context.Context, svcCtx *svc.ServiceContext) GetOrderLogic {
+      return GetOrderLogic{
+          Logger: logx.WithContext(ctx),
+          ctx:    ctx,
+          svcCtx: svcCtx,
+      }
+  }
+
   func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
-    user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdRequest{
-        Id: "1",
-    })
-    if err ! = nil {
-        return nil, err
-    }
+      user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
+          Id: "1",
+      })
+      if err != nil {
+          return nil, err
+      }
 
-    if user.Name ! = "test" {
-        return nil, errors.New("User does not exist")
-    }
+      if user.Name != "test" {
+          return nil, errors.New("用户不存在")
+      }
 
-    return &types.OrderReply{
-        Id: req,
-        Name: "test order",
-    }, nil
+      return &types.OrderReply{
+          Id:   req.Id,
+          Name: "test order",
+      }, nil
   }
   ```
 
 ## Start the service and verify
-* Start etcd
+* start etcd
   ```shell
   $ etcd
+  ```
+* download dependencies
+  ```shell
+  # in dir go-zero-demo
+  $ go mod tidy
   ```
 * start user rpc
   ```shell
   $ go run user.go -f etc/user.yaml
-  ```
-  ```text
   Starting rpc server at 127.0.0.1:8080...
   ``` text
 
 * start order api
   ```shell
   $ go run order.go -f etc/order.yaml
-  ```
-  ```text
   Starting server at 0.0.0.0:8888...
   ``` text
 * Accessing the order api
   ```shell
   curl -i -X GET http://localhost:8888/api/order/get/1
-  ```
-
-  ```text
   HTTP/1.1 200 OK
   Content-Type: application/json
   Date: Sun, 07 Feb 2021 03:45:05 GMT
@@ -339,6 +364,3 @@ $ go mod init go-zero-demo
 * [rpc directory](rpc-dir.md)
 * [rpc-config](rpc-config.md)
 * [rpc caller description](rpc-call.md)
-
-
-Translated with www.DeepL.com/Translator (free version)
