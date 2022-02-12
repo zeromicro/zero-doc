@@ -152,12 +152,12 @@ $ go mod init go-zero-demo
   ```go
   type(
       OrderReq {
-          Id string `path: "id"`
+          Id string `path:"id"`
       }
     
       OrderReply {
-          Id string `json: "id"`
-          Name string `json: "name"`
+          Id   string `json:"id"`
+          Name string `json:"name"`
       }
   )
 
