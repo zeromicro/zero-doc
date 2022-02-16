@@ -14,7 +14,7 @@ Here we take the `search` service as an example to demonstrate the use of middle
 ### Routing middleware
 * Rewrite the `search.api` file and add the `middleware` declaration
     ```shell
-    $ cd service/search/cmd/api
+    $ cd service/search/api
     $ vim search.api
     ```
     ```text
@@ -49,7 +49,7 @@ Here we take the `search` service as an example to demonstrate the use of middle
   After the generation is completed, there will be an additional `middleware` directory under the `internal` directory, which is the middleware file, and the implementation logic of the subsequent middleware is also written here.
 *  Improve resource dependency `ServiceContext`
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -68,7 +68,7 @@ Here we take the `search` service as an example to demonstrate the use of middle
   Only one line of log is added here, with the content example middle. If the service runs and outputs example middle, it means that the middleware is in use.
   
     ```shell
-    $ vim service/search/cmd/api/internal/middleware/examplemiddleware.go
+    $ vim service/search/api/internal/middleware/examplemiddleware.go
     ```
     ```go
     package middleware

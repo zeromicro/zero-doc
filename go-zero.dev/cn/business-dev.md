@@ -13,7 +13,7 @@
 在正式进入后续文档叙述前，可以先留意一下这里的源码，后续我们会基于这份源码进行功能的递进式演示，
 而不是完全从0开始，如果你从[快速入门](quick-start.md)章节过来，这份源码结构对你来说不是问题。
 
-点击<a href="https://zeromicro.github.io/go-zero-pages/resource/book.zip">这里下载</a>演示工程基础源码
+点击<a href="https://github.com/zeromicro/go-zero-pages/raw/master/cn/resource/book.zip">这里下载</a>演示工程基础源码
 
 ## 演示工程说明
 

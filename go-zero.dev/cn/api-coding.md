@@ -2,7 +2,7 @@
 
 ## 编写user.api文件
 ```shell
-$ vim service/user/cmd/api/user.api  
+$ vim service/user/api/user.api  
 ```
 ```text
 type (
@@ -30,7 +30,7 @@ service user-api {
 ### 方式一
 
 ```shell
-$ cd book/service/user/cmd/api
+$ cd book/service/user/api
 $ goctl api go -api user.api -dir . 
 ```
 ```text

@@ -130,7 +130,7 @@ Next we will return it in json format
 
 * Use custom errors
     ```shell
-    $ vim service/user/cmd/api/user.go
+    $ vim service/user/api/user.go
     ```
     ```go
     func main() {

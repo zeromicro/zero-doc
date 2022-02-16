@@ -5,7 +5,7 @@
 
 ## Create file
 ```shell
-$ vim service/user/cmd/api/user.api  
+$ vim service/user/api/user.api  
 ```
 ```text
 type (
@@ -33,7 +33,7 @@ service user-api {
 ### By goctl executable file
 
 ```shell
-$ cd book/service/user/cmd/api
+$ cd book/service/user/api
 $ goctl api go -api user.api -dir . 
 ```
 ```text
