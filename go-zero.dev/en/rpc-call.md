@@ -13,7 +13,7 @@ From the above information, we can know that the user service needs to provide a
 
 * Compile the proto file
     ```shell
-    $ vim service/user/cmd/rpc/user.proto
+    $ vim service/user/rpc/user.proto
     ```
     ```protobuf
     syntax = "proto3";
@@ -39,7 +39,7 @@ From the above information, we can know that the user service needs to provide a
     ```
     * Generate rpc service code
     ```shell
-    $ cd service/user/cmd/rpc
+    $ cd service/user/rpc
     $ goctl rpc proto -src user.proto -dir .
     ```
   
@@ -48,7 +48,7 @@ From the above information, we can know that the user service needs to provide a
 
 * Add configuration and improve yaml configuration items
     ```shell
-    $ vim service/user/cmd/rpc/internal/config/config.go
+    $ vim service/user/rpc/internal/config/config.go
     ```
     ```go
     type Config struct {
@@ -60,7 +60,7 @@ From the above information, we can know that the user service needs to provide a
     }
     ```
     ```shell
-    $ vim /service/user/cmd/rpc/etc/user.yaml
+    $ vim /service/user/rpc/etc/user.yaml
     ```
     ```yaml
     Name: user.rpc
@@ -95,7 +95,7 @@ From the above information, we can know that the user service needs to provide a
 
 * Add resource dependency
     ```shell
-    $ vim service/user/cmd/rpc/internal/svc/servicecontext.go  
+    $ vim service/user/rpc/internal/svc/servicecontext.go  
     ```
     ```go
     type ServiceContext struct {
@@ -113,7 +113,7 @@ From the above information, we can know that the user service needs to provide a
     ```
 * Add rpc logic
     ```shell
-    $ service/user/cmd/rpc/internal/logic/getuserlogic.go
+    $ service/user/rpc/internal/logic/getuserlogic.go
     ```
     ```go
     func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
@@ -136,7 +136,7 @@ Next we call user rpc in the search service
 
 * Add UserRpc configuration and yaml configuration items
     ```shell
-    $ vim service/search/cmd/api/internal/config/config.go
+    $ vim service/search/api/internal/config/config.go
     ```
     ```go
     type Config struct {
@@ -149,7 +149,7 @@ Next we call user rpc in the search service
     }
     ```
     ```shell
-    $ vim service/search/cmd/api/etc/search-api.yaml
+    $ vim service/search/api/etc/search-api.yaml
     ```
     ```yaml
     Name: search-api
@@ -174,7 +174,7 @@ Next we call user rpc in the search service
     > The `Key` in etcd must be consistent with the Key in the user rpc service configuration
 * Add dependency
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -193,7 +193,7 @@ Next we call user rpc in the search service
     ```
 * Supplementary logic
     ```shell
-    $ vim /service/search/cmd/api/internal/logic/searchlogic.go
+    $ vim /service/search/api/internal/logic/searchlogic.go
     ```
     ```go
     func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
@@ -222,7 +222,7 @@ Next we call user rpc in the search service
 * Start etcd, redis, mysql
 * Start user rpc
     ```shell
-    $ cd /service/user/cmd/rpc
+    $ cd /service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
@@ -230,7 +230,7 @@ Next we call user rpc in the search service
     ```
 * Start search api
 ```shell
-$ cd service/search/cmd/api
+$ cd service/search/api
 $ go run search.go -f etc/search-api.yaml
 ```
 

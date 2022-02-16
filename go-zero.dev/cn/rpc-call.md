@@ -10,7 +10,7 @@
 
 * 编译proto文件
     ```shell
-    $ vim service/user/cmd/rpc/user.proto
+    $ vim service/user/rpc/user.proto
     ```
     ```protobuf
     syntax = "proto3";
@@ -36,7 +36,7 @@
     ```
     * 生成rpc服务代码
     ```shell
-    $ cd service/user/cmd/rpc
+    $ cd service/user/rpc
     $ goctl rpc proto -src user.proto -dir .
     ```
 > [!TIPS]
@@ -44,7 +44,7 @@
 
 * 添加配置及完善yaml配置项
     ```shell
-    $ vim service/user/cmd/rpc/internal/config/config.go
+    $ vim service/user/rpc/internal/config/config.go
     ```
     ```go
     type Config struct {
@@ -56,7 +56,7 @@
     }
     ```
     ```shell
-    $ vim /service/user/cmd/rpc/etc/user.yaml
+    $ vim /service/user/rpc/etc/user.yaml
     ```
     ```yaml
     Name: user.rpc
@@ -91,7 +91,7 @@
 
 * 添加资源依赖
     ```shell
-    $ vim service/user/cmd/rpc/internal/svc/servicecontext.go  
+    $ vim service/user/rpc/internal/svc/servicecontext.go  
     ```
     ```go
     type ServiceContext struct {
@@ -109,7 +109,7 @@
     ```
 * 添加rpc逻辑
     ```shell
-    $ service/user/cmd/rpc/internal/logic/getuserlogic.go
+    $ service/user/rpc/internal/logic/getuserlogic.go
     ```
     ```go
     func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
@@ -132,7 +132,7 @@
 
 * 添加UserRpc配置及yaml配置项
     ```shell
-    $ vim service/search/cmd/api/internal/config/config.go
+    $ vim service/search/api/internal/config/config.go
     ```
     ```go
     type Config struct {
@@ -145,7 +145,7 @@
     }
     ```
     ```shell
-    $ vim service/search/cmd/api/etc/search-api.yaml
+    $ vim service/search/api/etc/search-api.yaml
     ```
     ```yaml
     Name: search-api
@@ -170,7 +170,7 @@
     > etcd中的`Key`必须要和user rpc服务配置中Key一致
 * 添加依赖
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -189,7 +189,7 @@
     ```
 * 补充逻辑
     ```shell
-    $ vim /service/search/cmd/api/internal/logic/searchlogic.go
+    $ vim /service/search/api/internal/logic/searchlogic.go
     ```
     ```go
     func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
@@ -218,7 +218,7 @@
 * 启动etcd、redis、mysql
 * 启动user rpc
     ```shell
-    $ cd /service/user/cmd/rpc
+    $ cd /service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
@@ -226,7 +226,7 @@
     ```
 * 启动search api
 ```shell
-$ cd service/search/cmd/api
+$ cd service/search/api
 $ go run search.go -f etc/search-api.yaml
 ```
 

@@ -4,7 +4,7 @@
 
 ## 添加Mysql配置
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 package config
@@ -23,7 +23,7 @@ type Config struct {
 
 ## 完善yaml配置
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -54,7 +54,7 @@ CacheRedis:
 
 ## 完善服务依赖
 ```shell
-$ vim service/user/cmd/api/internal/svc/servicecontext.go
+$ vim service/user/api/internal/svc/servicecontext.go
 ```
 ```go
 type ServiceContext struct {
@@ -72,7 +72,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 ```
 ## 填充登录逻辑
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go

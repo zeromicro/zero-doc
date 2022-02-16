@@ -202,7 +202,7 @@ $ tree，Click to enter in order New->Go Zero->Api Code
 
 ### Write user.api file
 ```shell
-$ vim service/user/cmd/api/user.api  
+$ vim service/user/api/user.api  
 ```
 ```text
 type (
@@ -231,7 +231,7 @@ service user-api {
 #### way one
 
 ```shell
-$ cd book/service/user/cmd/api
+$ cd book/service/user/api
 $ goctl api go -api user.api -dir . 
 ```
 ```text
@@ -255,7 +255,7 @@ In this section, we'll follow up on the previous steps and talk about how go-zer
 
 ### Adding Mysql configuration
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 package config
@@ -274,7 +274,7 @@ type Config struct {
 
 ### Improve yaml configuration
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -304,7 +304,7 @@ $pass: redis password
 
 ### Perfect service dependence
 ```shell
-$ vim service/user/cmd/api/internal/svc/servicecontext.go
+$ vim service/user/api/internal/svc/servicecontext.go
 ```
 ```go
 type ServiceContext struct {
@@ -322,7 +322,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 ```
 ### Populate login logic
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -396,7 +396,7 @@ Moving on from the [business coding](business.md) section, we refine the `getJwt
 
 ##### Add configuration definition and yaml configuration items
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -412,7 +412,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -437,7 +437,7 @@ $AccessExpire: the validity of the jwt token, unit: second
 
 
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -455,7 +455,7 @@ func (l *LoginLogic) getJwtToken(secretKey string, iat, seconds, userId int64) (
 #### search api using jwt token authentication
 ##### writing search.api file
 ```shell
-$ vim service/search/cmd/api/search.api
+$ vim service/search/api/search.api
 ```
 ```text
 type (
@@ -497,7 +497,7 @@ There are three ways to generate code as described earlier, so I won't go over t
 
 ##### Add yaml configuration items
 ```shell
-$ vim service/search/cmd/api/etc/search-api.yaml
+$ vim service/search/api/etc/search-api.yaml
 ```
 ```yaml
 Name: search-api
@@ -520,7 +520,7 @@ Change the port here to avoid conflict with user api port `8888`
 #### verify jwt token
 * Start user api service and login
     ```shell
-    $ cd service/user/cmd/api
+    $ cd service/user/api
     $ go run user.go -f etc/user-api.yaml
     ```
     ```text
@@ -581,7 +581,7 @@ At this point, the jwt demo is complete from generation to use. The authenticati
 #### gets the information carried in the jwt token
 go-zero will parse the jwt token and put the kv passed in when the user generates the token in the Context of http.
 ```shell
-$ vim /service/search/cmd/api/internal/logic/searchlogic.go
+$ vim /service/search/api/internal/logic/searchlogic.go
 ```
 Add a log to output the userId parsed from jwt.
 ```go
@@ -608,7 +608,7 @@ Here is an example of the `search` service to demonstrate the use of middleware
 #### routing middleware
 * Rewrite the `search.api` file and add the `middleware` declaration
     ```shell
-    $ cd service/search/cmd/api
+    $ cd service/search/api
     $ vim search.api
     ```
     ```text
@@ -643,7 +643,7 @@ Here is an example of the `search` service to demonstrate the use of middleware
     After generation, there will be one more `middleware` directory in the `internal` directory, where the middleware files are located and the subsequent middleware implementation logic is written here.
 * Improve the resource dependency `ServiceContext`.
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -662,7 +662,7 @@ Here is an example of the `search` service to demonstrate the use of middleware
   Here only add one line of log, content example middle, if the service is running output example middle means that the middleware is used up.
   
     ```shell
-    $ vim service/search/cmd/api/internal/middleware/examplemiddleware.go
+    $ vim service/search/api/internal/middleware/examplemiddleware.go
     ```
     ```go
     package middleware
@@ -761,7 +761,7 @@ From the information above, we know that we need the user service to provide a m
 
 * Compile the proto file
 ```shell
-$ vim service/user/cmd/rpc/user.proto
+$ vim service/user/rpc/user.proto
 ```
   
 ```protobuf
@@ -789,7 +789,7 @@ service user {
   
 * Generate rpc service code
 ```shell
-$ cd service/user/cmd/rpc
+$ cd service/user/rpc
 $ goctl rpc proto -src user.proto -dir .
 ```
 :::tip
@@ -798,7 +798,7 @@ If the installed version of `protoc-gen-go` is larger than 1.4.0, it is recommen
 
 * Add configuration and refine yaml configuration items
 ```shell
-$ vim service/user/cmd/rpc/internal/config/config.go
+$ vim service/user/rpc/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -810,7 +810,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim /service/user/cmd/rpc/etc/user.yaml
+$ vim /service/user/rpc/etc/user.yaml
 ```
 ```yaml
 Name: user.rpc
@@ -844,7 +844,7 @@ $etcdHost: etcd connection address, format: ip:port, e.g.: 127.0.0.1:2379
 
 * Adding Resource Dependencies
     ```shell
-    $ vim service/user/cmd/rpc/internal/svc/servicecontext.go  
+    $ vim service/user/rpc/internal/svc/servicecontext.go  
     ```
     ```go
     type ServiceContext struct {
@@ -862,7 +862,7 @@ $etcdHost: etcd connection address, format: ip:port, e.g.: 127.0.0.1:2379
     ```
 * Adding rpc logic
     ```shell
-    $ service/user/cmd/rpc/internal/logic/getuserlogic.go
+    $ service/user/rpc/internal/logic/getuserlogic.go
     ```
     ```go
     func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
@@ -885,7 +885,7 @@ Next we call user rpc in the search service
 
 * Add UserRpc configuration and yaml configuration items
 ```shell
-$ vim service/search/cmd/api/internal/config/config.go
+$ vim service/search/api/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -898,7 +898,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim service/search/cmd/api/etc/search-api.yaml
+$ vim service/search/api/etc/search-api.yaml
 ```
 ```yaml
 Name: search-api
@@ -924,7 +924,7 @@ The `Key` in etcd must be the same as the Key in the user rpc service configurat
 :::
 * Adding dependencies
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -943,7 +943,7 @@ The `Key` in etcd must be the same as the Key in the user rpc service configurat
     ```
 * Additional logic
     ```shell
-    $ vim /service/search/cmd/api/internal/logic/searchlogic.go
+    $ vim /service/search/api/internal/logic/searchlogic.go
     ```
     ```go
     func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
@@ -972,7 +972,7 @@ The `Key` in etcd must be the same as the Key in the user rpc service configurat
 * Start etcd, redis, mysql
 * Start user rpc
     ```shell
-    $ cd /service/user/cmd/rpc
+    $ cd /service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
@@ -980,7 +980,7 @@ The `Key` in etcd must be the same as the Key in the user rpc service configurat
     ```
 * start search api
 ```shell
-$ cd service/search/cmd/api
+$ cd service/search/api
 $ go run search.go -f etc/search-api.yaml
 ```
 
@@ -1130,7 +1130,7 @@ Next, we return it in json format
 
 * Turn on custom errors
     ```shell
-    $ vim service/user/cmd/api/user.go
+    $ vim service/user/api/user.go
     ```
     ```go
     func main() {

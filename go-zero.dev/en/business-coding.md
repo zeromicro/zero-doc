@@ -8,7 +8,7 @@ Use business coding to tell how go-zero is used in actual business.
 
 ## Add Mysql configuration
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 package config
@@ -27,7 +27,7 @@ type Config struct {
 
 ## Improve yaml configuration
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -58,7 +58,7 @@ CacheRedis:
 
 ## Improve service dependence
 ```shell
-$ vim service/user/cmd/api/internal/svc/servicecontext.go
+$ vim service/user/api/internal/svc/servicecontext.go
 ```
 ```go
 type ServiceContext struct {
@@ -76,7 +76,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 ```
 ## Fill in the login logic
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
