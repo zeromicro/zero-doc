@@ -13,8 +13,8 @@ import (
 
 	"hello/hello"
 
-	"github.com/tal-tech/go-zero/core/discov"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/discov"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 func main() {

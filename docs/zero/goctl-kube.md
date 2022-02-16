@@ -25,7 +25,7 @@
 - 首先安装 `goctl` 工具
 
 ```bash
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 - 一键生成 K8S 部署文件

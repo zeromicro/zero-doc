@@ -66,7 +66,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 * install goctl
 
   ```shell
-  GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl
+  GO111MODULE=on go get -u github.com/zeromicro/go-zero/tools/goctl
   ```
 
 * create the working dir `bookstore` and `bookstore/api`

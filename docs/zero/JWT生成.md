@@ -24,7 +24,7 @@ $ vi book/user/api/internal/config/config.go
 package config
 
 import (
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/rest"
 )
 
 type Config struct {
@@ -89,7 +89,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type LoginLogic struct {

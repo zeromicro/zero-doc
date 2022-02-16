@@ -43,7 +43,7 @@ import (
 
 	"book/user/api/internal/logic"
 	"book/user/api/internal/svc"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func userInfoHandler(ctx *svc.ServiceContext) http.HandlerFunc {
@@ -96,7 +96,7 @@ import (
 	"book/user/api/internal/svc"
 	"book/user/api/internal/types"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type UserInfoLogic struct {
