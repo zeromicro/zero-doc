@@ -36,9 +36,6 @@ Demonstration environment of this document
 > Windows may report an error, `A required privilege is not held by the client.`, because goctl needs to be run `as administrator` under Windows.
 >The reason is that goctl needs to be run "as administrator" under Windows.
 * Download and install `protoc-gen-go`
-
-  If the goctl version is already 1.2.1 or later, you can ignore this step.
-
     ```shell
     $ go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
     ```
