@@ -88,7 +88,7 @@ OPTIONS:
 - `goctl rpc proto` 详情可以通过`goctl rpc proto --help`查看帮助
 - `goctl model mysql ddl` 详情可以通过`goctl model mysql ddl --help`查看帮助
 - `goctl model mysql datasource` 详情可以通过`goctl model mysql datasource --help`查看帮助
-- `goctl model postgresql datasource` 详情可以通过`goctl model mysql datasource --help`查看帮助
+- `goctl model pg datasource` 详情可以通过`goctl model pg datasource --help`查看帮助
 - `goctl model mongo` 详情可以通过`goctl model mongo --help`查看帮助
 
 默认情况（在不指定`--home`）会从`$HOME/.goctl`目录下读取。
