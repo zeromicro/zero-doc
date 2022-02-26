@@ -366,7 +366,7 @@ type Foo{
 
 * tag表
 
-  绑定参数时，以下四个tag不能同时存在，只能选择其中一个
+  绑定参数时，以下四个tag只能选择其中一个
   <table>
   <tr>
     <td>tag key</td> <td>描述</td> <td>提供方</td><td>有效范围 </td> <td>示例 </td>

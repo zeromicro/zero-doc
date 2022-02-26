@@ -373,7 +373,7 @@ type Foo{
 
 * tag table
 
-  When binding parameters, the following four tags cannot exist at the same time. Only one of them can be selected
+  When binding parameters, only one of the following four tags can be selected
   <table>
   <tr>
     <td>tag key</td> <td>Description</td> <td>Provider</td><td>Effective Coverage</td> <td>Example</td>
