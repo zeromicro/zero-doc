@@ -406,7 +406,7 @@ type Foo{
   </table>
 
   > [!TIP]
-  > tag修饰符需要在tag value后以引文逗号,隔开
+  > tag修饰符需要在tag value后以英文逗号,隔开
 
 ## service语法块
 
