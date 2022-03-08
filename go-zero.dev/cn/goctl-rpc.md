@@ -180,7 +180,7 @@ OPTIONS:
       // Source: xxx.proto
   ```
 
-  的标识，请注意不要将也写业务性代码写在里面。
+  的标识，请注意不要在里面写业务性代码;也不要将它写在业务性代码里面。
 
 ## proto import
 * 对于rpc中的requestType和returnType必须在main proto文件定义，对于proto中的message可以像protoc一样import其他proto文件。
