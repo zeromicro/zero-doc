@@ -1,5 +1,3 @@
-# DEPRECATED: PLEASE MOVE TO https://go-zero.dev/cn/extended-reading.html
-
 # Rapid development of microservices
 
 English | [简体中文](shorturl.md)
