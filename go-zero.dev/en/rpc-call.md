@@ -180,14 +180,14 @@ Next we call user rpc in the search service
     type ServiceContext struct {
         Config  config.Config
         Example rest.Middleware
-        UserRpc userclient.User
+        UserRpc user.User
     }
     
     func NewServiceContext(c config.Config) *ServiceContext {
         return &ServiceContext{
             Config:  c,
             Example: middleware.NewExampleMiddleware().Handle,
-            UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+            UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
         }
     }
     ```
@@ -205,7 +205,7 @@ Next we call user rpc in the search service
         }
         
         // use user rpc
-        _, err = l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdReq{
+        _, err = l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdReq{
             Id: userId,
         })
         if err != nil {
