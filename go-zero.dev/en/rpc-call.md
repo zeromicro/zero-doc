@@ -40,7 +40,7 @@ From the above information, we can know that the user service needs to provide a
     * Generate rpc service code
     ```shell
     $ cd service/user/rpc
-    $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+    $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
     ```
   
 > [!TIPS]
