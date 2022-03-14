@@ -20,7 +20,7 @@ From the above information, we can know that the user service needs to provide a
     
     package user;
     
-    option go_package = "user";
+    option go_package = "./user";
   
     message IdReq{
       int64 id = 1;
@@ -40,7 +40,7 @@ From the above information, we can know that the user service needs to provide a
     * Generate rpc service code
     ```shell
     $ cd service/user/rpc
-    $ goctl rpc proto -src user.proto -dir .
+    $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
     ```
   
 > [!TIPS]

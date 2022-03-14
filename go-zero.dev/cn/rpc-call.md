@@ -17,7 +17,7 @@
     
     package user;
     
-    option go_package = "user";
+    option go_package = "./user";
   
     message IdReq{
       int64 id = 1;
@@ -37,7 +37,7 @@
     * 生成rpc服务代码
     ```shell
     $ cd service/user/rpc
-    $ goctl rpc proto -src user.proto -dir .
+    $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
     ```
 > [!TIPS]
 > 如果安装的 `protoc-gen-go` 版大于1.4.0, proto文件建议加上`go_package`
