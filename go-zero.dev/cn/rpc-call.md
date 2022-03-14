@@ -62,15 +62,15 @@
     Name: user.rpc
     ListenOn: 127.0.0.1:8080
     Etcd:
-    Hosts:
-    - $etcdHost
+      Hosts:
+        - $etcdHost
       Key: user.rpc
     Mysql:
-    DataSource: $user:$password@tcp($url)/$db?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+      DataSource: $user:$password@tcp($url)/$db?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
     CacheRedis:
-    - Host: $host
-      Pass: $pass
-      Type: node  
+      - Host: $host
+        Pass: $pass
+        Type: node  
     ```
     > [!TIP]
     > $user: mysql数据库user
@@ -218,7 +218,7 @@
 * 启动etcd、redis、mysql
 * 启动user rpc
     ```shell
-    $ cd /service/user/rpc
+    $ cd service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
