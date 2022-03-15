@@ -20,7 +20,7 @@ From the above information, we can know that the user service needs to provide a
     
     package user;
     
-    option go_package = "user";
+    option go_package = "./user";
   
     message IdReq{
       int64 id = 1;
@@ -40,7 +40,7 @@ From the above information, we can know that the user service needs to provide a
     * Generate rpc service code
     ```shell
     $ cd service/user/rpc
-    $ goctl rpc proto -src user.proto -dir .
+    $ goctl rpc protoc user.proto --go_out=./types --go-grpc_out=./types --zrpc_out=.
     ```
   
 > [!TIPS]
@@ -66,15 +66,15 @@ From the above information, we can know that the user service needs to provide a
     Name: user.rpc
     ListenOn: 127.0.0.1:8080
     Etcd:
-    Hosts:
-    - $etcdHost
+      Hosts:
+        - $etcdHost
       Key: user.rpc
     Mysql:
-    DataSource: $user:$password@tcp($url)/$db?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+      DataSource: $user:$password@tcp($url)/$db?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
     CacheRedis:
-    - Host: $host
-      Pass: $pass
-      Type: node  
+      - Host: $host
+        Pass: $pass
+        Type: node  
     ```
     > [!TIP]
     > $user: mysql database user
@@ -180,14 +180,14 @@ Next we call user rpc in the search service
     type ServiceContext struct {
         Config  config.Config
         Example rest.Middleware
-        UserRpc userclient.User
+        UserRpc user.User
     }
     
     func NewServiceContext(c config.Config) *ServiceContext {
         return &ServiceContext{
             Config:  c,
             Example: middleware.NewExampleMiddleware().Handle,
-            UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
+            UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
         }
     }
     ```
@@ -205,7 +205,7 @@ Next we call user rpc in the search service
         }
         
         // use user rpc
-        _, err = l.svcCtx.UserRpc.GetUser(l.ctx, &userclient.IdReq{
+        _, err = l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdReq{
             Id: userId,
         })
         if err != nil {
@@ -222,7 +222,7 @@ Next we call user rpc in the search service
 * Start etcd, redis, mysql
 * Start user rpc
     ```shell
-    $ cd /service/user/rpc
+    $ cd service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
