@@ -1,5 +1,5 @@
 # goctl命令大全
-![goctl](./resource/goctl-command.svg)
+![goctl](./resource/goctl-cn.svg)
 
 # goctl
 
@@ -18,7 +18,7 @@
 （检测goctl环境和依赖性工具）
 
 - --force, -f: 默许安装不存在的依赖项
-- --install, --i: 如果没有找到，就安装依赖工具
+- --install, -i: 如果没有找到，就安装依赖工具
 
 ## migrate
 （从tal-tech迁移到zeromicro）
