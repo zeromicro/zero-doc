@@ -274,7 +274,7 @@ $ go mod init go-zero-demo
       }
   }
 
-  func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
+  func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (*types.OrderReply, error) {
       user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
           Id: "1",
       })
