@@ -24,52 +24,28 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
 
 执行后代码结构如下:
 
-  ```go
+```go
 .
-├── etc             // yaml配置文件
-│   └── greet.yaml
+├── etc
+│   └── greet.yaml
 ├── go.mod
-├── greet           // pb.go文件夹①
-│   └── greet.pb.go
-├── greet.go        // main函数
-├── greet.proto     // proto 文件
-├── greetclient     // call logic ②
-│   └── greet.go
-└── internal        
-    ├── config      // yaml配置对应的实体
-    │   └── config.go
-    ├── logic       // 业务代码
-    │   └── pinglogic.go
-    ├── server      // rpc server
-    │   └── greetserver.go
-    └── svc         // 依赖资源
+├── go.sum
+├── greet
+│   ├── greet.go
+│   ├── greet.pb.go
+│   └── greet_grpc.pb.go
+├── greet.go
+├── greet.proto
+└── internal
+    ├── config
+    │   └── config.go
+    ├── logic
+    │   └── pinglogic.go
+    ├── server
+    │   └── greetserver.go
+    └── svc
         └── servicecontext.go
   ```
-
-> ① pb文件夹名（老版本文件夹固定为pb）称取自于proto文件中option go_package的值最后一层级按照一定格式进行转换，若无此声明，则取自于package的值，大致代码如下：
-
-```go
-  if option.Name == "go_package" {
-    ret.GoPackage = option.Constant.Source
-  }
-  ...
-  if len(ret.GoPackage) == 0 {
-    ret.GoPackage = ret.Package.Name
-  }
-  ret.PbPackage = GoSanitized(filepath.Base(ret.GoPackage))
-  ...
-```
-> GoSanitized方法请参考google.golang.org/protobuf@v1.25.0/internal/strs/strings.go:71
-
-> ② call 层文件夹名称取自于proto中service的名称，如该sercice的名称和pb文件夹名称相等，则会在srervice后面补充client进行区分，使pb和call分隔。
-
-```go
-if strings.ToLower(proto.Service.Name) == strings.ToLower(proto.GoPackage) {
-	callDir = filepath.Join(ctx.WorkDir, strings.ToLower(stringx.From(proto.Service.Name+"_client").ToCamel()))
-}
-```
-
-rpc一键生成常见问题解决，见[常见错误处理](error.md)
 
 > [!TIP]
 > 
@@ -85,45 +61,29 @@ rpc一键生成常见问题解决，见[常见错误处理](error.md)
 
   ```go
   syntax = "proto3";
-
-  package remote;
-
-  option go_package = "remote";
+  
+  package user;
+  option go_package="./user";
   
   message Request {
-    // 用户名
-    string username = 1;
-    // 用户密码
-    string password = 2;
+    string ping = 1;
   }
-
+  
   message Response {
-    // 用户名称
-    string name = 1;
-    // 用户性别
-    string gender = 2;
+    string pong = 1;
   }
-
+  
   service User {
-    // 登录
-    rpc Login(Request)returns(Response);
+    rpc Ping(Request) returns(Response);
   }
   ```
 
 * 生成rpc服务代码
-
-  **不推荐使用**
-  ```Bash
-  $ goctl rpc proto -src user.proto -dir .
-  ```
-  
-  **推荐使用**
   ```shell
-  $ goctl rpc protoc greet.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+  $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
 ## 准备工作
-
 * 安装了go环境
 * 安装了protoc & protoc-gen-go，并且已经设置环境变量
 * 更多问题请见 <a href="#注意事项">注意事项</a>
@@ -133,32 +93,51 @@ rpc一键生成常见问题解决，见[常见错误处理](error.md)
 ### rpc服务生成用法
 
 ```Bash
-goctl rpc proto -h
+goctl rpc protoc -h
 ```
 
 ```Bash
 NAME:
-   goctl rpc proto - generate rpc from proto
+   goctl rpc protoc - generate grpc code
 
 USAGE:
-   goctl rpc proto [command options] [arguments...]
+   example: goctl rpc protoc xx.proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=.
+
+DESCRIPTION:
+   for details, see https://go-zero.dev/cn/goctl-rpc.html
 
 OPTIONS:
-   --src value, -s value         the file path of the proto source file
-   --proto_path value, -I value  native command of protoc, specify the directory in which to search for imports. [optional]
-   --dir value, -d value         the target path of the code
-   --style value                 the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
-   --idea                        whether the command execution environment is from idea plugin. [optional]
+   --zrpc_out value  the zrpc output directory
+   --style value     the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+   --home value      the goctl home path of the template
+   --remote value    the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+                     The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+   --branch value    the branch of the remote repo, it does work with --remote
+
 ```
 
 ### 参数说明
 
-* --src 必填，proto数据源，目前暂时支持单个proto文件生成
-* --proto_path 可选，protoc原生子命令，用于指定proto import从何处查找，可指定多个路径,如`goctl rpc -I={path1} -I={path2} ...`,在没有import时可不填。当前proto路径不用指定，已经内置，`-I`的详细用法请参考`protoc -h`
-* --dir 可选，默认为proto文件所在目录，生成代码的目标目录
+* --zrpc_out 可选，默认为proto文件所在目录，生成代码的目标目录
 * --style 可选，输出目录的文件命名风格，详情见https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md
-* --idea 可选，是否为idea插件中执行，终端执行可以忽略
+* --home 可选，指定模板路径
+* --remote 可选，指定模板远程仓库
+* --branch 可选，指定模板远程仓库分支，与 `--remote` 配合使用
 
+你可以理解为 zrpc 代码生成是用 `goctl rpc $protoc_command --zrpc_out=${output}` 模板，如原来生成 grpc 代码指令为
+```bash
+$ protoc user.proto --go_out=. --grpc-go_out=.
+```
+则生成 zrpc 代码指令就为
+```bash
+$ goctl rpc protoc user.proto --go_out=. --grpc-go_out=. --zrpc_out=.
+```
+> [!TIP]
+>
+> 1. --go_out 与 --grpc-go_out 生成的最终目录必须一致
+> 2. --go_out & --grpc-go_out 和 --zrpc_out 的生成的最终目录必须不为同一目录，否则pb.go和_grpc.pb.go就与main函数同级了，这是不允许的。
+> --go_out 与 --grpc-go_out 生产的目录会受 --go_opt 和 --grpc-go_opt 和proto源文件中 go_package值的影响，要想理解这里的生成逻辑，建议阅读
+> 官方文文档：[Go Generated Code](https://developers.google.com/protocol-buffers/docs/reference/go-generated)
 
 ### 开发人员需要做什么
 
@@ -193,9 +172,9 @@ syntax = "proto3";
 
 package greet;
 
-option go_package = "greet";
+option go_package = "./greet";
 
-import "base/common.proto"
+import "base/common.proto";
 
 message Request {
   string ping = 1;
@@ -218,9 +197,9 @@ syntax = "proto3";
 
 package greet;
 
-option go_package =  "greet";
+option go_package =  "./greet";
 
-import "base/common.proto"
+import "base/common.proto";
 
 message Request {
   base.In in = 1;// 支持import
