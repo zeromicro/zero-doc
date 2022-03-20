@@ -10,7 +10,7 @@ Demonstration environment of this document
 
 ## way 1: install from goctl
 ```bash
-$ goctl env check -i -f                                  
+$ GOCTL_DEBUG=true goctl env check -i -f                                  
 [goctl-env]: preparing to check env
 
 [goctl-env]: looking up "protoc"
@@ -33,6 +33,9 @@ $ goctl env check -i -f
 
 [goctl-env]: congratulations! your goctl environment is ready!
 ```
+> TIPS
+>
+> `goctl env check` will not output console log if not in debug mode，you can execute command `goctl env -w GOCTL_DEBUG=true` to open goctl to debug mode.
 
 ## way2: install from web page
 

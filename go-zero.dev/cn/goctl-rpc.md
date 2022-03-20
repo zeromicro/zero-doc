@@ -82,6 +82,10 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
   ```shell
   $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
+  
+> 温馨提示
+>
+> `goctl rpc protoc` 指令在非debug模式下不会输出日志了，如需开启debug模式，可以用 `goctl env -w GOCTL_DEBUG=true`
 
 ## 准备工作
 * 安装了go环境

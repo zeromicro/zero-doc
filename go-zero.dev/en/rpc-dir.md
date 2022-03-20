@@ -26,7 +26,7 @@ service StreamGreeter {
 ```
 ### goctl rpc proto
 ```shell
-$ goctl rpc protoc greet.proto --go_out=. --go-grpc_out=. --zrpc_out=.                                                                                               
+$ GOCTL_DeBUG=true goctl rpc protoc greet.proto --go_out=. --go-grpc_out=. --zrpc_out=.                                                                                               
 [goctl-env]: preparing to check env
 
 [goctl-env]: looking up "protoc"
@@ -42,6 +42,10 @@ $ goctl rpc protoc greet.proto --go_out=. --go-grpc_out=. --zrpc_out=.
 [command]: protoc greet.proto --go_out=. --go-grpc_out=.
 Done.
 ```
+
+> 温馨提示
+>
+> `goctl rpc protoc` 指令在非debug模式下不会输出日志了，如需开启debug模式，可以用 `goctl env -w GOCTL_DEBUG=true`
 
 dir structure:
 
