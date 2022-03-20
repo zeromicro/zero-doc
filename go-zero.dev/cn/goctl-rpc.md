@@ -126,17 +126,17 @@ OPTIONS:
 
 你可以理解为 zrpc 代码生成是用 `goctl rpc $protoc_command --zrpc_out=${output}` 模板，如原来生成 grpc 代码指令为
 ```bash
-$ protoc user.proto --go_out=. --grpc-go_out=.
+$ protoc user.proto --go_out=. --go-grpc_out=.
 ```
 则生成 zrpc 代码指令就为
 ```bash
-$ goctl rpc protoc user.proto --go_out=. --grpc-go_out=. --zrpc_out=.
+$ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
 ```
 > [!TIP]
 >
-> 1. --go_out 与 --grpc-go_out 生成的最终目录必须一致
-> 2. --go_out & --grpc-go_out 和 --zrpc_out 的生成的最终目录必须不为同一目录，否则pb.go和_grpc.pb.go就与main函数同级了，这是不允许的。
-> --go_out 与 --grpc-go_out 生产的目录会受 --go_opt 和 --grpc-go_opt 和proto源文件中 go_package值的影响，要想理解这里的生成逻辑，建议阅读
+> 1. --go_out 与 --go-grpc_out 生成的最终目录必须一致
+> 2. --go_out & --go-grpc_out 和 --zrpc_out 的生成的最终目录必须不为同一目录，否则pb.go和_grpc.pb.go就与main函数同级了，这是不允许的。
+> --go_out 与 --go-grpc_out 生产的目录会受 --go_opt 和 --grpc-go_opt 和proto源文件中 go_package值的影响，要想理解这里的生成逻辑，建议阅读
 > 官方文文档：[Go Generated Code](https://developers.google.com/protocol-buffers/docs/reference/go-generated)
 
 ### 开发人员需要做什么
