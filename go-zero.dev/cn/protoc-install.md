@@ -5,6 +5,7 @@ protoc是一款用C++编写的工具，其可以将proto文件翻译为指定语
 
 * mac OS
 ## 方式一：goctl一键安装
+
 ```bash
 $ goctl env check -i -f                                  
 [goctl-env]: preparing to check env
@@ -31,6 +32,7 @@ $ goctl env check -i -f
 ```
 
 ## 方式二： 源文件安装
+
 ### protoc安装
 
 * 进入[protobuf release](https://github.com/protocolbuffers/protobuf/releases) 页面，选择适合自己操作系统的压缩包文件
