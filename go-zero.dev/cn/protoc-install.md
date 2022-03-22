@@ -7,7 +7,7 @@ protoc是一款用C++编写的工具，其可以将proto文件翻译为指定语
 ## 方式一：goctl一键安装
 
 ```bash
-$ GOCTL_DEBUG=true goctl env check -i -f                                  
+$ goctl env check -i -f --verbose                                 
 [goctl-env]: preparing to check env
 
 [goctl-env]: looking up "protoc"
@@ -30,9 +30,6 @@ $ GOCTL_DEBUG=true goctl env check -i -f
 
 [goctl-env]: congratulations! your goctl environment is ready!
 ```
-> 温馨提示
-> 
-> `goctl env check` 指令在非debug模式下不会输出日志了，如需开启debug模式，可以用 `goctl env -w GOCTL_DEBUG=true`
 
 ## 方式二： 源文件安装
 

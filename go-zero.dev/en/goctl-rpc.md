@@ -85,9 +85,6 @@ The code structure after execution is as follows:
   $ goctl rpc protoc user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
-> 温馨提示
->
-> `goctl rpc protoc` will not output console log if not in debug mode，you can execute command `goctl env -w GOCTL_DEBUG=true` to open goctl to debug mode.
 
 ## Preparing
 * Installed the go environment
