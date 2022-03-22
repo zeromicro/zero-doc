@@ -487,7 +487,7 @@
   ```go
   func (l *ExpandLogic) Expand(in *transform.ExpandReq) (*transform.ExpandResp, error) {
     // 手动代码开始
-    res, err := l.svcCtx.Model.FindOne(in.Shorten)
+    res, err := l.svcCtx.Model.FindOne(l.ctx, in.Shorten)
     if err != nil {
       return nil, err
     }
@@ -505,7 +505,7 @@
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // 手动代码开始，生成短链接
     key := hash.Md5Hex([]byte(in.Url))[:6]
-    _, err := l.svcCtx.Model.Insert(model.Shorturl{
+    _, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
       Shorten: key,
       Url:     in.Url,
     })
