@@ -505,6 +505,13 @@
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // 手动代码开始，生成短链接
     key := hash.Md5Hex([]byte(in.Url))[:6]
+    object, _ := l.svcCtx.Model.FindOne(l.ctx, key)
+    if object != nil {
+      return &transform.ShortenResp{
+        Shorten: key,
+      }, nil
+    }
+
     _, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
       Shorten: key,
       Url:     in.Url,
