@@ -482,8 +482,15 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // manual code start, generates shorturl
-  	key := hash.Md5Hex([]byte(in.Url))[:6]
-  	_, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
+    key := hash.Md5Hex([]byte(in.Url))[:6]
+    object, _ := l.svcCtx.Model.FindOne(l.ctx, key)
+    if object != nil {
+      return &transform.ShortenResp{
+        Shorten: key,
+      }, nil
+    }
+
+    _, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
   		Shorten: key,
   		Url:     in.Url,
   	})
