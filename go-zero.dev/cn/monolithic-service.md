@@ -46,7 +46,7 @@ greet
 $ vim greet/internal/logic/greetlogic.go 
 ```
 ```go
-func (l *GreetLogic) Greet(req types.Request) (*types.Response, error) {
+func (l *GreetLogic) Greet(req *types.Request) (*types.Response, error) {
 	return &types.Response{
 		Message: "Hello go-zero",
 	}, nil

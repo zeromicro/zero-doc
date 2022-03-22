@@ -169,6 +169,11 @@ Auth:
         "password":"123456"
     }'
     ```
+    如果是在Windows的CMD里运行，命令格式如下：
+    ```shell
+    curl -i -X POST http://127.0.0.1:8888/user/login -H "Content-Type: application/json" -d "{ \"username\":\"666\", \"password\":\"123456\" }"
+    ```
+    访问结果：
     ```text
     HTTP/1.1 200 OK
     Content-Type: application/json

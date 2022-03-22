@@ -123,7 +123,7 @@ if strings.ToLower(proto.Service.Name) == strings.ToLower(proto.GoPackage) {
 ## 准备工作
 
 * 安装了go环境
-* 安装了protoc&protoc-gen-go，并且已经设置环境变量
+* 安装了protoc & protoc-gen-go，并且已经设置环境变量
 * 更多问题请见 <a href="#注意事项">注意事项</a>
 
 ## 用法

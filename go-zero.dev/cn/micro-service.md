@@ -82,11 +82,13 @@ $ go mod init go-zero-demo
   ```
 
 * 生成代码
-
-  如未安装 `protoc`，请参考 [https://github.com/protocolbuffers/protobuf/releases](https://github.com/protocolbuffers/protobuf/releases) 自行安装。
-  如未安装 `protoc-gen-go`，请参考 [https://grpc.io/docs/languages/go/quickstart/](https://grpc.io/docs/languages/go/quickstart/) 自行安装。
-
-  > 注意：旧版本的 `protoc-gen-go` 不支持 `--go-grpc_out`
+  如未安装 `protoc`,`protoc-gen-go`,`protoc-gen-grpc-go` 你可以通过如下指令一键安装:
+  ```bash
+  $ goctl env check -i -f
+  ```
+  
+  > 注意：
+  > 1、每一个 `*.proto`文件只允许有一个service `error: only one service expected`
   
   ```shell
   $ cd mall/user/rpc
@@ -272,7 +274,7 @@ $ go mod init go-zero-demo
       }
   }
 
-  func (l *GetOrderLogic) GetOrder(req types.OrderReq) (*types.OrderReply, error) {
+  func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (*types.OrderReply, error) {
       user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
           Id: "1",
       })

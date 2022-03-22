@@ -19,7 +19,7 @@
         * [golang安装](golang-install.md)
         * [go module配置](gomod-config.md)
         * [goctl安装](goctl-install.md)
-        * [protoc&protoc-gen-go安装](protoc-install.md)
+        * [protoc & protoc-gen-go安装](protoc-install.md)
         * [其他](prepare-other.md)
     * [开发规范](dev-specification.md)
         * [命名规范](naming-spec.md)
