@@ -1,39 +1,36 @@
 # Concepts
 
-> [!TIP]
-> This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc-contibute.md)
-
-
 ## go-zero
-go-zero is a web and rpc framework that with lots of engineering practices builtin. It’s born to ensure the stability of the busy services with resilience design, and has been serving sites with tens of millions users for years.
+go-zero is a batteries-included web and rpc framework that incorporates many known-good engineering practices. It was created with the goal of allowing developers to rapidly develop resilient services with rock-solid stability, and has been used to develop web applications with tens of millions users.
 
 ## goctl
-An auxiliary tool designed to improve engineering efficiency and reduce error rates for developers.
+`goctl` is an auxiliary tool designed to improve engineering efficiency and reduce error rates for developers by reducing the amount of boilerplate necessary for services to communicate with each other.
 
 ## goctl plugins
-Refers to the peripheral binary resources centered on goctl, which can meet some personalized code generation requirements, such as the routing merge plug-in `goctl-go-compact` plug-in,
-The `goctl-swagger` plugin for generating swagger documents, the `goctl-php` plugin for generating the php caller, etc.
+`goctl` has an extensible plugin system with multiple plugins already created. These plugins allow developers to generate boilerplate code and configuration for other architecture elements. Examples include `goctl-go-compact` which merges all goctl-generated routes into one file, the `goctl-swagger` plugin for generating swagger documents from api definitions, or the `goctl-php` plugin for generating php client code, etc.
 
-## intellij/vscode plugins
-A plug-in developed with goctl on the intellij series products, which replaces the goctl command line operation with the UI.
+## IntelliJ/Visual Studio Code plugins
+There are also plugins available for the IntelliJ family of IDEs as well as for Visual Studio Code. These plugins expose the CLI functions in the interface of the IDE and provide additional syntax highlighting for API definition files.
 
-## api file
-An api file refers to a text file used to define and describe an api service. It ends with the .api suffix and contains IDL of the api syntax.
+## API file
+An API file refers to the plaintext file used to define and describe an API service. It ends with the `.api` suffix and contains an IDL (Interface Description Language) describing the API syntax.
 
 ## goctl environment
-The goctl environment is the preparation environment before using goctl, including:
-* golang environment
-* protoc
-* protoc-gen-go plugin
-* go module | gopath
+In order to use `goctl` the following is required:
+* a golang environment
+* `protoc`, the protobuf compiler
+* the `protoc-gen-go` plugin
+* a go project either using go modules or on the GOPATH
+
+If you don't have all of this setup, please visit the [prepare](prepare.md) of the documentation to get started.
 
 ## go-zero-demo
-Go-zero-demo contains a large repository of all the source code in the document. When we write the demo in the future, we all create sub-projects under this project.
-Therefore, we need to create a large warehouse in advance `go-zero-demo`, and I put this warehouse in the home directory here.
+Next up are some quickstart demos to get started with go-zero. Since these demos will be sizable after all the code is generated, it is recommended you create a `go-zero-demo` directory to house it all.
+See below for how to create this in your home directory.
 
 ```shell
 $ cd ~
-$ mkdir go-zero-demo&&cd go-zero-demo
+$ mkdir go-zero-demo && cd go-zero-demo
 $ go mod init go-zero-demo
 ```
 
