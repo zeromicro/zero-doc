@@ -4,7 +4,6 @@
 > This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc -contibute.md)
 
 In the previous article we have shown how to quickly create a single service, next we will show how to quickly create a microservice.
-In this section, the api part is actually the same as the creation logic of a monolithic service, except that there is no inter-service communication in the monolithic service.
 In this section, the api part is actually the same logic as the monolithic service, except that there is no communication between services in the monolithic service, and the api service in the microservice will have more configuration for rpc calls.
 
 ## Preface
