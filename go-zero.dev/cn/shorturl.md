@@ -271,7 +271,7 @@
 
   文件结构如下：
 
-  ```Plain Text
+  ```
   rpc/transform
   ├── etc
   │   └── transform.yaml              // 配置文件
