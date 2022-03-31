@@ -14,7 +14,7 @@ go-zero 包含极简的 API 定义和生成工具 goctl，可以根据定义的 
 - 自动校验客户端请求参数合法性
 - 大量微服务治理和并发工具包
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/architecture.png" alt="architecture.png" width="800" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/architecture.png" alt="architecture.png" width="800" />
 
 
 ## 1. go-zero框架背景
@@ -64,7 +64,7 @@ go-zero是一个集成了各种工程实践的包含web和rpc框架，有如下�
 
 如下图，我们从多个层面保障了整体服务的高可用：
 
-![resilience.jpg](https://gitee.com/kevwan/static/raw/master/doc/images/resilience.jpg)
+![resilience.jpg](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/resilience.jpg)
 
 ## 4. Installation
 

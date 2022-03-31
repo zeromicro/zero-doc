@@ -19,8 +19,7 @@ go-zero 包含极简的 API 定义和生成工具 goctl，可以根据定义的 
 - :white_check_mark: 自动校验客户端请求参数合法性
 - :white_check_mark: 大量微服务治理和并发工具包
 
-
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/architecture.png" alt="架构图" width="1500" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/architecture.png" alt="架构图" width="1500" />
 
 ## go-zero 框架背景
 
@@ -72,7 +71,7 @@ go-zero 是一个集成了各种工程实践的包含 web 和 rpc 框架，有�
 
 如下图，我们从多个层面保障了整体服务的高可用：
 
-![弹性设计](https://gitee.com/kevwan/static/raw/master/doc/images/resilience.jpg)
+![弹性设计](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/resilience.jpg)
 
 觉得不错的话，别忘 **star** 👏
 
@@ -152,7 +151,7 @@ goctl api dart -api greet.api -dir greet
 
 ## Benchmark
 
-![benchmark](https://gitee.com/kevwan/static/raw/master/doc/images/benchmark.png)
+![benchmark](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/benchmark.png)
 
 [测试代码见这里](https://github.com/smallnest/go-web-framework-benchmark)
 

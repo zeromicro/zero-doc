@@ -33,7 +33,7 @@
 
 ## 2. 短链微服务架构图
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-arch.png" alt="架构图" width="800" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-arch.png" alt="架构图" width="800" />
 
 * 这里只用了 `Transform RPC` 一个微服务，并不是说 API Gateway 只能调用一个微服务，只是为了最简演示 API Gateway 如何调用 RPC 微服务而已
 * 在真正项目里要尽可能每个微服务使用自己的数据库，数据边界要清晰
@@ -44,15 +44,15 @@
 
 * API Gateway
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-api.png" alt="api" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-api.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-rpc.png" alt="架构图" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-rpc.png" alt="架构图" width="800" />
 
 * model
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-model.png" alt="model" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-model.png" alt="model" width="800" />
 
 下面我们来一起完整走一遍快速构建微服务的流程，Let’s `Go`!🏃‍♂️
 
@@ -572,7 +572,7 @@
 
 因为写入依赖于 mysql 的写入速度，就相当于压 mysql 了，所以压测只测试了 expand 接口，相当于从 mysql 里读取并利用缓存，shorten.lua 里随机从 db 里获取了 100 个热 key 来生成压测请求
 
-![Benchmark](https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-benchmark.png)
+![Benchmark](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-benchmark.png)
 
 可以看出在我的 MacBook Pro 上能达到 3 万 + 的 qps。
 
