@@ -55,10 +55,10 @@ Prepare an `User model`
 var userBuilderQueryRows = strings.Join(builder.FieldNames(&User{}), ",")
 
 type User struct {
-    Avatar string `db:"avatar"` 			
-    UserName string `db:"user_name"` 		
-    Sex int `db:"sex"` 						
-    MobilePhone string `db:"mobile_phone"` 	
+    Avatar string `db:"avatar"`
+    UserName string `db:"user_name"`
+    Sex int `db:"sex"`
+    MobilePhone string `db:"mobile_phone"`
 }
 ```
 Among them, `userBuilderQueryRows`: `go-zero` provides `struct -> [field...]` conversion. Developers can use this as a template directly.
@@ -168,15 +168,19 @@ err := usermodel.conn.Transact(func(session sqlx.Session) error {
         return err
     }
     defer stmt.Close()
-    
+
     // Any error returned will roll back the transaction
     if _, err := stmt.Exec(uid, username, mobilephone); err != nil {
         logx.Errorf("insert userinfo stmt exec: %s", err)
         return err
     }
-    
+
     // You can also continue to perform insert/update/delete related operations
     return nil
 })
 ```
 As in the above example, developers only need to wrap all operations in **transaction** in a function `func(session sqlx.Session) error {}`, if the operation in the transaction returns any error, `Transact( )` will automatically roll back the transaction.
+
+## Distributed transactions
+
+go-zero has deeply cooperated with [dtm](https://github.com/dtm-labs/dtm) and has natively supported distributed transactions, see [distributed-transaction](distributed-transaction.md) for details
