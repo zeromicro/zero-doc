@@ -55,5 +55,10 @@ $ tree
 └── vars.go
 ```
 
+## More
+For persisting data, if more flexible database capabilities are required, including transactional capabilities, see [Mysql](mysql.md)
+
+For distributed transaction capabilities, see [distributed-transaction.md](distributed-transaction.md)
+
 # Guess you wants
 [Model Commands](goctl-model.md)
