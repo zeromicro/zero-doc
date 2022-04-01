@@ -3,271 +3,310 @@
 > This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc-contibute.md)
 
 
-![goctl](https://zeromicro.github.io/go-zero/en/resource/goctl-command.png)
+![goctl](./resource/goctl-command-en.svg)
 
 # goctl
 
+## bug
+(report a bug)
+
+## upgrade
+(upgrade goctl to latest version)
+
+## env
+(check or edit goctl environment)
+
+### --write, -w: edit goctl environment
+
+### check
+(detect goctl env and dependency tools)
+
+- --force, -f: silent installation of non-existent dependencies
+- --install, -i: install dependencies if not found
+
+## migrate
+(migrate from tal-tech to zeromicro)
+
+### --verbose, -v: verbose enables extra logging
+
+### --version: the target release version of github.com/zeromicro/go-zero to migrate
+
 ## api
-(api service related operations)
+（generate api related files）
 
-### -o
-(Generate api file)
+### --branch: the branch of the remote repo, it does work with --remote
 
-- Example: goctl api -o user.api
+### --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+
+### --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+
+### -o: the output api file
 
 ### new
-(Quickly create an api service)
+(fast create api service)
 
-- Example: goctl api new user
+- --branch: the branch of the remote repo, it does work with --remote
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/blob/master/tools/goctl/config/readme.md]
 
 ### format
-(api format, vscode use)
+(format api files)
 
-- -dir
-  (Target directory)
-- -iu
-  (Whether to automatically update goctl)
-- -stdin
-  (Whether to read data from standard input)
+- --declare: use to skip check api types already declare
+- --dir: the format target dir
+- --iu: ignore update
+- --stdin: use stdin to input api doc content, press "ctrl + d" to send EOF
 
 ### validate
-(Verify that the api file is valid)
+(validate api file)
 
-- -api
-  (Specify the api file source)
-
-    - Example: goctl api validate -api user.api
+- --api: validate target api file
 
 ### doc
-(Generate doc markdown)
+(generate doc files)
 
-- -dir
-  (Specify the directory)
-
-    - Example: goctl api doc -dir user
+- --dir: the target dir
+- -o: the output markdown directory
 
 ### go
-(Generate golang api service)
+(generate go files for provided api in yaml file)
 
-- -dir
-  (Specify the code storage directory)
-- -api
-  (Specify the api file source)
-- -force
-  (Whether to force overwrite existing files)
-- -style
-  (Specify the file name naming style, `gozero`: lowercase, `go_zero`: underscore, `GoZero`: camel case)
+- --api: the api file
+- --branch: the branch of the remote repo, it does work with --remote
+- --dir: the target dir
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
 
 ### java
-(Generate access api service code-java language)
+(generate java files for provided api in api file)
 
-- -dir
-  (Specify the code storage directory)
-- -api
-  (Specify the api file source)
+- --api: the api file
+- --dir: the target dir
 
 ### ts
-(Generate access api service code-ts language)
+(generate ts files for provided api in api file)
 
-- -dir
-  (Specify the code storage directory)
-- -api
-  (Specify the api file source)
-- webapi
-- caller
-- unwrap
+- --api: the api file
+- --caller: the web api caller
+- --dir: the target dir
+- --unwrap: unwrap the webapi caller for import
+- --webapi: the web api file path
 
 ### dart
-(Generate access api service code-dart language)
+(generate dart files for provided api in api file)
 
-- -dir
-  (Specify code storage target)
-- -api
-  (Specify the api file source)
+- --api: the api file
+- --dir: the target dir
+- --hostname: hostname of the server
+- --legacy: legacy generator for flutter v1
 
 ### kt
-(Generate access api service code-Kotlin language)
+(generate kotlin code for provided api file)
 
-- -dir
-  (Specify code storage target)
-- -api
-  (Specify the api file source)
-- -pkg
-  (Specify package name)
+- --api: the api file
+- --dir: the target directory
+- --pkg: define package name for kotlin file
 
 ### plugin
+(custom file generator)
 
-- -plugin
-  Executable file
-- -dir
-  Code storage destination folder
-- -api
-  api source file
-- -style
-  File name formatting
-
-## template
-(Template operation)
-
-### init
-(Cache api/rpc/model template)
-
-- Example: goctl template init
-
-### clean
-(清空缓存模板)
-
-- Example: goctl template clean
-
-### update
-(Update template)
-
-- -category,c
-  (Specify the group name that needs to be updated api|rpc|model)
-
-    - Example: goctl template update -c api
-
-### revert
-(Restore the specified template file)
-
-- -category,c
-  (Specify the group name that needs to be updated api|rpc|model)
-- -name,n
-  (Specify the template file name)
-
-## config
-(Configuration file generation)
-
-### -path,p
-(Specify the configuration file storage directory)
-
-- Example: goctl config -p user
+- --api: the api file
+- --dir: the target directory
+- --plugin, -p: the plugin file
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
 
 ## docker
-(Generate Dockerfile)
+(generate Dockerfile)
 
-### -go
-(Specify the main function file)
+### --branch: the branch of the remote repo, it does work with --remote
 
-### -port
-(Specify the exposed port)
+### --go: the file that contains main function
 
-## rpc (rpc service related operations)
+### --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
 
-### new
-(Quickly generate an rpc service)
+### --port: the port to expose, default none (default: 0)
 
-- -idea
-  (Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])
-- -style
-  (Specify the file name naming style, `gozero`: lowercase, `go_zero`: underscore, `GoZero`: camel case)
+### --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
 
-### template
-(Create a proto template file)
+### --scratch: use scratch for the base docker image
 
-- -idea
-  (Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])
-- -out,o
-  (Specify the code storage directory)
+### --tz: the timezone of the container (default: Asia/Shanghai)
 
-### proto
-(Generate rpc service based on proto)
-
-- -src,s
-  (Specify the proto file source)
-- -proto_path,I
-  (Specify proto import to find the directory, protoc native commands, for specific usage, please refer to protoc -h to view)
-- -dir,d
-  (Specify the code storage directory)
-- -idea
-  (Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])
-- -style
-  (Specify the file name naming style, `gozero`: lowercase, `go_zero`: underscore, `GoZero`: camel case)
-
-### model
-(Model layer code operation)
-
-- mysql
-  (Generate model code from mysql)
-
-    - ddl
-      (Specify the data source to generate model code for the ddl file)
-
-        - -src,s
-          (Specify the source of the sql file containing ddl, support wildcard matching)
-        - -dir,d
-          (Specify the code storage directory)
-        - -style
-          (Specify the file name naming style, `gozero`: lowercase, `go_zero`: underscore, `GoZero`: camel case)
-        - -cache,c
-          (Whether the generated code has redis cache logic, bool value)
-        - -idea
-          (Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])
-
-    - datasource
-      (Specify the data source to generate model code from the datasource)
-
-        - -url
-          (Specify datasource)
-        - -table,t
-          (Specify the table name, support wildcards)
-        - -dir,d
-          (Specify the code storage directory)
-        - -style
-          (Specify the file name naming style, `gozero`: lowercase, `go_zero`: underscore, `GoZero`: camel case)
-        - -cache,c
-          (Whether the generated code has redis cache logic, bool value)
-        - -idea
-          (Identifies whether the command comes from the idea plug-in and is used for the development and use of the idea plug-in. Please ignore the terminal execution [optional])
-- mongo
-  (generate model code from mongo)
-
-  -type,t
-  (specify Go Type name)
-  -cache,c
-  (generate code with redis cache logic or not, bool value, default no)
-  -dir,d
-  (specify the code generation directory)
-  -style
-  (specify filename naming style, gozero:lowercase, go_zero:underscore, GoZero:hump)
-      
-## upgrade
-Goctl updated to the latest version
+### --version: the goctl builder golang image version
 
 ## kube
-Generate k8s deployment file
+(generate kubernetes files)
 
 ### deploy
+(generate deployment yaml file)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --image: the docker image of deployment
+- --limitCpu: the limit cpu to deploy (default: 1000)
+- --limitMem: the limit memory to deploy (default: 1024)
+- --maxReplicas: the max replicas of deploy (default: 10)
+- --minReplicas: the min replicas to deploy (default: 3)
+- --name: the name of deployment
+- --namespace: the namespace of deployment
+- --nodePort: the nodePort of the deployment to expose (default: 0)
+- --port: the port of the deployment to listen on pod (default: 0)
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --replicas: the number of replicas to deploy (default: 3)
+- --requestCpu: the request cpu to deploy (default: 500)
+- --requestMem: the request memory to deploy (default: 512)
+- --revisions: the number of revision history to limit (default: 5)
+- --secret: the secret to image pull from registry
+- --serviceAccount: the ServiceAccount for the deployment
+- -o: the output yaml file
+
+## rpc
+(generate rpc code)
+
+### new
+(generate rpc demo service)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --idea: whether the command execution environment is from idea plugin. [optional]
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+
+### template
+(generate proto template)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --out, -o: the target path of proto
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+
+### protoc
+(generate grpc code)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --home: the goctl home path of the template
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+- --zrpc_out: the zrpc output directory
+
+### proto
+(generate rpc from proto)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --dir, -d: the target path of the code
+- --go_opt: native command of protoc-gen-go, specify the mapping from proto to go, eg --go_opt=proto_import=go_package_import. [optional]
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --idea: whether the command execution environment is from idea plugin. [optional]
+- --proto_path, -I: native command of protoc, specify the directory in which to search for imports. [optional]
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --src, -s: the file path of the proto source file
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+
+## model
+（generate model code）
+
+### mysql
+（generate mysql model）
+
+- ddl
+  （generate mysql model from ddl）
+
+    - --branch: the branch of the remote repo, it does work with --remote
+    - --cache, -c: generate code with cache [optional]
+    - --database, --db: the name of database [optional]
+    - --dir, -d: the target dir
+    - --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+    - --idea: for idea plugin [optional]
+    - --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+      The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+    - --src, -s: the path or path globbing patterns of the ddl
+    - --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+
+- datasource
+  （generate model from datasource）
+
+    - --branch: the branch of the remote repo, it does work with --remote
+    - --cache, -c: generate code with cache [optional]
+    - --dir, -d: the target dir
+    - --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+    - --idea: for idea plugin [optional]
+    - --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+      The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+    - --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+    - --table, -t: the table or table globbing patterns in the database
+    - --url: the data source of database,like "root:password@tcp(127.0.0.1:3306)/database"
+
+### pg
+(generate postgresql model)
+
+- datasource
+  （generate model from datasource）
+
+    - --branch: the branch of the remote repo, it does work with --remote
+    - --cache, -c: generate code with cache [optional]
+    - --dir, -d: the target dir
+    - --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+    - --idea: for idea plugin [optional]
+    - --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+      The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+    - --schema, -s: the table schema, default is [public]
+    - --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+    - --table, -t: the table or table globbing patterns in the database
+    - --url: the data source of database,like "postgres://root:password@127.0.0.1:5432/database?sslmode=disable"
+
+### mongo
+(generate mongo model)
+
+- --branch: the branch of the remote repo, it does work with --remote
+- --cache, -c: generate code with cache [optional]
+- --dir, -d: the target dir
+- --home: the goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+- --remote: the remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+  The git repo directory must be consistent with the https://github.com/zeromicro/go-zero-template directory structure
+- --style: the file naming format, see [https://github.com/zeromicro/go-zero/tree/master/tools/goctl/config/readme.md]
+- --type, -t: specified model type name
+
+## template
+（template operation）
+
+### init
+（initialize the all templates(force update)）
+
+- --home: the goctl home path of the template
+
+### clean
+（clean the all cache templates）
+
+- --home: the goctl home path of the template
+
+### update
+（update template of the target category to the latest）
+
+- --category, -c: the category of template, enum [api,rpc,model,docker,kube]
+- --home: the goctl home path of the template
+
+### revert
+（revert the target template to the latest）
+
+- --category, -c: the category of template, enum [api,rpc,model,docker,kube]
+- --home: the goctl home path of the template
+- --name, -n: the target file name of template
+
+## completion
+（generation completion script, it only works for unix-like OS）
+
+### --name, -n: the filename of auto complete script, default is [goctl_autocomplete]
 
 
-- -name
-  service name
-- -namespace
-  k8s namespace
-- -image
-  docker image
-- -secret
-  Specify the k8s secret to obtain the mirror
-- -requestCpu
-  Specify the default allocation of cpu
-- -requestMem
-  Specify the default allocation of memory
-- -limitCpu
-  Specify the maximum allocation of cpu
-- -limitMem
-  Specify the maximum amount of memory allocated
-- -o
-  `deployment.yaml` output directory
-- -replicas
-  Specify the replicas
-- -revisions
-  Specify the number of release records to keep
-- -port
-  Specify service port
-- -nodePort
-  Specify the service's external exposure port
-- -minReplicas
-  Specify the minimum number of copies
-- -maxReplicas
-  Specify the maximum number of copies
 

@@ -372,6 +372,8 @@ type Foo{
 > See the table below for details.
 
 * tag table
+
+  When binding parameters, only one of the following four tags can be selected
   <table>
   <tr>
     <td>tag key</td> <td>Description</td> <td>Provider</td><td>Effective Coverage</td> <td>Example</td>

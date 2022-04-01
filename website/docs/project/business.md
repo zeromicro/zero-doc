@@ -10,7 +10,7 @@ sidebar_position: 4
 在正式进入后续文档叙述前，可以先留意一下这里的源码，后续我们会基于这份源码进行功能的递进式演示，
 而不是完全从0开始，如果你从[快速入门](../quick-start/concept.md)章节过来，这份源码结构对你来说不是问题。
 
-点击<a href="https://zeromicro.github.io/go-zero-pages/resource/book.zip">这里下载</a>演示工程基础源码
+点击<a href="https://github.com/zeromicro/go-zero-pages/raw/master/cn/resource/book.zip">这里下载</a>演示工程基础源码
 
 ## 演示工程说明
 
@@ -201,7 +201,7 @@ $ tree，依次点击进入 New->Go Zero->Api Code
 
 ### 编写user.api文件
 ```shell
-$ vim service/user/cmd/api/user.api  
+$ vim service/user/api/user.api  
 ```
 ```text
 type (
@@ -229,7 +229,7 @@ service user-api {
 #### 方式一
 
 ```shell
-$ cd book/service/user/cmd/api
+$ cd book/service/user/api
 $ goctl api go -api user.api -dir . 
 ```
 ```text
@@ -254,7 +254,7 @@ Done.
 
 ### 添加Mysql配置
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 package config
@@ -273,7 +273,7 @@ type Config struct {
 
 ### 完善yaml配置
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -303,7 +303,7 @@ $pass: redis密码
 
 ### 完善服务依赖
 ```shell
-$ vim service/user/cmd/api/internal/svc/servicecontext.go
+$ vim service/user/api/internal/svc/servicecontext.go
 ```
 ```go
 type ServiceContext struct {
@@ -321,7 +321,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 ```
 ### 填充登录逻辑
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -395,7 +395,7 @@ jwt鉴权一般在api层使用，我们这次演示工程中分别在user api登
 
 ##### 添加配置定义和yaml配置项
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -411,7 +411,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -436,7 +436,7 @@ $AccessExpire：jwt token有效期，单位：秒
 
 
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -454,7 +454,7 @@ func (l *LoginLogic) getJwtToken(secretKey string, iat, seconds, userId int64) (
 #### search api使用jwt token鉴权
 ##### 编写search.api文件
 ```shell
-$ vim service/search/cmd/api/search.api
+$ vim service/search/api/search.api
 ```
 ```text
 type (
@@ -497,7 +497,7 @@ service search-api {
 
 ##### 添加yaml配置项
 ```shell
-$ vim service/search/cmd/api/etc/search-api.yaml
+$ vim service/search/api/etc/search-api.yaml
 ```
 ```yaml
 Name: search-api
@@ -520,7 +520,7 @@ $AccessSecret：这个值必须要和user api中声明的一致。
 #### 验证 jwt token
 * 启动user api服务，登录
     ```shell
-    $ cd service/user/cmd/api
+    $ cd service/user/api
     $ go run user.go -f etc/user-api.yaml
     ```
     ```text
@@ -580,7 +580,7 @@ $AccessSecret：这个值必须要和user api中声明的一致。
 #### 获取jwt token中携带的信息
 go-zero从jwt token解析后会将用户生成token时传入的kv原封不动的放在http.Request的Context中，因此我们可以通过Context就可以拿到你想要的值
 ```shell
-$ vim /service/search/cmd/api/internal/logic/searchlogic.go
+$ vim /service/search/api/internal/logic/searchlogic.go
 ```
 添加一个log来输出从jwt解析出来的userId。
 ```go
@@ -607,7 +607,7 @@ func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
 #### 路由中间件
 * 重新编写`search.api`文件，添加`middleware`声明
     ```shell
-    $ cd service/search/cmd/api
+    $ cd service/search/api
     $ vim search.api
     ```
     ```text
@@ -642,7 +642,7 @@ func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
     生成完后会在`internal`目录下多一个`middleware`的目录，这里即中间件文件，后续中间件的实现逻辑也在这里编写。
 *  完善资源依赖`ServiceContext`
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -661,7 +661,7 @@ func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
     这里仅添加一行日志，内容example middle，如果服务运行输出example middle则代表中间件使用起来了。
   
     ```shell
-    $ vim service/search/cmd/api/internal/middleware/examplemiddleware.go
+    $ vim service/search/api/internal/middleware/examplemiddleware.go
     ```
     ```go
     package middleware
@@ -764,7 +764,7 @@ func middlewareWithAnotherService(s *AnotherService) rest.Middleware {
 
 * 编译proto文件
 ```shell
-$ vim service/user/cmd/rpc/user.proto
+$ vim service/user/rpc/user.proto
 ```
 ```protobuf
 syntax = "proto3";
@@ -790,7 +790,7 @@ service user {
 ```
 * 生成rpc服务代码
 ```shell
-$ cd service/user/cmd/rpc
+$ cd service/user/rpc
 $ goctl rpc proto -src user.proto -dir .
 ```
 :::tip
@@ -799,7 +799,7 @@ $ goctl rpc proto -src user.proto -dir .
 
 * 添加配置及完善yaml配置项
 ```shell
-$ vim service/user/cmd/rpc/internal/config/config.go
+$ vim service/user/rpc/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -811,7 +811,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim /service/user/cmd/rpc/etc/user.yaml
+$ vim /service/user/rpc/etc/user.yaml
 ```
 ```yaml
 Name: user.rpc
@@ -845,7 +845,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
 
 * 添加资源依赖
     ```shell
-    $ vim service/user/cmd/rpc/internal/svc/servicecontext.go  
+    $ vim service/user/rpc/internal/svc/servicecontext.go  
     ```
     ```go
     type ServiceContext struct {
@@ -863,7 +863,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
     ```
 * 添加rpc逻辑
     ```shell
-    $ service/user/cmd/rpc/internal/logic/getuserlogic.go
+    $ service/user/rpc/internal/logic/getuserlogic.go
     ```
     ```go
     func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
@@ -886,7 +886,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
 
 * 添加UserRpc配置及yaml配置项
     ```shell
-    $ vim service/search/cmd/api/internal/config/config.go
+    $ vim service/search/api/internal/config/config.go
     ```
     ```go
     type Config struct {
@@ -899,7 +899,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
     }
     ```
     ```shell
-    $ vim service/search/cmd/api/etc/search-api.yaml
+    $ vim service/search/api/etc/search-api.yaml
     ```
     ```yaml
     Name: search-api
@@ -925,7 +925,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
     :::
 * 添加依赖
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -944,7 +944,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
     ```
 * 补充逻辑
     ```shell
-    $ vim /service/search/cmd/api/internal/logic/searchlogic.go
+    $ vim /service/search/api/internal/logic/searchlogic.go
     ```
     ```go
     func (l *SearchLogic) Search(req types.SearchReq) (*types.SearchReply, error) {
@@ -973,7 +973,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
 * 启动etcd、redis、mysql
 * 启动user rpc
     ```shell
-    $ cd /service/user/cmd/rpc
+    $ cd /service/user/rpc
     $ go run user.go -f etc/user.yaml
     ```
     ```text
@@ -981,7 +981,7 @@ $etcdHost: etcd连接地址，格式：ip:port，如： 127.0.0.1:2379
     ```
 * 启动search api
 ```shell
-$ cd service/search/cmd/api
+$ cd service/search/api
 $ go run search.go -f etc/search-api.yaml
 ```
 
@@ -1130,7 +1130,7 @@ Content-Length: 19
 
 * 开启自定义错误
     ```shell
-    $ vim service/user/cmd/api/user.go
+    $ vim service/user/api/user.go
     ```
     ```go
     func main() {

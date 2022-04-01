@@ -17,7 +17,7 @@ Benefits of using go-zero:
 - :white_check_mark: Automatic verification of the legitimacy of client request parameters.
 - :white_check_mark: Extensive microservice governance and concurrency toolkit.
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/architecture.png" alt="架构图" width="1500" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/architecture-en.png" alt="架构图" width="1500" />
 
 ## go-zero framework background
 
@@ -69,7 +69,7 @@ go-zero is an integrated web and rpc framework with various engineering practice
 
 In the figure below, we guarantee high availability of the overall service on several levels.
 
-[Flexible design](https://gitee.com/kevwan/static/raw/master/doc/images/resilience.jpg)
+![Flexible design](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/resilience-en.jpg)
 
 If you think it's good, don't forget to **star** 👏
 
@@ -80,7 +80,7 @@ If you think it's good, don't forget to **star** 👏
    [Quick Build Highly Concurrent Microservices](https://github.com/zeromicro/zero-doc/blob/main/doc/shorturl.md)
 
    [Quick Build Highly Concurrent Microservices - Multi RPC Edition](https://github.com/zeromicro/zero-doc/blob/main/docs/zero/bookstore.md)
-   
+
 #### Install the `goctl` tool
 
 `goctl` is pronounced as `go control`, not as `go C-T-L`. `goctl` means not to be controlled by the code, but to control it. Where `go` does not mean `golang`. When I designed `goctl`, I wanted to use `her
@@ -141,7 +141,7 @@ goctl api dart -api greet.api -dir greet
 
 ## Benchmark
 
-![benchmark](https://gitee.com/kevwan/static/raw/master/doc/images/benchmark.png)
+![benchmark](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/benchmark.png)
 
 [The test code is available here](https://github.com/smallnest/go-web-framework-benchmark)
 
@@ -165,7 +165,7 @@ goctl api dart -api greet.api -dir greet
         <td><a href="https://github.com/zeromicro/goctl-go-compact">goctl-go-compact</a> </td> <td>Merge <code>api</code> the same <code>group</code> Inside the <code>handler</code> to a go file</td>
     </tr>
     </table>
-    
+
 ## WeChat public number
 
 `go-zero` related articles will be presented in `microservices practice` public number, welcome to scan the code to pay attention to, also can through the public number private message me 👏

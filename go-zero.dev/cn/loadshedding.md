@@ -32,7 +32,7 @@
 			3. 请求增加后更新一次averageFlying，请求结束后更新一次averageFlying
 
 			我们使用的是第二种，这样可以更好的防止抖动，如图：
-			![flying策略对比](https://gitee.com/kevwan/static/raw/master/doc/images/shedding_flying.jpg)
+			![flying策略对比](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shedding_flying.jpg)
 		* QPS = maxPass * bucketsPerSecond
 			* maxPass表示每个有效桶里的成功的requests
 			* bucketsPerSecond表示每秒有多少个桶

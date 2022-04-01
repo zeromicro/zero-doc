@@ -365,6 +365,8 @@ type Foo{
 > 详情见下表。
 
 * tag表
+
+  绑定参数时，以下四个tag只能选择其中一个
   <table>
   <tr>
     <td>tag key</td> <td>描述</td> <td>提供方</td><td>有效范围 </td> <td>示例 </td>
@@ -404,7 +406,7 @@ type Foo{
   </table>
 
   > [!TIP]
-  > tag修饰符需要在tag value后以引文逗号,隔开
+  > tag修饰符需要在tag value后以英文逗号,隔开
 
 ## service语法块
 
@@ -484,7 +486,7 @@ path：api请求路径，必须以'/'或者'/:'开头，切不能以'/'结尾，
 </tr>
 
 <tr>
-<td>prefix</td><td>添加路由分组</td><td><code>prefix: /api</code></td>
+<td>prefix</td><td>添加路由分组</td><td><code>prefix: api</code></td>
 </tr>
 </table>
 
@@ -508,7 +510,7 @@ eg1：不规范写法
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
-  prefix /api
+  prefix api
 )
 service foo-api{
   @doc(
@@ -536,7 +538,7 @@ eg2：规范写法（推荐）
   jwt: Auth
   group: foo
   middleware: AuthMiddleware
-  prefix: /api
+  prefix: api
 )
 service foo-api{
   @doc "foo"

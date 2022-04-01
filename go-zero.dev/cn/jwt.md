@@ -28,7 +28,7 @@ jwt鉴权一般在api层使用，我们这次演示工程中分别在user api登
 
 #### 添加配置定义和yaml配置项
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -44,7 +44,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -69,7 +69,7 @@ Auth:
 > 更多配置信息，请参考[api配置介绍](api-config.md)
 
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -87,7 +87,7 @@ func (l *LoginLogic) getJwtToken(secretKey string, iat, seconds, userId int64) (
 ### search api使用jwt token鉴权
 #### 编写search.api文件
 ```shell
-$ vim service/search/cmd/api/search.api
+$ vim service/search/api/search.api
 ```
 ```text
 type (
@@ -132,7 +132,7 @@ service search-api {
 
 #### 添加yaml配置项
 ```shell
-$ vim service/search/cmd/api/etc/search-api.yaml
+$ vim service/search/api/etc/search-api.yaml
 ```
 ```yaml
 Name: search-api
@@ -154,7 +154,7 @@ Auth:
 ### 验证 jwt token
 * 启动user api服务，登录
     ```shell
-    $ cd service/user/cmd/api
+    $ cd service/user/api
     $ go run user.go -f etc/user-api.yaml
     ```
     ```text
@@ -169,6 +169,11 @@ Auth:
         "password":"123456"
     }'
     ```
+    如果是在Windows的CMD里运行，命令格式如下：
+    ```shell
+    curl -i -X POST http://127.0.0.1:8888/user/login -H "Content-Type: application/json" -d "{ \"username\":\"666\", \"password\":\"123456\" }"
+    ```
+    访问结果：
     ```text
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -218,7 +223,7 @@ Auth:
 ### 获取jwt token中携带的信息
 go-zero从jwt token解析后会将用户生成token时传入的kv原封不动的放在http.Request的Context中，因此我们可以通过Context就可以拿到你想要的值
 ```shell
-$ vim /service/search/cmd/api/internal/logic/searchlogic.go
+$ vim /service/search/api/internal/logic/searchlogic.go
 ```
 添加一个log来输出从jwt解析出来的userId。
 ```go

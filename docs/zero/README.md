@@ -14,7 +14,7 @@ go-zero 包含极简的 API 定义和生成工具 goctl，可以根据定义的 
 - 自动校验客户端请求参数合法性
 - 大量微服务治理和并发工具包
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/architecture.png" alt="architecture.png" width="800" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/architecture.png" alt="architecture.png" width="800" />
 
 
 ## 1. go-zero框架背景
@@ -64,14 +64,14 @@ go-zero是一个集成了各种工程实践的包含web和rpc框架，有如下�
 
 如下图，我们从多个层面保障了整体服务的高可用：
 
-![resilience.jpg](https://gitee.com/kevwan/static/raw/master/doc/images/resilience.jpg)
+![resilience.jpg](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/resilience.jpg)
 
 ## 4. Installation
 
 在项目目录下通过如下命令安装：
 
 ```shell
-GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
+GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero
 ```
 ## 5. Quick Start
 
@@ -79,7 +79,7 @@ GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
 `goctl`读作`go control`，不要读成`go C-T-L`。`goctl`的意思是不要被代码控制，而是要去控制它。其中的`go`不是指`golang`。在设计`goctl`之初，我就希望通过`她`来解放我们的双手👈
 
 ```shell
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 确保goctl可执行

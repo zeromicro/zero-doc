@@ -11,7 +11,7 @@
 ### 路由中间件
 * 重新编写`search.api`文件，添加`middleware`声明
     ```shell
-    $ cd service/search/cmd/api
+    $ cd service/search/api
     $ vim search.api
     ```
     ```text
@@ -46,7 +46,7 @@
     生成完后会在`internal`目录下多一个`middleware`的目录，这里即中间件文件，后续中间件的实现逻辑也在这里编写。
 *  完善资源依赖`ServiceContext`
     ```shell
-    $ vim service/search/cmd/api/internal/svc/servicecontext.go
+    $ vim service/search/api/internal/svc/servicecontext.go
     ```
     ```go
     type ServiceContext struct {
@@ -65,7 +65,7 @@
     这里仅添加一行日志，内容example middle，如果服务运行输出example middle则代表中间件使用起来了。
   
     ```shell
-    $ vim service/search/cmd/api/internal/middleware/examplemiddleware.go
+    $ vim service/search/api/internal/middleware/examplemiddleware.go
     ```
     ```go
     package middleware

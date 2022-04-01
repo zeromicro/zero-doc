@@ -55,8 +55,8 @@ import (
 	"greet/internal/handler"
 	"greet/internal/svc"
 
-	"github.com/tal-tech/go-zero/core/conf"
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/rest"
 )
 
 var configFile = flag.String("f", "etc/greet-api.yaml", "the config file")
@@ -93,7 +93,7 @@ import (
 	"greet/internal/svc"
 	"greet/internal/types"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type GreetLogic struct {
@@ -297,8 +297,8 @@ import (
 	"greet/internal/config"
 	"net/http"
 
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/rest"
+	"github.com/zeromicro/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/rest"
 )
 
 type ServiceContext struct {

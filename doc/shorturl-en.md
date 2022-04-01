@@ -1,44 +1,42 @@
-# DEPRECATED: PLEASE MOVE TO https://go-zero.dev/cn/extended-reading.html
-
 # Rapid development of microservices
 
 English | [简体中文](shorturl.md)
 
-## 0. Why building microservices are so difficult
+## 0. Why building microservices is so difficult
 
-To build a well working microservice, we need lots of knowledges from different aspects.
+Writing a well-built micro service requires knowledge of a large number of software patterns.
 
 * basic functionalities
-  1. concurrency control and rate limit, to avoid being brought down by unexpected inbound
-  2. service discovery, make sure new or terminated nodes are detected asap
-  3. load balancing, balance the traffic base on the throughput of nodes
-  4. timeout control, avoid the nodes continue to process the timed out requests
-  5. circuit breaker, load shedding, fail fast, protects the failure nodes to recover asap
+  1. concurrency control and rate limiting: avoid being brought down by unexpected inbound requests
+  2. service discovery: make sure new or terminated nodes are detected asap
+  3. load balancing: balance traffic based on the throughput of nodes
+  4. timeout control: avoid the nodes continue to process the timed out requests
+  5. circuit breaker, load shedding, fail fast: protects failed nodes to allow them to recover asap
 
 * advanced functionalities
-  1. authorization, make sure users can only access their own data
-  2. tracing, to understand the whole system and locate the specific problem quickly
-  3. logging, collects data and helps to backtrace problems
-  4. observability, no metrics, no optimization
+  1. authorization: make sure users can only access their own data
+  2. tracing: to understand the whole system and locate the specific problems quickly
+  3. logging: collects data and helps to backtrace problems
+  4. observability: no metrics, no optimization
 
-For any point listed above, we need a long article to describe the theory and the implementation. But for us, the developers, it’s very difficult to understand all the concepts and make it happen in our systems. Although, we can use the frameworks that have been well served busy sites. [go-zero](https://github.com/zeromicro/go-zero) is born for this purpose, especially for cloud-native microservice systems.
+For any point listed above, we need a long article to describe the theory and the implementation. But for us, the developers, it’s very difficult to understand all the concepts and make it happen in our systems. Although, we can use the frameworks that have well served busy sites. [go-zero](https://github.com/zeromicro/go-zero) is born for this purpose, especially for cloud-native microservice systems.
 
-As well, we always adhere to the idea that **prefer tools over conventions and documents**. We hope to reduce the boilerplate code as much as possible, and let developers focus on developing the business related code. For this purpose, we developed the tool  `goctl`.
+Additionally, we prefer **tools over conventions and documents**. We hope to reduce boilerplate code as much as possible, and let developers focus on developing business related code. For this purpose, we developed the tool `goctl`.
 
-Let’s take the shorturl microservice as a quick example to demonstrate how to quickly create microservices by using [go-zero](https://github.com/zeromicro/go-zero). After finishing this tutorial, you’ll find that it’s so easy to write microservices!
+Let’s take the shorturl microservice as a quick example to demonstrate how to quickly create microservices using [go-zero](https://github.com/zeromicro/go-zero). After finishing this tutorial, you’ll find that it’s so easy to write microservices!
 
 ## 1. What is a shorturl service
 
-A shorturl service is that it converts a long url into a short one, by well designed algorithms.
+A shorturl service converts a long url into a short one using well designed algorithms.
 
-Writting this shorturl service is to demonstrate the complete flow of creating a microservice by using go-zero. But algorithms and detail implementations are quite simplified, and this shorturl service is not suitable for production use.
+Writing this shorturl service serves to demonstrate the complete flow of creating a microservice using go-zero. But algorithms and detail implementations are quite simplified, and this shorturl service is not suitable for production use.
 
 ## 2. Architecture of shorturl microservice
 
 <img src="images/shorturl-arch.png" alt="Architecture" width="800" />
 
 * In this tutorial, I only use one rpc service, transform, to demonstrate. It’s not telling that one API Gateway only can call one RPC service, it’s only for simplicity here.
-* In production, we should try best to isolate the data belongs to services, that means each service should only use its own database.
+* In production, we should try best to isolate the data belonging to services, that means each service should only use its own database.
 
 ## 3. goctl generated code overview
 
@@ -56,7 +54,7 @@ All modules with green background are generated, and will be enabled when necess
 
   <img src="images/model-gen.png" alt="model" width="800" />
 
-And now, let’s walk through the complete flow of quickly create a microservice with go-zero.
+And now, let’s walk through the complete flow of quickly creating a microservice with go-zero.
 
 ## 4. Get started
 
@@ -122,7 +120,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
   }
   ```
 
-  the usage of `type` keyword is the same as that in go, service is used to define get/post/head/delete api requests, described below:
+  the usage of the `type` keyword is the same as that in go, service is used to define get/post/head/delete api requests, described below:
 
   * `service shorturl-api {` defines the service name
   * `@server` defines the properties that used in server side
@@ -162,13 +160,13 @@ And now, let’s walk through the complete flow of quickly create a microservice
   └── go.sum
   ```
 
-* start API Gateway service, listens on port 8888 by default
+* start API Gateway service, it listens on port 8888 by default
 
   ```shell
   go run shorturl.go -f etc/shorturl-api.yaml
   ```
 
-* test API Gateway service
+* test the API Gateway service
 
   ```shell
   curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
@@ -185,7 +183,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
   {"shortUrl":""}
   ```
 
-  You can see that the API Gateway service did nothing except returned a zero value. And let’s implement the business logic in rpc service.
+  You can see that the API Gateway service did nothing except returned a zero value. And let’s implement the business logic in the rpc service.
 
 * you can modify `internal/svc/servicecontext.go` to pass dependencies if needed
 
@@ -193,11 +191,11 @@ And now, let’s walk through the complete flow of quickly create a microservice
 
 * you can use goctl to generate code for clients base on the .api file
 
-* till now, the client engineer can work with the api, don’t need to wait for the implementation of server side
+* until now, the client engineer can work with the api, doesn’t need to wait for the server implementation
 
 ## 6. Write code for transform rpc service
 
-- under directory `shorturl` create dir `rpc`
+- under the directory `shorturl` create dir `rpc`
 
 * under directory `rpc/transform` create `transform.proto` file
 
@@ -358,7 +356,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
 
   by calling the method `Shorten` of `transformer` to shorten the url.
 
-Till now, we’ve done the modification of API Gateway. All the manually added code are marked.
+Till now, we’ve done the modification of API Gateway. All the manually added code is marked.
 
 ## 8. Define the database schema, generate the code for CRUD+cache
 
@@ -526,7 +524,7 @@ Because benchmarking the write requests depends on the write throughput of mysql
 
 ![Benchmark](images/shorturl-benchmark.png)
 
-as shown above, in my MacBook Pro, the QPS is like 30K+.
+as shown above, on my MacBook Pro, the QPS is like 30K+.
 
 ## 12. Full code
 
@@ -534,12 +532,12 @@ as shown above, in my MacBook Pro, the QPS is like 30K+.
 
 ## 13. Conclusion
 
-We always adhere to **prefer tools over conventions and documents**.
+We **prefer tools over conventions and documents**.
 
-go-zero is not only a framework, but also a tool to simplify and standardize the building of micoservice systems.
+go-zero is not only a framework, but also a tool to simplify and standardize the construction of micoservice systems.
 
-We not only keep the framework simple, but also encapsulate the complexity into the framework. And the developers are free from building the difficult and boilerplate code. Then we get the rapid development and less failure.
+We not only keep the framework simple, but also encapsulate the complexity of the framework. That way, developers are free from building difficult and boilerplate code. Then we can achieve rapid development with fewer failures.
 
-For the generated code by goctl, lots of microservice components are included, like concurrency control, adaptive circuit breaker, adaptive load shedding, auto cache control etc. And it’s easy to deal with the busy sites.
+For the generated code by goctl, lots of microservice components are included such as concurrency control, adaptive circuit breaker, adaptive load shedding, auto cache control etc. And it’s easy to deal with the busy sites.
 
 If you have any ideas that can help us to improve the productivity, tell me any time! 👏

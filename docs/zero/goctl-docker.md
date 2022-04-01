@@ -26,7 +26,7 @@ ENV TZ Asia/Shanghai
 
 - 首先安装 `goctl` 工具
 ```dockerfile
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
 ```
 
 - 在 `greet` 项目下创建一个 `hello` 服务

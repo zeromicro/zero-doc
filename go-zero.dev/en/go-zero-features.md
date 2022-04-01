@@ -20,4 +20,4 @@ go-zero is a web and rpc framework that integrates various engineering practices
 
 As shown in the figure below, we have ensured the high availability of the overall service from multiple levels:
 
-![resilience](https://gitee.com/kevwan/static/raw/master/doc/images/resilience.jpg)
+![resilience](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/resilience.jpg)

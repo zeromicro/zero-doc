@@ -244,7 +244,7 @@ OPTIONS:
     * ddl
 
       ```shell
-      $ goctl model mysql -src={patterns} -dir={dir} -cache
+      $ goctl model mysql ddl -src={patterns} -dir={dir} -cache
       ```
 
       help
@@ -298,7 +298,7 @@ OPTIONS:
     * ddl
 
         ```shell
-        $  goctl model -src={patterns} -dir={dir}
+        $  goctl model mysql ddl -src={patterns} -dir={dir}
         ```
 
     * datasource
@@ -311,7 +311,7 @@ OPTIONS:
     * ddl
 
         ```shell
-        $  goctl model -src={patterns} -dir={dir}
+        $  goctl model mysql ddl -src={patterns} -dir={dir}
         ```
 
     * datasource

@@ -30,7 +30,7 @@ Following the content of the [Business Coding](business-coding.md) chapter, we p
 
 #### Add configuration definition and yaml configuration items
 ```shell
-$ vim service/user/cmd/api/internal/config/config.go
+$ vim service/user/api/internal/config/config.go
 ```
 ```go
 type Config struct {
@@ -46,7 +46,7 @@ type Config struct {
 }
 ```
 ```shell
-$ vim service/user/cmd/api/etc/user-api.yaml
+$ vim service/user/api/etc/user-api.yaml
 ```
 ```yaml
 Name: user-api
@@ -71,7 +71,7 @@ Auth:
 > For more configuration information, please refer to [API Configuration](api-config.md)
 
 ```shell
-$ vim service/user/cmd/api/internal/logic/loginlogic.go
+$ vim service/user/api/internal/logic/loginlogic.go
 ```
 
 ```go
@@ -89,7 +89,7 @@ func (l *LoginLogic) getJwtToken(secretKey string, iat, seconds, userId int64) (
 ### search.api uses jwt token authentication
 #### Write search.api file
 ```shell
-$ vim service/search/cmd/api/search.api
+$ vim service/search/api/search.api
 ```
 ```text
 type (
@@ -133,7 +133,7 @@ As described above, there are three ways to generate code, so I won’t go into 
 
 #### Add yaml configuration items
 ```shell
-$ vim service/search/cmd/api/etc/search-api.yaml
+$ vim service/search/api/etc/search-api.yaml
 ```
 ```yaml
 Name: search-api
@@ -155,7 +155,7 @@ Auth:
 ### Verify jwt token
 * Start user api service, and login
     ```shell
-    $ cd service/user/cmd/api
+    $ cd service/user/api
     $ go run user.go -f etc/user-api.yaml
     ```
     ```text
@@ -220,7 +220,7 @@ At this point, the demonstration of jwt from generation to use is complete. The 
 After go-zero is parsed from the jwt token, the kv passed in when the user generates the token will be placed in the Context of http.Request intact, so we can get the value you want through the Context.
 
 ```shell
-$ vim /service/search/cmd/api/internal/logic/searchlogic.go
+$ vim /service/search/api/internal/logic/searchlogic.go
 ```
 Add a log to output the userId parsed from jwt.
 ```go

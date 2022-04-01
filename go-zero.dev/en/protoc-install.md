@@ -1,4 +1,4 @@
-# protoc & protoc-gen-go安装
+# protoc & protoc-gen-go installation
 > [!TIP]
 > This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc-contibute.md)
 
@@ -7,9 +7,36 @@ protoc is a tool written in C++, which can translate proto files into codes in t
 
 Demonstration environment of this document
 * mac OS
-* protoc 3.14.0
 
-## protoc installation
+## way 1: install from goctl
+```bash
+$ goctl env check -i -f -v                                 
+[goctl-env]: preparing to check env
+
+[goctl-env]: looking up "protoc"
+[goctl-env]: "protoc" is not found in PATH
+[goctl-env]: preparing to install "protoc"
+"protoc" installed from cache
+[goctl-env]: "protoc" is already installed in "/Users/keson/go/bin/protoc"
+
+[goctl-env]: looking up "protoc-gen-go"
+[goctl-env]: "protoc-gen-go" is not found in PATH
+[goctl-env]: preparing to install "protoc-gen-go"
+"protoc-gen-go" installed from cache
+[goctl-env]: "protoc-gen-go" is already installed in "/Users/keson/go/bin/protoc-gen-go"
+
+[goctl-env]: looking up "protoc-gen-go-grpc"
+[goctl-env]: "protoc-gen-go-grpc" is not found in PATH
+[goctl-env]: preparing to install "protoc-gen-go-grpc"
+"protoc-gen-go-grpc" installed from cache
+[goctl-env]: "protoc-gen-go-grpc" is already installed in "/Users/keson/go/bin/protoc-gen-go-grpc"
+
+[goctl-env]: congratulations! your goctl environment is ready!
+```
+
+## way2: install from web page
+
+### protoc installation
 
 * Enter the [protobuf release](https://github.com/protocolbuffers/protobuf/releases) page and select the compressed package file suitable for your operating system
 * Unzip `protoc-3.14.0-osx-x86_64.zip` and enter `protoc-3.14.0-osx-x86_64`
@@ -29,24 +56,17 @@ Demonstration environment of this document
     ```shell
     libprotoc 3.14.0
     ```
-## protoc-gen-* installation
+### protoc-gen-* installation
 
 > [!TIPS]
 >
 > Windows may report an error, `A required privilege is not held by the client.`, because goctl needs to be run `as administrator` under Windows.
 >The reason is that goctl needs to be run "as administrator" under Windows.
 * Download and install `protoc-gen-go`
-
-  If the goctl version is already 1.2.1 or later, you can ignore this step.
-
     ```shell
-    $ go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
+    $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
     ```
-    ```text
-    go: found github.com/golang/protobuf/protoc-gen-go in github.com/golang/protobuf v1.4.3
-    go: google.golang.org/protobuf upgrade => v1.25.0
-    ```
-* Move protoc-gen-go to any path where environment variables are added, such as `$GOPATH/bin`, because the binary itself after `go get` is in the `$GOPATH/bin` directory, so just make sure your `$GOPATH/bin` can be in the environment variable.
 
 > **[!WARNING]
 > protoc-gen-go installation failed, please read [Error](error.md)

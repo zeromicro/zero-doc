@@ -33,7 +33,7 @@
 
 ## 2. 短链微服务架构图
 
-<img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-arch.png" alt="架构图" width="800" />
+<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-arch.png" alt="架构图" width="800" />
 
 * 这里只用了 `Transform RPC` 一个微服务，并不是说 API Gateway 只能调用一个微服务，只是为了最简演示 API Gateway 如何调用 RPC 微服务而已
 * 在真正项目里要尽可能每个微服务使用自己的数据库，数据边界要清晰
@@ -44,15 +44,15 @@
 
 * API Gateway
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-api.png" alt="api" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-api.png" alt="api" width="800" />
 
 * RPC
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-rpc.png" alt="架构图" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-rpc.png" alt="架构图" width="800" />
 
 * model
 
-  <img src="https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-model.png" alt="model" width="800" />
+  <img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-model.png" alt="model" width="800" />
 
 下面我们来一起完整走一遍快速构建微服务的流程，Let’s `Go`!🏃‍♂️
 
@@ -63,20 +63,20 @@
 * 安装 `protoc-gen-go`
 
   ```shell
-  go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
+  $ go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
   ```
   
 * 安装 `protoc`
   ``` shell
-  wget https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protoc-3.14.0-linux-x86_64.zip
-  unzip protoc-3.14.0-linux-x86_64.zip
-  mv bin/protoc /usr/local/bin/
+  $ wget https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protoc-3.14.0-linux-x86_64.zip
+  $ unzip protoc-3.14.0-linux-x86_64.zip
+  $ mv bin/protoc /usr/local/bin/
   ```
 
 * 安装 goctl 工具
 
   ```shell
-  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
+  $ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl
   ```
 
 * 创建工作目录 `shorturl` 和 `shorturl/api`
@@ -87,7 +87,7 @@
 
 * 在 `shorturl` 目录下执行 `go mod init shorturl` 初始化 `go.mod`
 
-  ```Plain Text
+  ```
   module shorturl
   
   go 1.15
@@ -108,7 +108,7 @@
 * 在 `shorturl/api` 目录下通过 goctl 生成 `api/shorturl.api`：
 
   ```shell
-  goctl api -o shorturl.api
+  $ goctl api -o shorturl.api
   ```
 
 * 编辑 `api/shorturl.api`，为了简洁，去除了文件开头的 `info`，代码如下：
@@ -157,12 +157,12 @@
 * 使用 goctl 生成 API Gateway 代码
 
   ```shell
-  goctl api go -api shorturl.api -dir .
+  $ goctl api go -api shorturl.api -dir .
   ```
 
   生成的文件结构如下：
 
-  ```Plain Text
+  ```
   .
   ├── api
   │   ├── etc
@@ -190,13 +190,13 @@
 * 启动 API Gateway 服务，默认侦听在 8888 端口
 
   ```shell
-  go run shorturl.go -f etc/shorturl-api.yaml
+  $ go run shorturl.go -f etc/shorturl-api.yaml
   ```
 
 * 测试 API Gateway 服务
 
   ```shell
-  curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
+  $ curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
   ```
 
   返回如下：
@@ -229,7 +229,7 @@
   可以通过命令生成 proto 文件模板
 
   ```shell
-  goctl rpc template -o transform.proto
+  $ goctl rpc template -o transform.proto
   ```
 
   修改后文件内容如下：
@@ -264,14 +264,14 @@
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
-  goctl rpc proto -src transform.proto -dir .
+  $ goctl rpc proto -src transform.proto -dir .
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
 
   文件结构如下：
 
-  ```Plain Text
+  ```
   rpc/transform
   ├── etc
   │   └── transform.yaml              // 配置文件
@@ -297,16 +297,19 @@
 
   直接可以运行，如下：
 
-  ```shell
+  ```
   $ go run transform.go -f etc/transform.yaml
   Starting rpc server at 127.0.0.1:8080...
   ```
+
   查看服务是否注册
+
   ```
-  $ETCDCTL_API=3 etcdctl get transform.rpc --prefix
+  $ ETCDCTL_API=3 etcdctl get transform.rpc --prefix
   transform.rpc/7587851893787585061
   127.0.0.1:8080
   ```
+
   `etc/transform.yaml` 文件里可以修改侦听端口等配置
 
 ## 7. 修改 API Gateway 代码调用 transform rpc 服务
@@ -423,7 +426,7 @@
 * 在 `rpc/transform/model` 目录下执行如下命令生成 CRUD+cache 代码，`-c` 表示使用 `redis cache`
 
   ```shell
-  goctl model mysql ddl -c -src shorturl.sql -dir .
+  $ goctl model mysql ddl -c -src shorturl.sql -dir .
   ```
 
   也可以用 `datasource` 命令代替 `ddl` 来指定数据库链接直接从 schema 生成
@@ -551,7 +554,7 @@
 * expand api 调用
 
   ```shell
-  curl -i "http://localhost:8888/expand?shorten=f35b2a"
+  $ curl -i "http://localhost:8888/expand?shorten=f35b2a"
   ```
 
   返回如下：
@@ -569,7 +572,7 @@
 
 因为写入依赖于 mysql 的写入速度，就相当于压 mysql 了，所以压测只测试了 expand 接口，相当于从 mysql 里读取并利用缓存，shorten.lua 里随机从 db 里获取了 100 个热 key 来生成压测请求
 
-![Benchmark](https://gitee.com/kevwan/static/raw/master/doc/images/shorturl-benchmark.png)
+![Benchmark](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/shorturl-benchmark.png)
 
 可以看出在我的 MacBook Pro 上能达到 3 万 + 的 qps。
 

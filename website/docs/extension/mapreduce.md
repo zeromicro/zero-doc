@@ -10,7 +10,7 @@ sidebar_position: 15
 
 基于以上的背景，go-zero框架中为我们提供了并发处理工具[MapReduce](https://github.com/zeromicro/go-zero/blob/master/core/mr/mapreduce.go)，该工具开箱即用，不需要做什么初始化，我们通过下图看下使用MapReduce和没使用的耗时对比:
 
-![依赖耗时对比](https://gitee.com/kevwan/static/raw/master/doc/images/mr_time.png)
+![依赖耗时对比](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/mr_time.png)
 
 相同的依赖，串行处理的话需要200ms，使用MapReduce后的耗时等于所有依赖中最大的耗时为100ms，可见MapReduce可以大大降低服务耗时，而且随着依赖的增加效果就会越明显，减少处理耗时的同时并不会增加服务器压力
 
@@ -20,7 +20,7 @@ sidebar_position: 15
 
 go-zero框架中的MapReduce工具主要用来对批量数据进行并发的处理，以此来提升服务的性能  
 
-![mapreduce原理图](https://gitee.com/kevwan/static/raw/master/doc/images/mr.png)
+![mapreduce原理图](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/mr.png)
 
 我们通过几个示例来演示MapReduce的用法  
 

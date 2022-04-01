@@ -126,7 +126,7 @@ Content-Length: 19
 
 * 开启自定义错误
     ```shell
-    $ vim service/user/cmd/api/user.go
+    $ vim service/user/api/user.go
     ```
     ```go
     func main() {
