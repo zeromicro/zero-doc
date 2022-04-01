@@ -51,5 +51,10 @@ $ tree
 └── vars.go
 ```
 
+## 更多
+对于持久化数据，如果需要更灵活的数据库能力，包括事务能力，可以参考 [Mysql](mysql.md)
+
+如果需要分布式事务的能力，可以参考 [分布式事务支持](distributed-transaction.md)
+
 # 猜你想看
 [model命令及其原理](goctl-model.md)

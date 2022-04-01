@@ -180,9 +180,4 @@ err := usermodel.conn.Transact(func(session sqlx.Session) error {
 ```
 如同上述例子，开发者只需将 **事务** 中的操作都包装在一个函数 `func(session sqlx.Session) error {}` 中即可，如果事务中的操作返回任何错误， `Transact()` 都会自动回滚事务。
 
-## 分布式事务
-
-go-zero 与 [dtm](https://github.com/dtm-labs/dtm) 深度合作，原生的支持了分布式事务，详情参见 [分布式事务支持](distributed-transaction.md)
-
-
 <Vssue title="storemysql" />
