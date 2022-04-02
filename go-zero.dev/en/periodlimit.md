@@ -92,8 +92,9 @@ As for the above `return code`, return it to the caller. The caller decides to r
 | 2 | HitQuota | 2 | **hit limit** |
 
 The following picture describes the process of request entry and the subsequent situation when the request triggers `limit`:
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/261626/1605430483430-92415ed3-e88f-487d-8fd6-8c58a9abe334.png#align=left&display=inline&height=524&margin=%5Bobject%20Object%5D&name=image.png&originHeight=524&originWidth=1051&size=90836&status=done&style=none&width=1051)
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/261626/1605495120249-f6b05ac2-7090-47b0-a3c0-da50df6206dd.png#align=left&display=inline&height=557&margin=%5Bobject%20Object%5D&name=image.png&originHeight=557&originWidth=456&size=53785&status=done&style=none&width=456)
+![image.png](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/periodlimit-1.png)
+![image.png](https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/periodlimit-2.png)
+
 ## Subsequent processing
 
 
