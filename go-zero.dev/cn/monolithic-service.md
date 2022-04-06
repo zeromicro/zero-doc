@@ -83,7 +83,7 @@ func (l *GreetLogic) Greet(req *types.Request) (*types.Response, error) {
   Content-Length: 27
     
   {"message":"Hello go-zero"}
-    ```
+  ```
 
 # 源码
 [greet源码](https://github.com/zeromicro/go-zero-demo/tree/master/greet)
