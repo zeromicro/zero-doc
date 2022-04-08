@@ -238,6 +238,8 @@
   
   package transform;
   
+  option go_package="./user";
+  
   message expandReq {
       string shorten = 1;
   }
@@ -263,7 +265,7 @@
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
-  goctl rpc proto -src transform.proto -dir .
+  goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
@@ -284,18 +286,17 @@
   │   │   └── transformerserver.go    // 调用入口, 不需要修改
   │   └── svc
   │       └── servicecontext.go       // 定义 ServiceContext，传递依赖
-  ├── pb
-  │   └── transform.pb.go
+  ├── user
+  │   ├── transform.pb.go
+  │		└──	transform_grpc.pb.go
   ├── transform.go                    // rpc 服务 main 函数
   ├── transform.proto
   └── transformer
-      ├── transformer.go              // 提供了外部调用方法，无需修改
-      ├── transformer_mock.go         // mock 方法，测试用
-      └── types.go                    // request/response 结构体定义
+      └── transformer.go              // 提供了外部调用方法，无需修改
   ```
-
+  
   直接可以运行，如下：
-
+  
   ```shell
   $ go run transform.go -f etc/transform.yaml
   Starting rpc server at 127.0.0.1:8080...
