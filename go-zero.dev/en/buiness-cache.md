@@ -70,7 +70,7 @@ two redis storage schemes:
   ![biz-redis-01](./resource/biz-redis-01.svg)
   All published content will be stored after being compressed according to certain rules. For the same score, 
   we still use the `createTime` millisecond value. The advantage of this storage solution is that business additions, 
-  deletions, checks, and changes are all reids, while the db layer is at this time.
+  deletions, checks, and changes are all redis, while the db layer is at this time.
   
   You don’t need to consider the row record cache. The persistence layer only provides data backup and recovery. 
   On the other hand, its shortcomings are also obvious. The storage space and configuration requirements are higher, and the cost will increase.
