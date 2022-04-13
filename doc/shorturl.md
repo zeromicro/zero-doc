@@ -234,36 +234,39 @@
   修改后文件内容如下：
 
   ```protobuf
-  syntax = "proto3";
-  
-  package transform;
-  
-  message expandReq {
-      string shorten = 1;
-  }
-  
-  message expandResp {
-      string url = 1;
-  }
-  
-  message shortenReq {
-      string url = 1;
-  }
-  
-  message shortenResp {
-      string shorten = 1;
-  }
-  
-  service transformer {
-      rpc expand(expandReq) returns(expandResp);
-      rpc shorten(shortenReq) returns(shortenResp);
-  }
+syntax = "proto3";
+
+package transform;
+
+option go_package = "./transform";
+
+message expandReq{
+  string shorten = 1;
+}
+
+message expandResp{
+  string url = 1;
+}
+
+message shortenReq{
+  string url = 1;
+}
+
+message shortenResp{
+  string shorten = 1;
+}
+
+service  transformer{
+  rpc expand(expandReq) returns(expandResp);
+  rpc shorten(shortenReq) returns(shortenResp);
+}
+
   ```
 
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
-  goctl rpc proto -src transform.proto -dir .
+goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
@@ -271,27 +274,26 @@
   文件结构如下：
 
   ```Plain Text
-  rpc/transform
-  ├── etc
-  │   └── transform.yaml              // 配置文件
-  ├── internal
-  │   ├── config
-  │   │   └── config.go               // 配置定义
-  │   ├── logic
-  │   │   ├── expandlogic.go          // expand 业务逻辑在这里实现
-  │   │   └── shortenlogic.go         // shorten 业务逻辑在这里实现
-  │   ├── server
-  │   │   └── transformerserver.go    // 调用入口, 不需要修改
-  │   └── svc
-  │       └── servicecontext.go       // 定义 ServiceContext，传递依赖
-  ├── pb
-  │   └── transform.pb.go
-  ├── transform.go                    // rpc 服务 main 函数
-  ├── transform.proto
-  └── transformer
-      ├── transformer.go              // 提供了外部调用方法，无需修改
-      ├── transformer_mock.go         // mock 方法，测试用
-      └── types.go                    // request/response 结构体定义
+rpc/transform
+├── etc
+│   └── transform.yaml              // 配置文件
+├── internal
+│   ├── config
+│   │   └── config.go               // 配置定义
+│   ├── logic
+│   │   ├── expandlogic.go          // expand 业务逻辑在这里实现
+│   │   └── shortenlogic.go         // shorten 业务逻辑在这里实现
+│   ├── server
+│   │   └── transformerserver.go    // 调用入口, 不需要修改
+│   └── svc
+│       └── servicecontext.go       // 定义 ServiceContext，传递依赖
+├── transform
+│   ├── transform.pb.go
+│   └── transform_grpc.pb.go
+├── transform.go                    // rpc 服务 main 函数
+├── transform.proto
+└── transformer
+    ├── transformer.go              // 提供了外部调用方法，无需修改
   ```
 
   直接可以运行，如下：
