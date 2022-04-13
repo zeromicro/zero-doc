@@ -7,7 +7,9 @@ go-zero微服务框架中提供了许多开箱即用的工具，好的工具不�
 
 ```go
 // 初始化 redisBitSet
-store := redis.NewRedis("redis 地址", redis.NodeType)
+store := redis.New("redis 地址", func(r *redis.Redis) {
+		r.Type = redis.NodeType
+	})
 // 声明一个bitSet, key="test_key"名且bits是1024位
 bitSet := newRedisBitSet(store, "test_key", 1024)
 // 判断第0位bit存不存在
