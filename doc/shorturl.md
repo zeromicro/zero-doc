@@ -233,7 +233,7 @@
 
   修改后文件内容如下：
 
-  ```protobuf
+```protobuf
 syntax = "proto3";
 
 package transform;
@@ -261,7 +261,7 @@ service  transformer{
   rpc shorten(shortenReq) returns(shortenResp);
 }
 
-  ```
+```
 
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
