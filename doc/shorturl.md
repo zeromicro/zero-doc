@@ -434,7 +434,8 @@ rpc/transform
   ```Plain Text
   rpc/transform/model
   ├── shorturl.sql
-  ├── shorturlmodel.go              // CRUD+cache 代码
+  ├── shorturlmodel.go              // 扩展代码
+  ├── shorturlmodel_gen.go          // CRUD+cache 代码
   └── vars.go                       // 定义常量和变量
   ```
 
