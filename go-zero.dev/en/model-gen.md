@@ -52,6 +52,7 @@ $ tree
 .
 ├── user.sql
 ├── usermodel.go
+├── usermodel_gen.go
 └── vars.go
 ```
 
