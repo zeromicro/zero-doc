@@ -210,6 +210,8 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   
   package transform;
   
+  option go_package = "./transform";
+  
   message expandReq {
       string shorten = 1;
   }
