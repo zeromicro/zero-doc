@@ -238,6 +238,8 @@ syntax = "proto3";
 
 package transform;
 
+option go_package="./user";
+
 option go_package = "./transform";
 
 message expandReq{
@@ -287,13 +289,13 @@ rpc/transform
 │   │   └── transformerserver.go    // 调用入口, 不需要修改
 │   └── svc
 │       └── servicecontext.go       // 定义 ServiceContext，传递依赖
-├── transform
+├── user
 │   ├── transform.pb.go
 │   └── transform_grpc.pb.go
 ├── transform.go                    // rpc 服务 main 函数
 ├── transform.proto
 └── transformer
-    ├── transformer.go              // 提供了外部调用方法，无需修改
+    └── transformer.go             // 提供了外部调用方法，无需修改
   ```
 
   直接可以运行，如下：

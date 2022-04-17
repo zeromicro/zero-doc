@@ -210,6 +210,8 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   
   package transform;
   
+  option go_package="./user";
+  
   message expandReq {
       string shorten = 1;
   }
@@ -254,14 +256,13 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   │   │   └── transformerserver.go    // rpc handler
   │   └── svc
   │       └── servicecontext.go       // defines service context, like dependencies
-  ├── pb
-  │   └── transform.pb.go
+  ├── user
+  │   ├── transform.pb.go
+  │   └── transform_grpc.pb.go
   ├── transform.go                    // rpc main entrance
   ├── transform.proto
   └── transformer
-      ├── transformer.go              // defines how rpc clients call this service
-      ├── transformer_mock.go         // mock file, for test purpose
-      └── types.go                    // request/response definition
+      └── transformer.go              // defines how rpc clients call this service
   ```
 
   just run it, looks like:
