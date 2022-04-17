@@ -235,7 +235,7 @@ And now, let’s walk through the complete flow of quickly creating a microservi
 * use goctl to generate the rpc code, execute the following command in `rpc/transofrm`
 
   ```shell
-  goctl rpc proto -src transform.proto -dir .
+  goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
   the generated file structure looks like:
@@ -254,14 +254,13 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   │   │   └── transformerserver.go    // rpc handler
   │   └── svc
   │       └── servicecontext.go       // defines service context, like dependencies
-  ├── pb
-  │   └── transform.pb.go
+  ├── transform
+  │   ├── transform.pb.go
+  │   └── transform_grpc.pb.go
   ├── transform.go                    // rpc main entrance
   ├── transform.proto
   └── transformer
-      ├── transformer.go              // defines how rpc clients call this service
-      ├── transformer_mock.go         // mock file, for test purpose
-      └── types.go                    // request/response definition
+      └── transformer.go  
   ```
 
   just run it, looks like:
