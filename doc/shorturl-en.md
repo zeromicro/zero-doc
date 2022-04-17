@@ -397,7 +397,8 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```Plain Text
   rpc/transform/model
   ├── shorturl.sql
-  ├── shorturlmodel.go              // CRUD+cache code
+  ├── shorturlmodel.go              // code extension
+  ├── shorturlmodel_gen.go          // CRUD+cache code
   └── vars.go                       // const and var definition
   ```
 

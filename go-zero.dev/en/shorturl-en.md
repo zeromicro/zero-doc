@@ -455,7 +455,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   func NewServiceContext(c config.Config) *ServiceContext {
   	return &ServiceContext{
   		c:             c,
-  		Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache, c.Table), // manual code
+  		Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache), // manual code
   	}
   }
   ```
@@ -465,7 +465,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *ExpandLogic) Expand(in *transform.ExpandReq) (*transform.ExpandResp, error) {
   	// manual code start
-  	res, err := l.svcCtx.Model.FindOne(in.Shorten)
+  	res, err := l.svcCtx.Model.FindOne(l.ctx, in.Shorten)
   	if err != nil {
   		return nil, err
   	}
@@ -482,8 +482,15 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // manual code start, generates shorturl
-  	key := hash.Md5Hex([]byte(in.Url))[:6]
-  	_, err := l.svcCtx.Model.Insert(model.Shorturl{
+    key := hash.Md5Hex([]byte(in.Url))[:6]
+    object, _ := l.svcCtx.Model.FindOne(l.ctx, key)
+    if object != nil {
+      return &transform.ShortenResp{
+        Shorten: key,
+      }, nil
+    }
+
+    _, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
   		Shorten: key,
   		Url:     in.Url,
   	})

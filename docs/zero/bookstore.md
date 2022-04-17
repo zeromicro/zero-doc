@@ -69,6 +69,37 @@
   GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl@latest
   ```
 
+* 升级 goctl
+
+  ```shell
+  $ goctl env check -i -f
+  [goctl-env]: preparing to check env
+  
+  [goctl-env]: looking up "protoc"
+  [goctl-env]: "protoc" is installed
+  
+  [goctl-env]: looking up "protoc-gen-go"
+  [goctl-env]: "protoc-gen-go" is installed
+  
+  [goctl-env]: looking up "protoc-gen-go-grpc"
+  [goctl-env]: "protoc-gen-go-grpc" is installed
+  
+  [goctl-env]: congratulations! your goctl environment is ready!
+  ```
+* 检查 goctl 环境
+  ```shell
+  $ goctl env
+  GOCTL_OS=darwin
+  GOCTL_ARCH=amd64
+  GOCTL_HOME=/Users/xxx/.goctl
+  GOCTL_DEBUG=False
+  GOCTL_CACHE=/Users/xxx/.goctl/cache
+  GOCTL_VERSION=1.3.3
+  PROTOC_VERSION=3.17.3
+  PROTOC_GEN_GO_VERSION=v1.27.1
+  PROTO_GEN_GO_GRPC_VERSION=1.1.0
+  ```
+  
 * 创建工作目录 `bookstore` 和 `bookstore/api`
 
 * 在`bookstore`目录下执行`go mod init bookstore`初始化`go.mod`
@@ -203,6 +234,8 @@
   
   package add;
   
+  option go_package = "./add";
+  
   message addReq {
       string book = 1;
       int64 price = 2;
@@ -220,7 +253,7 @@
 * 用`goctl`生成rpc代码，在`rpc/add`目录下执行命令
 
   ```shell
-  goctl rpc proto -src add.proto -dir .
+  goctl rpc protoc add.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
   文件结构如下：
@@ -228,7 +261,8 @@
   ```Plain Text
   rpc/add
   ├── add                   // pb.go
-  │   └── add.pb.go
+  │   ├── add.pb.go
+  │   └── add_grpc.pb.go
   ├── add.go                // main函数入口
   ├── add.proto             // proto源文件
   ├── adder                 // rpc client call entry
@@ -246,14 +280,14 @@
           └── servicecontext.go
   ```
 
-直接可以运行，如下：
+  直接可以运行，如下：
 
-```shell
+  ```shell
   $ go run add.go -f etc/add.yaml
-  Starting rpc server at 127.0.0.1:8080...
-```
+    Starting rpc server at 127.0.0.1:8080...
+  ```
 
-`etc/add.yaml`文件里可以修改侦听端口等配置
+  `etc/add.yaml`文件里可以修改侦听端口等配置
 
 ## 7. 编写check rpc服务
 
@@ -272,6 +306,8 @@
   
   package check;
   
+  option go_package = "./check";
+  
   message checkReq {
       string book = 1;
   }
@@ -289,7 +325,7 @@
 * 用`goctl`生成rpc代码，在`rpc/check`目录下执行命令
 
   ```shell
-  goctl rpc proto -src check.proto -dir .
+  goctl rpc protoc check.proto --go_out=. --go-grpc_out=. --zrpc_out=.
   ```
 
   文件结构如下：
@@ -297,7 +333,8 @@
   ```Plain Text
   rpc/check
   ├── check                     // pb.go
-  │   └── check.pb.go
+  │   ├── check.pb.go
+  │   └── check_grpc.pb.go
   ├── check.go                  // main入口
   ├── check.proto               // proto源文件
   ├── checker                   // rpc client call entry
@@ -313,12 +350,13 @@
       │   └── checkerserver.go
       └── svc                   // 资源依赖
           └── servicecontext.go
+  
   ```
-
+  
   `etc/check.yaml`文件里可以修改侦听端口等配置
-
+  
   需要修改`etc/check.yaml`的端口为`8081`，因为`8080`已经被`add`服务使用了，直接可以运行，如下：
-
+  
   ```shell
   $ go run check.go -f etc/check.yaml
   Starting rpc server at 127.0.0.1:8081...
@@ -343,7 +381,7 @@
 
   通过etcd自动去发现可用的add/check服务
 
-* 修改`internal/config/config.go`如下，增加add/check服务依赖
+* 修改`api/internal/config/config.go`如下，增加add/check服务依赖
 
   ```go
   type Config struct {
@@ -353,7 +391,7 @@
   }
   ```
 
-* 修改`internal/svc/servicecontext.go`，如下：
+* 修改`api/internal/svc/servicecontext.go`，如下：
 
   ```go
   type ServiceContext struct {
@@ -373,46 +411,46 @@
 
   通过ServiceContext在不同业务逻辑之间传递依赖
 
-* 修改`internal/logic/addlogic.go`里的`Add`方法，如下：
+* 修改`api/internal/logic/addlogic.go`里的`Add`方法，如下：
 
   ```go
-  func (l *AddLogic) Add(req types.AddReq) (*types.AddResp, error) {
-      // 手动代码开始
-      resp, err := l.svcCtx.Adder.Add(l.ctx, &adder.AddReq{
-          Book:  req.Book,
-          Price: req.Price,
-      })
-      if err != nil {
-          return nil, err
-      }
+  func (l *AddLogic) Add(req *types.AddReq) (resp *types.AddResp, err error) {
+  	// 手动代码开始
+  	r, err := l.svcCtx.Adder.Add(l.ctx, &adder.AddReq{
+  		Book:  req.Book,
+  		Price: req.Price,
+  	})
+  	if err != nil {
+  		return nil, err
+  	}
   
-      return &types.AddResp{
-          Ok: resp.Ok,
-      }, nil
-      // 手动代码结束
+  	return &types.AddResp{
+  		Ok: r.Ok,
+  	}, nil
+  	// 手动代码结束
   }
   ```
 
   通过调用`adder`的`Add`方法实现添加图书到bookstore系统
 
-* 修改`internal/logic/checklogic.go`里的`Check`方法，如下：
+* 修改`api/internal/logic/checklogic.go`里的`Check`方法，如下：
 
   ```go
-  func (l *CheckLogic) Check(req types.CheckReq) (*types.CheckResp, error) {
-      // 手动代码开始
-      resp, err := l.svcCtx.Checker.Check(l.ctx, &checker.CheckReq{
-          Book:  req.Book,
-      })
-      if err != nil {
-          logx.Error(err)
-          return &types.CheckResp{}, err
-      }
+  func (l *CheckLogic) Check(req *types.CheckReq) (resp *types.CheckResp,err error) {
+  	// 手动代码开始
+  	r, err := l.svcCtx.Checker.Check(l.ctx, &checker.CheckReq{
+  		Book: req.Book,
+  	})
+  	if err != nil {
+  		logx.Error(err)
+  		return &types.CheckResp{}, err
+  	}
   
-      return &types.CheckResp{
-          Found: resp.Found,
-          Price: resp.Price,
-      }, nil
-      // 手动代码结束
+  	return &types.CheckResp{
+  		Found: r.Found,
+  		Price: r.Price,
+  	}, nil
+  	// 手动代码结束
   }
   ```
 
@@ -465,7 +503,8 @@
 * 修改`rpc/add/etc/add.yaml`和`rpc/check/etc/check.yaml`，增加如下内容：
 
   ```yaml
-  DataSource: root:@tcp(localhost:3306)/gozero
+  DataSource: root:@tcp(localhost:3306)/gozero 
+  # mysql链接地址，满足 $user:$password@tcp($ip:$port)/$db?$queries 格式即可
   Table: book
   Cache:
     - Host: localhost:6379
@@ -506,7 +545,7 @@
   ```go
   func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
       // 手动代码开始
-      _, err := l.svcCtx.Model.Insert(&model.Book{
+      _, err := l.svcCtx.Model.Insert(l.ctx,&model.Book{
           Book:  in.Book,
           Price: in.Price,
       })
@@ -526,7 +565,7 @@
   ```go
   func (l *CheckLogic) Check(in *check.CheckReq) (*check.CheckResp, error) {
       // 手动代码开始
-      resp, err := l.svcCtx.Model.FindOne(in.Book)
+      resp, err := l.svcCtx.Model.FindOne(l.ctx,in.Book)
       if err != nil {
           return nil,err
       }

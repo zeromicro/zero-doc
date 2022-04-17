@@ -1,59 +1,58 @@
 # Join Us
-> [!TIP]
-> This document is machine-translated by Google. If you find grammatical and semantic errors, and the document description is not clear, please [PR](doc-contibute.md)
-
 
 ## Summary
 <img src="./resource/go-zero-logo.png" alt="go-zero" width="100px" height="100px" align="right" />
 
-[go-zero](https://github.com/zeromicro/go-zero) is based on the [MIT License](https://github.com/zeromicro/go-zero/blob/master/LICENSE) open source projects, if you find bugs, new features, etc. in use, you can participate in the contribution of go-zero. We welcome your active participation and will respond to various questions raised by you as soon as possible. , Pr, etc.
+[go-zero](https://github.com/zeromicro/go-zero) is an open-source project based on the [MIT License](https://github.com/zeromicro/go-zero/blob/master/LICENSE). If you find bugs, have questions, or want to introduce new features, your contributions to the project are encouraged! We welcome your active participation and will respond to various questions, issues, and PRs as soon as possible.
 
 ## Contribution form
 * [Pull Request](https://github.com/zeromicro/go-zero/pulls)
 * [Issue](https://github.com/zeromicro/go-zero/issues)
 
 ## Contribution notes
-The code in go-zero's Pull request needs to meet certain specifications
-* For naming conventions, please read [naming conventions](naming-spec.md)
-* Mainly English annotations
-* Remark the functional characteristics when pr, the description needs to be clear and concise
-* Increase unit test coverage to 80%+
+The code in go-zero's Pull request needs to meet certain specifications:
+* For naming conventions, please read the [naming conventions doc](naming-spec.md).
+* Code annotations should be in English where possible
+* Pull Requests should describe the functional needs clearly and concisely
+* Unit test coverage should be 80% at a minimum
 
-## Pull Request（pr）
-* Enter [go-zero](https://github.com/zeromicro/go-zero) project, fork a copy of [go-zero](https://github.com/zeromicro/go-zero) Project to its own GitHub repository.
-* Go back to your GitHub homepage and find the `xx/go-zero` project, where xx is your username, such as `anqiansong/go-zero`
+## Pull Requests（PRs）
+* Visit the [go-zero](https://github.com/zeromicro/go-zero) project, and fork it to a new GitHub repository under your account
+* Go back to your GitHub homepage and find the `xx/go-zero` project, where xx is your username. (e.g. `anqiansong/go-zero`)
 
     ![fork](./resource/fork.png)
-* Clone the code to local
+* Clone the code to your local machine
 
     ![clone](./resource/clone.png)
-* Develop code and push to your own GitHub repository
-* Enter the go-zero project in your own GitHub, click on the `[Pull requests]` on the floating layer to enter the Compare page.
+* Develop your changes locally and then push them back to your GitHub repository
+* From your account's go-zero project, click on `Pull request` in the branch info box
 
     ![pr](./resource/new_pr.png)
 
-* `base repository` choose `zeromicro/go-zero` `base:master`,`head repository` choose `xx/go-zero` `compare:$branch` ，`$branch` is the branch you developed, as shown in the figure:
+* For the `base repository`, choose `zeromicro/go-zero` with `base:master`. For the `head repository` choose your go-zero project (e.g. `xx/go-zero`) and `compare:$branch` with `$branch` being the new feature branch in your repository that you want merged back into the upstream project
 
     ![pr](./resource/compare.png)
 
-* Click `[Create pull request]` to realize the pr application
-* To confirm whether the pr submission is successful, enter [Pull requests](https://github.com/zeromicro/go-zero) of [go-zero](https://github.com/zeromicro/go-zero) /pulls) view, there should be a record of your own submission, the name is your branch name during development.
+* Click `[Create pull request]`
+* To confirm whether the PR submitted successfully, enter the [go-zero Pull requests page](https://github.com/zeromicro/go-zero/pulls) and look for your submission with your branch name
 
     ![pr record](./resource/pr_record.png)
 
-## Issue
-In our community, many partners will actively feedback some problems encountered during the use of go-zero. 
-Due to the large number of people in the community, although we will follow the community dynamics in real time, 
-the feedback of all questions is random. When our team is still solving a problem raised by a partner, other issues are also fed back, 
-which may cause the team to easily ignore it. In order to solve everyone's problems one by one, we strongly recommend that everyone use the issue method.
-Feedback issues, including but not limited to bug, expected new features, etc., we will also reflect in the issue when we implement a certain new feature. 
-You can also get the latest trend of go-zero here, and welcome everyone Come and actively participate in the discussion.
+## Issues
+Our community will make every effort to actively provide feedback and support for problems encountered while using go-zero.
+However, due to the large number of people in the community both asking and answering questions, we make no guarantees about the order in which questions will be answered.
+Additionally, while our team is working on issues raised by the community, time constraints could cause some questions to go unanswered.
+One way to mitigate this is to post all feedback, be it regarding new features or discovered bugs, as a github issue for easier tracking.
+The go-zero team will also ensure that new features have their own issue created for easy reference by the community.
+The issues page is also where you can keep track of the latest go-zero news.
+We welcome everyone to actively participate in the issues page and community discussions.
 
-### How to issue
-* Click [here](https://github.com/zeromicro/go-zero/issues) to enter go-zero's Issue page or directly visit [https://github.com/zeromicro/go-zero/ issues](https://github.com/zeromicro/go-zero/issues) address
-* Click `[New issue]` in the upper right corner to create a new issue
+### How to create a new issue
+* Navigate to the [go-zero issues page](https://github.com/zeromicro/go-zero/issues)
+* Click `[New issue]` in the upper right corner
+* Choose the issue category from `[Bug report]`, `[Feature request]`, or `[Question]`
 * Fill in the issue title and content
-* Click `【Submit new issue】` to submit an issue
+* Click `[Submit new issue]`
 
 
 ## Reference

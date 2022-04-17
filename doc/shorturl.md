@@ -233,6 +233,7 @@
 
   修改后文件内容如下：
 
+
   ```protobuf
   syntax = "proto3";
   
@@ -262,10 +263,13 @@
   }
   ```
 
+
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
+
   goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
@@ -273,6 +277,7 @@
   文件结构如下：
 
   ```Plain Text
+
   rpc/transform
   ├── etc
   │   └── transform.yaml              // 配置文件
@@ -293,6 +298,7 @@
   ├── transform.proto
   └── transformer
       └── transformer.go              // 提供了外部调用方法，无需修改
+
   ```
   
   直接可以运行，如下：
@@ -433,7 +439,8 @@
   ```Plain Text
   rpc/transform/model
   ├── shorturl.sql
-  ├── shorturlmodel.go              // CRUD+cache 代码
+  ├── shorturlmodel.go              // 扩展代码
+  ├── shorturlmodel_gen.go          // CRUD+cache 代码
   └── vars.go                       // 定义常量和变量
   ```
 
@@ -484,7 +491,7 @@
   ```go
   func (l *ExpandLogic) Expand(in *transform.ExpandReq) (*transform.ExpandResp, error) {
     // 手动代码开始
-    res, err := l.svcCtx.Model.FindOne(in.Shorten)
+    res, err := l.svcCtx.Model.FindOne(l.ctx,in.Shorten)
     if err != nil {
       return nil, err
     }
@@ -502,7 +509,7 @@
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // 手动代码开始，生成短链接
     key := hash.Md5Hex([]byte(in.Url))[:6]
-    _, err := l.svcCtx.Model.Insert(model.Shorturl{
+    _, err := l.svcCtx.Model.Insert(l.ctx,model.Shorturl{
       Shorten: key,
       Url:     in.Url,
     })
