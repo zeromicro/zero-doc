@@ -266,7 +266,9 @@ service  transformer{
 * 用 `goctl` 生成 rpc 代码，在 `rpc/transform` 目录下执行命令
 
   ```shell
-goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+  
+  goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+  
   ```
 
   **注意：不能在 GOPATH 目录下执行以上命令**
@@ -293,7 +295,7 @@ rpc/transform
 ├── transform.go                    // rpc 服务 main 函数
 ├── transform.proto
 └── transformer
-    ├── transformer.go              // 提供了外部调用方法，无需修改
+    └── transformer.go              // 提供了外部调用方法，无需修改
   ```
 
   直接可以运行，如下：
