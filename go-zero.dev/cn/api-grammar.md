@@ -279,7 +279,7 @@ info(
 
 > **[!WARNING]️
 > * 不支持alias
-> * 不支持time.Time数据类型
+> * 不支持time.Time数据类型，用int64表示，因为api支持客户端代码生成，并非所有客户端语言都有time.Time对应的类型
 > * 结构体名称、字段名称、不能为golang关键字
 
 **语法定义**
