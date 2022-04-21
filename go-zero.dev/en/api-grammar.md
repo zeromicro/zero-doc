@@ -286,7 +286,7 @@ Of course It also retains some of the characteristics of golang type, and the fo
 
 > **[!WARNING]️
 > * Does not support alias
-> * Does not support `time.Time` data type
+> * Does not support `time.Time` type, because client code is generated from API file, and not all client languages support `time.Time` related types
 > * Structure name, field name, cannot be a golang keyword
 
 **Grammar definition**
