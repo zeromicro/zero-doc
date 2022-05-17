@@ -276,26 +276,26 @@ service  transformer{
   文件结构如下：
 
   ```Plain Text
-rpc/transform
-├── etc
-│   └── transform.yaml              // 配置文件
-├── internal
-│   ├── config
-│   │   └── config.go               // 配置定义
-│   ├── logic
-│   │   ├── expandlogic.go          // expand 业务逻辑在这里实现
-│   │   └── shortenlogic.go         // shorten 业务逻辑在这里实现
-│   ├── server
-│   │   └── transformerserver.go    // 调用入口, 不需要修改
-│   └── svc
-│       └── servicecontext.go       // 定义 ServiceContext，传递依赖
-├── transform
-│   ├── transform.pb.go
-│   └── transform_grpc.pb.go
-├── transform.go                    // rpc 服务 main 函数
-├── transform.proto
-└── transformer
-    └── transformer.go              // 提供了外部调用方法，无需修改
+  rpc/transform
+  ├── etc
+  │   └── transform.yaml              // 配置文件
+  ├── internal
+  │   ├── config
+  │   │   └── config.go               // 配置定义
+  │   ├── logic
+  │   │   ├── expandlogic.go          // expand 业务逻辑在这里实现
+  │   │   └── shortenlogic.go         // shorten 业务逻辑在这里实现
+  │   ├── server
+  │   │   └── transformerserver.go    // 调用入口, 不需要修改
+  │   └── svc
+  │       └── servicecontext.go       // 定义 ServiceContext，传递依赖
+  ├── transform
+  │   ├── transform.pb.go
+  │   └── transform_grpc.pb.go
+  ├── transform.go                    // rpc 服务 main 函数
+  ├── transform.proto
+  └── transformer
+      └── transformer.go              // 提供了外部调用方法，无需修改
   ```
 
   直接可以运行，如下：
