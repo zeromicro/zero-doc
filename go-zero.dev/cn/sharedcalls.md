@@ -2,7 +2,7 @@
 
 go-zero微服务框架中提供了许多开箱即用的工具，好的工具不仅能提升服务的性能而且还能提升代码的鲁棒性避免出错，实现代码风格的统一方便他人阅读等等。
 
-本文主要讲述进程内共享调用神器[SharedCalls](https://github.com/zeromicro/go-zero/blob/master/core/syncx/sharedcalls.go)。  
+本文主要讲述进程内共享调用神器[SharedCalls](https://github.com/zeromicro/go-zero/blob/v1.1.10/core/syncx/sharedcalls.go)（v1.2.0改名为[SingleFlight](https://github.com/zeromicro/go-zero/blob/master/core/syncx/singleflight.go) ）
 
 ## 使用场景
 
