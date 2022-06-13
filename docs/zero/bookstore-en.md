@@ -115,7 +115,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
     }
   ```
 
-  the usage of `type` keyword is the same as that in go, service is used to define get/post/head/delete api requests, described below:
+  the usage of `type` keyword is the same as that in go, `service` is used to define get/post/head/delete api requests, described below:
 
   * `service bookstore-api { defines the service name
   * `@server` defines the properties that used in server side
