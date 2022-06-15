@@ -44,5 +44,12 @@
    // mode3: ip直连mode
    // client, _ := zrpc.NewClientWithTarget("127.0.0.1:8888")
    ```
+10. grpc 客户端设置消息大小限制
+   > 修改grpc消息大小限制，需要 服务端 和 客户端 都设置
+   ```go
+    // 需要 grpc 方法里面添加配置项：grpc.MaxCallRecvMsgSize(bytes int)、grpc.MaxCallSendMsgSize(bytes int)
+    // 示例如下：设置 UserRpc.List 列表消息大小限制为 8MB
+    // l.svcCtx.UserRpc.List(l.ctx, &listReq, grpc.MaxCallRecvMsgSize(1024*1024*8), grpc.MaxCallSendMsgSize(1024*1024*8))
+   ```
 
 faq会不定期更新大家遇到的问题，也欢迎大家把常见问题通过pr写在这里。
