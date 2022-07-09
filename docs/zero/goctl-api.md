@@ -130,7 +130,7 @@ service user-api {
 ```
 
 
-添加完middleware后需要设置ServiceContext 中middleware变量的值，middleware实现可以参考测试用例 `TestWithMiddleware` 或者 `TestMultiMiddlewares`。
+添加完middleware后需要设置ServiceContext 中middleware变量的值，middleware实现可以参考测试用例 [TestWithMiddleware](https://github.com/zeromicro/go-zero/blob/47c49de94eb0080a2b6701127db7c3079cc59359/rest/server_test.go#L127) 或者 [TestMultiMiddlewares](https://github.com/zeromicro/go-zero/blob/47c49de94eb0080a2b6701127db7c3079cc59359/rest/server_test.go#L184)。
 
    - handler 支持缩写，实例如下：
 ```go
