@@ -23,7 +23,7 @@ For any point listed above, we need a long article to describe the theory and th
 
 As well, we always adhere to the idea that **prefer tools over conventions and documents**. We hope to reduce the boilerplate code as much as possible, and let developers focus on developing the business related code. For this purpose, we developed the tool  `goctl`.
 
-Let’s take the shorturl microservice as a quick example to demonstrate how to quickly create microservices by using [go-zero](https://github.com/zeromicro/go-zero). After finishing this tutorial, you’ll find that it’s so easy to write microservices!
+Let’s take the bookstore microservice as a quick example to demonstrate how to quickly create microservices by using [go-zero](https://github.com/zeromicro/go-zero). After finishing this tutorial, you’ll find that it’s so easy to write microservices!
 
 ## 1. What is a bookstore service
 
@@ -31,7 +31,7 @@ For simplicity, the bookstore service only contains two functionalities, adding 
 
 Writting this bookstore service is to demonstrate the complete flow of creating a microservice by using go-zero. But algorithms and detail implementations are quite simplified, and this bookstore service is not suitable for production use.
 
-## 2. Architecture of shorturl microservice
+## 2. Architecture of bookstore microservice
 
 <img src="../../doc/images/bookstore-arch.png" alt="architecture" width="800" />
 
@@ -504,7 +504,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
 * modify `rpc/add/internal/logic/addlogic.go`, like below:
 
   ```go
-  func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
+  func (l *AddLogic) Add(in *add.AddReq) (l.ctx, *add.AddResp, error) {
       // manual code start
       _, err := l.svcCtx.Model.Insert(&model.Book{
           Book:  in.Book,
@@ -526,7 +526,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *CheckLogic) Check(in *check.CheckReq) (*check.CheckResp, error) {
       // manual code start
-      resp, err := l.svcCtx.Model.FindOne(in.Book)
+      resp, err := l.svcCtx.Model.FindOne(l.ctx, in.Book)
       if err != nil {
           return nil, err
       }
@@ -541,7 +541,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   
   till now, we finished modifing the code, all the modified code is marked.
 
-## 11. Call shorten and expand services
+## 11. Call add and check services
 
 * call add api
 
