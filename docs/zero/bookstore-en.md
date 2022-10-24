@@ -606,7 +606,7 @@ as shown above, in my MacBook Pro, the QPS is like 30K+.
 
 We always adhere to **prefer tools over conventions and documents**.
 
-go-zero is not only a framework, but also a tool to simplify and standardize the building of micoservice systems.
+go-zero is not only a framework, but also a tool to simplify and standardize the building of microservice systems.
 
 We not only keep the framework simple, but also encapsulate the complexity into the framework. And the developers are free from building the difficult and boilerplate code. Then we get the rapid development and less failure.
 
