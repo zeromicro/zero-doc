@@ -55,7 +55,7 @@ type ServiceConf struct {
 ```go
 type LogConf struct {
 	ServiceName         string `json:",optional"` // 服务名称
-	Mode                string `json:",default=console,options=console|file|volume"` // 日志模式，console-输出到console，file-输出到当前服务器（容器）文件，，volume-输出docker挂在文件内
+	Mode                string `json:",default=console,options=console|file|volume"` // 日志模式，console-输出到console，file-输出到当前服务器（容器）文件，，volume-输出docker挂载文件内
 	Path                string `json:",default=logs"` // 日志存储路径
 	Level               string `json:",default=info,options=info|error|severe"` // 日志级别
 	Compress            bool   `json:",optional"` // 是否开启gzip压缩
