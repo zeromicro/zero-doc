@@ -33,7 +33,7 @@ CertFile string `json:",optional"` // https证书文件，可选
 KeyFile  string `json:",optional"` // https私钥文件，可选 
 Verbose  bool   `json:",optional"` // 是否打印详细http请求日志
 MaxConns int    `json:",default=10000"` // http同时可接受最大请求数（限流数），默认10000
-MaxBytes int64  `json:",default=1048576,range=[0:8388608]"` // http可接受请求的最大ContentLength，默认1048576，被设置值不能必须在0到8388608之间
+MaxBytes int64  `json:",default=1048576,range=[0:8388608]"` // http可接受请求的最大ContentLength，默认1048576，被设置值必须在0到8388608之间
 // milliseconds
 Timeout      int64         `json:",default=3000"` // 超时时长控制，单位：毫秒，默认3000
 CpuThreshold int64         `json:",default=900,range=[0:1000]"` // cpu降载阈值，默认900，可允许设置范围0到1000
