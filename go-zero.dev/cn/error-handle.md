@@ -142,7 +142,7 @@ Content-Length: 19
         handler.RegisterHandlers(server, ctx)
     
         // 自定义错误
-        httpx.SetErrorHandler(func(err error) (int, interface{}) {
+	httpx.SetErrorHandlerCtx(func(ctx context.Context, err error) (int, any) {
             switch e := err.(type) {
             case *errorx.CodeError:
                 return http.StatusOK, e.Data()
