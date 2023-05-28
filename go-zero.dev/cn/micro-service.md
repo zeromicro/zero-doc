@@ -227,13 +227,13 @@ $ go mod init go-zero-demo
 
   type ServiceContext struct {
       Config  config.Config
-      UserRpc user.User
+      UserRpc userclient.User
   }
 
   func NewServiceContext(c config.Config) *ServiceContext {
       return &ServiceContext{
           Config:  c,
-          UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
+          UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
       }
   }
   ```
