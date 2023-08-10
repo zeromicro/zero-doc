@@ -62,23 +62,24 @@
 
 * 安装 etcd, mysql, redis
 
-* 安装 `protoc-gen-go`
-
-  ```shell
-  go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2
-  ```
-* 安装 `protoc`
-  ``` shell
-  wget https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/protoc-3.14.0-linux-x86_64.zip
-  unzip protoc-3.14.0-linux-x86_64.zip
-  mv bin/protoc /usr/local/bin/
-  ```
-
 * 安装 goctl 工具
 
   ```shell
+  # go 1.16 及以下版本
   GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/zeromicro/go-zero/tools/goctl@latest
+  # go1.16 以上版本
+  GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go install github.com/zeromicro/go-zero/tools/goctl@latest
   ```
+  
+* 安装 `protoc` , `protoc-gen-go`
+
+```shell
+goctl env install --verbose --force
+```
+
+以上安装详细教程可以参考 
+- [goctl 安装](https://go-zero.dev/docs/tasks/installation/goctl)
+- [protoc 安装](https://go-zero.dev/docs/tasks/installation/protoc)
 
 * 创建工作目录 `shorturl` 和 `shorturl/api`
 
@@ -89,18 +90,8 @@
   ```Plain Text
   module shorturl
   
-  go 1.15
-  
-  require (
-    github.com/golang/mock v1.4.3
-    github.com/golang/protobuf v1.4.2
-    github.com/zeromicro/go-zero v1.3.0
-    golang.org/x/net v0.0.0-20200707034311-ab3426394381
-    google.golang.org/grpc v1.29.1
-  )
+  go 1.20 // 这里的版本取决于你本地 golang 版本，并非完全一致
   ```
-
-  **注意：这里可能存在 grpc 版本依赖的问题，可以用以上配置**
 
 ## 5. 编写 API Gateway 代码
 
@@ -110,7 +101,7 @@
   goctl api -o shorturl.api
   ```
 
-* 编辑 `api/shorturl.api`，为了简洁，去除了文件开头的 `info`，代码如下：
+* 编辑 `api/shorturl.api`，替换内容为如下：
 
   ```go
   type (
@@ -153,7 +144,7 @@
   * `handler` 定义了服务端 handler 名字
   * `get /shorten(shortenReq) returns(shortenResp)` 定义了 get 方法的路由、请求参数、返回参数等
 
-* 使用 goctl 生成 API Gateway 代码
+* 在 api 目录下，使用 goctl 生成 API Gateway 代码
 
   ```shell
   goctl api go -api shorturl.api -dir .
@@ -186,6 +177,8 @@
   └── go.sum
   ```
 
+* 执行 `go mod tidy` 整理依赖
+
 * 启动 API Gateway 服务，默认侦听在 8888 端口
 
   ```shell
@@ -195,21 +188,22 @@
 * 测试 API Gateway 服务
 
   ```shell
-  curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
+  curl -i "http://localhost:8888/shorten?url=https://go-zero.dev"
   ```
 
   返回如下：
 
   ```http
   HTTP/1.1 200 OK
-  Content-Type: application/json
-  Date: Thu, 27 Aug 2020 14:31:39 GMT
-  Content-Length: 15
+  Content-Type: application/json; charset=utf-8
+  Traceparent: 00-a9e12f21fa866a09fadf19a29c8d86cb-9d4be07f5c2c789a-00
+  Date: Thu, 10 Aug 2023 02:06:20 GMT
+  Content-Length: 4
   
-  {"shorten":""}
+  null%
   ```
 
-  可以看到我们 API Gateway 其实啥也没干，就返回了个空值，接下来我们会在 rpc 服务里实现业务逻辑
+  可以看到我们 API Gateway 其实啥也没干，就返回了个 null，接下来我们会在 rpc 服务里实现业务逻辑
 
 * 可以修改 `internal/svc/servicecontext.go` 来传递服务依赖（如果需要）
 
@@ -221,17 +215,20 @@
 
 ## 6. 编写 transform rpc 服务
 
-- 在 `shorturl` 目录下创建 `rpc` 目录
+- 在 `shorturl` 目录下创建 `rpc/transform` 目录
 
+  ```shell
+  mkdir -p rpc/transform
+  ```
 * 在 `rpc/transform` 目录下编写 `transform.proto` 文件
 
   可以通过命令生成 proto 文件模板
 
   ```shell
-  goctl rpc template -o transform.proto
+  goctl rpc -o transform.proto
   ```
 
-  修改后文件内容如下：
+  修改后文件将内容替换如下：
 
 ```protobuf
 syntax = "proto3";
@@ -298,17 +295,20 @@ rpc/transform
     └── transformer.go              // 提供了外部调用方法，无需修改
   ```
 
-  直接可以运行，如下：
+* 执行 `go mod tidy` 整理依赖
+* 启动 etcd server
+* 启动 rpc 服务直接可以运行，如下：
 
   ```shell
   $ go run transform.go -f etc/transform.yaml
   Starting rpc server at 127.0.0.1:8080...
   ```
-  查看服务是否注册
+  查看服务是否注册，以下值为参考值，主要观察 etcd 有注册到 transform.rpc 的 key 和 8080 端口即可，各自机器的
+ip 结果不一样。
   ```
   $ETCDCTL_API=3 etcdctl get transform.rpc --prefix
-  transform.rpc/7587851893787585061
-  127.0.0.1:8080
+  transform.rpc/7587872530397098244
+  192.168.3.37:8080
   ```
   `etc/transform.yaml` 文件里可以修改侦听端口等配置
 
@@ -326,7 +326,7 @@ rpc/transform
 
   通过 etcd 自动去发现可用的 transform 服务
 
-* 修改 `internal/config/config.go` 如下，增加 transform 服务依赖
+* 修改 `shorturl/api/internal/config/config.go` 如下，增加 transform 服务依赖
 
   ```go
   type Config struct {
@@ -335,7 +335,7 @@ rpc/transform
   }
   ```
 
-* 修改 `internal/svc/servicecontext.go`，如下：
+* 修改 `shorturl/api/internal/svc/servicecontext.go`，如下：
 
   ```go
   type ServiceContext struct {
@@ -353,43 +353,43 @@ rpc/transform
 
   通过 ServiceContext 在不同业务逻辑之间传递依赖
 
-* 修改 `internal/logic/expandlogic.go` 里的 `Expand` 方法，如下：
+* 修改 `shorturl/api/internal/logic/expandlogic.go` 里的 `Expand` 方法，如下：
 
   ```go
   func (l *ExpandLogic) Expand(req types.ExpandReq) (types.ExpandResp, error) {
-    // 手动代码开始
-	  resp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
-	    Shorten: req.Shorten,
-	  })
-	  if err != nil {
-	    return types.ExpandResp{}, err
-	  }
-  
-	  return types.ExpandResp{
-	    Url: resp.Url,
-	  }, nil
+    // 手动代码开始 
+    rpcResp, err := l.svcCtx.Transformer.Expand(l.ctx, &transformer.ExpandReq{
+        Shorten: req.Shorten,
+    })
+    if err != nil {
+        return nil, err
+    }
+
+    return &types.ExpandResp{
+        Url: rpcResp.Url,
+    }, nil
 	  // 手动代码结束
   }
   ```
 
 通过调用 `transformer` 的 `Expand` 方法实现短链恢复到 url
 
-* 修改 `internal/logic/shortenlogic.go`，如下：
+* 修改 `shorturl/api/internal/logic/shortenlogic.go`，如下：
 
   ```go
   func (l *ShortenLogic) Shorten(req types.ShortenReq) (types.ShortenResp, error) {
     // 手动代码开始
-	  resp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
-		  Url: req.Url,
-	  })
-	  if err != nil {
-	    return types.ShortenResp{}, err
-	  }
+    rpcResp, err := l.svcCtx.Transformer.Shorten(l.ctx, &transformer.ShortenReq{
+        Url: req.Url,
+    })
+    if err != nil {
+        return nil, err
+    }
 
-	  return types.ShortenResp{
-	    Shorten: resp.Shorten,
-	  }, nil
-	  // 手动代码结束
+    return &types.ShortenResp{
+        Shorten: rpcResp.Shorten,
+    }, nil
+	// 手动代码结束
   }
   ```
 有的版本生成返回值可能是指针类型，需要自己调整下
@@ -399,6 +399,8 @@ rpc/transform
 至此，API Gateway 修改完成，虽然贴的代码多，但是其中修改的是很少的一部分，为了方便理解上下文，我贴了完整代码，接下来处理 CRUD+cache
 
 ## 8. 定义数据库表结构，并生成 CRUD+cache 代码
+
+注意： 这里需要开发者自行安装一个本地的 mysql-server，并创建一个数据库 `gozero`，建议用 docker 安装，这里不再赘述
 
 * shorturl 下创建 `rpc/transform/model` 目录：`mkdir -p rpc/transform/model`
 
@@ -413,15 +415,7 @@ rpc/transform
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
   ```
 
-* 创建 DB 和 table
-
-  ```sql
-  create database gozero;
-  ```
-
-  ```sql
-  source shorturl.sql;
-  ```
+* 在 mysql-server 的 `go-zero` 数据库下新增如上表结构
 
 * 在 `rpc/transform/model` 目录下执行如下命令生成 CRUD+cache 代码，`-c` 表示使用 `redis cache`
 
@@ -446,7 +440,7 @@ rpc/transform
 * 修改 `rpc/transform/etc/transform.yaml`，增加如下内容：
 
   ```yaml
-  DataSource: root:password@tcp(localhost:3306)/gozero
+  DataSource: root:password@tcp(localhost:3306)/gozero # 用户名和密码为你本地 mysql-server 密码，并非完全一致
   Table: shorturl
   Cache:
     - Host: localhost:6379
@@ -506,7 +500,7 @@ rpc/transform
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // 手动代码开始，生成短链接
     key := hash.Md5Hex([]byte(in.Url))[:6]
-    _, err := l.svcCtx.Model.Insert(l.ctx,model.Shorturl{
+    _, err := l.svcCtx.Model.Insert(l.ctx,&model.Shorturl{
       Shorten: key,
       Url:     in.Url,
     })
@@ -535,38 +529,58 @@ rpc/transform
 
 ## 10. 完整调用演示
 
+* 在 `shorturl` 目录下执行 `go mod tidy`  整理依赖
+
+* 重新依次启动 redis-server,etcd-server,mysql-server, rpc 服务
+
+```shell
+# etcd,redis,mysql 自行根据找教程安装启动
+# 启动 rpc 服务
+cd rpc/transform
+go run transform.go -f etc/transform.yaml
+```
+* 新开终端启动 api 服务
+
+```shell
+cd api
+go run shorturl.go -f etc/shorturl-api.yaml
+```
 * shorten api 调用
 
   ```shell
-  curl -i "http://localhost:8888/shorten?url=http://www.xiaoheiban.cn"
+  # 新开终端调用
+  curl -i "http://localhost:8888/shorten?url=https://go-zero.dev"
   ```
 
   返回如下：
 
   ```http
   HTTP/1.1 200 OK
-  Content-Type: application/json
-  Date: Sat, 29 Aug 2020 10:49:49 GMT
-  Content-Length: 21
-  
-  {"shorten":"f35b2a"}
+  Content-Type: application/json; charset=utf-8
+  Traceparent: 00-fe81053320bb99d1d924021a110765bd-fa915fae41db454d-00
+  Date: Thu, 10 Aug 2023 03:32:05 GMT
+  Content-Length: 20
+
+  {"shorten":"b0434f"}%
   ```
 
 * expand api 调用
 
   ```shell
-  curl -i "http://localhost:8888/expand?shorten=f35b2a"
+  # shorten 值为上一步返回的值为准，每个人返回的值不一样
+  curl -i "http://localhost:8888/expand?shorten=b0434f"
   ```
 
   返回如下：
 
   ```http
   HTTP/1.1 200 OK
-  Content-Type: application/json
-  Date: Sat, 29 Aug 2020 10:51:53 GMT
-  Content-Length: 34
-  
-  {"url":"http://www.xiaoheiban.cn"}
+  Content-Type: application/json; charset=utf-8
+  Traceparent: 00-0b11aab486c47a35586d6ed08236afb2-b12387d8cc1e3508-00
+  Date: Thu, 10 Aug 2023 03:32:54 GMT
+  Content-Length: 29
+
+  {"url":"https://go-zero.dev"}%
   ```
 
 ## 11. Benchmark
