@@ -27,9 +27,9 @@ Let’s take the shorturl microservice as a quick example to demonstrate how to 
 
 ## 1. What is a bookstore service
 
-For simplicity, the bookstore service only contains two functionalities, adding books and quering prices.
+For simplicity, the bookstore service only contains two functionalities, adding books and querying prices.
 
-Writting this bookstore service is to demonstrate the complete flow of creating a microservice by using go-zero. But algorithms and detail implementations are quite simplified, and this bookstore service is not suitable for production use.
+Writing this bookstore service is to demonstrate the complete flow of creating a microservice by using go-zero. But algorithms and detail implementations are quite simplified, and this bookstore service is not suitable for production use.
 
 ## 2. Architecture of shorturl microservice
 
@@ -443,7 +443,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   source book.sql;
   ```
 
-* under the directory `rpc/model` execute the following command to genrate CRUD+cache code, `-c` means using `redis cache`
+* under the directory `rpc/model` execute the following command to generate CRUD+cache code, `-c` means using `redis cache`
 
   ```shell
   goctl model mysql ddl -c -src book.sql -dir .
@@ -539,7 +539,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   }
   ```
   
-  till now, we finished modifing the code, all the modified code is marked.
+  till now, we finished modifying the code, all the modified code is marked.
 
 ## 11. Call shorten and expand services
 
