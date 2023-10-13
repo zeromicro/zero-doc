@@ -36,7 +36,7 @@ A plug-in tool that supports go-zero api language structure syntax highlighting,
 ### The way one
 Find the latest zip package in the GitHub release, download it and install it locally. (No need to unzip)
 
-### Thw way two
+### The way two
 In the plugin store, search for `Goctl` to install
 
 
@@ -60,7 +60,7 @@ Corresponding files (api, proto, sql) `right click->New->Go Zero-> Api/Rpc/Model
 
 ![preview](./resource/project_generate_code.png)
 
-## Thw way two（Editor Panel）
+## The way two（Editor Panel）
 Corresponding files (api, proto, sql) `right click -> Generate-> Api/Rpc/Model Code`
 
 
