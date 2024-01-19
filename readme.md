@@ -35,5 +35,5 @@
   
 ## 3. 微信交流群
 
-<img src="https://raw.githubusercontent.com/zeromicro/zero-doc/main/doc/images/wechat.jpg" alt="wechat" width="300" />
-![image](https://github.com/zeromicro/zero-doc/assets/1918356/949f3e71-ca98-4c74-9ab7-163a235638ff)
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/1918356/298199123-949f3e71-ca98-4c74-9ab7-163a235638ff.png" alt="wechat" width="300" />
+
