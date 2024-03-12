@@ -233,8 +233,8 @@ And now, let’s walk through the complete flow of quickly creating a microservi
       rpc shorten(shortenReq) returns(shortenResp);
   }
   ```
-  
-* use goctl to generate the rpc code, execute the following command in `rpc/transofrm`
+* Confirm Protocol Buffer (protoc) whether have been installed  
+* use goctl to generate the rpc code, execute the following command in `rpc/transform`
 
   ```shell
   goctl rpc protoc transform.proto --go_out=. --go-grpc_out=. --zrpc_out=.
@@ -264,8 +264,8 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   └── transformer
       └── transformer.go  
   ```
-
-  just run it, looks like:
+* Confirm etcd-server is running
+* just run it, looks like:
 
   ```shell
   $ go run transform.go -f etc/transform.yaml
