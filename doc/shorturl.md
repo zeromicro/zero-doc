@@ -125,14 +125,10 @@ goctl env install --verbose --force
   )
   
   service shorturl-api {
-    @server(
-      handler: ShortenHandler
-    )
+    @handler ShortenHandler
     get /shorten(shortenReq) returns(shortenResp)
   
-    @server(
-      handler: ExpandHandler
-    )
+    @handler ExpandHandler
     get /expand(expandReq) returns(expandResp)
   }
   ```

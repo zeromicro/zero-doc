@@ -108,14 +108,10 @@ And now, let’s walk through the complete flow of quickly creating a microservi
   )
   
   service shorturl-api {
-  	@server(
-  		handler: ShortenHandler
-  	)
+  	@handler ShortenHandler
   	get /shorten(shortenReq) returns(shortenResp)
   
-  	@server(
-  		handler: ExpandHandler
-  	)
+  	@handler ExpandHandler
   	get /expand(expandReq) returns(expandResp)
   }
   ```
