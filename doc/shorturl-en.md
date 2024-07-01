@@ -173,7 +173,7 @@ And now, let’s walk through the complete flow of quickly create a microservice
   ```
 
   response like:
-
+  old goctl version
   ```http
   HTTP/1.1 200 OK
   Content-Type: application/json
@@ -181,6 +181,16 @@ And now, let’s walk through the complete flow of quickly create a microservice
   Content-Length: 15
   
   {"shortUrl":""}
+  ```
+
+  latest goctl version
+  ```http
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Date: Thu, 27 Aug 2020 14:31:39 GMT
+  Content-Length: 15
+  
+  null
   ```
 
   You can see that the API Gateway service did nothing except returned a zero value. And let’s implement the business logic in rpc service.
@@ -447,7 +457,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   ```go
   func (l *ExpandLogic) Expand(in *transform.ExpandReq) (*transform.ExpandResp, error) {
   	// manual code start
-  	res, err := l.svcCtx.Model.FindOne(in.Shorten)
+  	res, err := l.svcCtx.Model.FindOne(l.ctx, in.Shorten)
   	if err != nil {
   		return nil, err
   	}
@@ -465,7 +475,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // manual code start, generates shorturl
   	key := hash.Md5Hex([]byte(in.Url))[:6]
-  	_, err := l.svcCtx.Model.Insert(model.Shorturl{
+  	_, err := l.svcCtx.Model.Insert(l.ctx, model.Shorturl{
   		Shorten: key,
   		Url:     in.Url,
   	})
