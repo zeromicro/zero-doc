@@ -435,7 +435,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   func NewServiceContext(c config.Config) *ServiceContext {
   	return &ServiceContext{
   		c:             c,
-  		Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache, c.Table), // manual code
+  		Model: model.NewShorturlModel(sqlx.NewMysql(c.DataSource), c.Cache), // manual code
   	}
   }
   ```
