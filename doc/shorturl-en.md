@@ -463,7 +463,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
     // manual code start, generates shorturl
   	key := hash.Md5Hex([]byte(in.Url))[:6]
-  	_, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{{
+  	_, err := l.svcCtx.Model.Insert(l.ctx, &model.Shorturl{
   		Shorten: key,
   		Url:     in.Url,
   	})
