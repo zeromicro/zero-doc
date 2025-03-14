@@ -183,7 +183,8 @@
         return &ServiceContext{
             Config:  c,
             Example: middleware.NewExampleMiddleware().Handle,
-            UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
+            UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc).Conn()),
+
         }
     }
     ```
