@@ -1,5 +1,3 @@
-# DEPRECATED: PLEASE MOVE TO https://go-zero.dev/cn/extended-reading.html
-
 # 快速构建高并发微服务
 
 [English](shorturl-en.md) | 简体中文
