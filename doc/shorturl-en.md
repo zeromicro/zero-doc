@@ -60,6 +60,10 @@ And now, let’s walk through the complete flow of quickly creating a microservi
 
 * install etcd, mysql, redis
 
+* create the working dir `shorturl` and `shorturl/api`
+
+* in `shorturl` dir, execute `go mod init shorturl` to initialize `go.mod`
+
 * install protoc-gen-go
 
   ```
@@ -69,12 +73,8 @@ And now, let’s walk through the complete flow of quickly creating a microservi
 * install goctl
 
   ```shell
-  GO111MODULE=on go get -u github.com/zeromicro/go-zero/tools/goctl
+  go install github.com/zeromicro/go-zero/tools/goctl@latest
   ```
-
-* create the working dir `shorturl` and `shorturl/api`
-
-* in `shorturl` dir, execute `go mod init shorturl` to initialize `go.mod`
 
 ## 5. Write code for API Gateway
 
@@ -457,7 +457,7 @@ Till now, we’ve done the modification of API Gateway. All the manually added c
   }
   ```
 
-* modify `rpc/shorten/internal/logic/shortenlogic.go`, looks like:
+* modify `rpc/transform/internal/logic/shortenlogic.go`, looks like:
 
   ```go
   func (l *ShortenLogic) Shorten(in *transform.ShortenReq) (*transform.ShortenResp, error) {
