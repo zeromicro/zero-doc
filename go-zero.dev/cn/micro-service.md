@@ -52,7 +52,7 @@ $ go mod init go-zero-demo
   ```shell
   $ vim mall/user/rpc/user.proto
   ```
-    
+  
   增加如下代码：
   
   ```protobuf
@@ -220,20 +220,20 @@ $ go mod init go-zero-demo
 
   import (
       "go-zero-demo/mall/order/api/internal/config"
-      "go-zero-demo/mall/user/rpc/user"
+      "go-zero-demo/mall/user/rpc/userclient"
 
       "github.com/zeromicro/go-zero/zrpc"
   )
 
   type ServiceContext struct {
       Config  config.Config
-      UserRpc user.User
+      UserRpc userclient.User
   }
 
   func NewServiceContext(c config.Config) *ServiceContext {
       return &ServiceContext{
           Config:  c,
-          UserRpc: user.NewUser(zrpc.MustNewClient(c.UserRpc)),
+          UserRpc: userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
       }
   }
   ```
@@ -248,24 +248,24 @@ $ go mod init go-zero-demo
 
   ```go
   package logic
-
+  
   import (
       "context"
       "errors"
-
+  
       "go-zero-demo/mall/order/api/internal/svc"
       "go-zero-demo/mall/order/api/internal/types"
       "go-zero-demo/mall/user/rpc/types/user"
-
+  
       "github.com/zeromicro/go-zero/core/logx"
   )
-
+  
   type GetOrderLogic struct {
       logx.Logger
       ctx    context.Context
       svcCtx *svc.ServiceContext
   }
-
+  
   func NewGetOrderLogic(ctx context.Context, svcCtx *svc.ServiceContext) GetOrderLogic {
       return GetOrderLogic{
           Logger: logx.WithContext(ctx),
@@ -273,7 +273,7 @@ $ go mod init go-zero-demo
           svcCtx: svcCtx,
       }
   }
-
+  
   func (l *GetOrderLogic) GetOrder(req *types.OrderReq) (*types.OrderReply, error) {
       user, err := l.svcCtx.UserRpc.GetUser(l.ctx, &user.IdRequest{
           Id: "1",
@@ -281,11 +281,11 @@ $ go mod init go-zero-demo
       if err != nil {
           return nil, err
       }
-
+  
       if user.Name != "test" {
           return nil, errors.New("用户不存在")
       }
-
+  
       return &types.OrderReply{
           Id:   req.Id,
           Name: "test order",
@@ -324,7 +324,7 @@ $ go mod init go-zero-demo
   Content-Type: application/json
   Date: Sun, 07 Feb 2021 03:45:05 GMT
   Content-Length: 30
-
+  
   {"id":"1","name":"test order"}
   ```
 
