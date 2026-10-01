@@ -220,7 +220,7 @@ $ go mod init go-zero-demo
 
   import (
       "go-zero-demo/mall/order/api/internal/config"
-      "go-zero-demo/mall/user/rpc/user"
+      user "go-zero-demo/mall/user/rpc/userclient"
 
       "github.com/zeromicro/go-zero/zrpc"
   )
